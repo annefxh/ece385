@@ -1,4 +1,4 @@
-module 2to1_mux(input logic S,
+module mux2(input logic S,
 					 input logic [15:0] In0, In1,
 					 output logic [15:0] Out);
 					 

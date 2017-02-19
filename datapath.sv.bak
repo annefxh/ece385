@@ -1,0 +1,46 @@
+module Datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk,
+						input logic [1:0]pcmux_s,
+						input logic mio_en, 
+						input logic [15:0] mem_rdata,
+						output logic[19:0] mem_address, 
+						output logic[15:0] mem_wdata,
+						output logic [6:0] AhexU, 
+						output logic [6:0] AhexL, 
+						output logic [6:0] BhexU, 
+						output logic [6:0] BhexL,
+						output logic [7:0] Aval,
+						output logic [7:0] Bval);
+						
+logic 
+
+module register pc_reg
+(
+    .clk,
+	 .load(ld_pc),
+	 .in(pcmux_out),
+	 output logic [width-1:0] out
+);
+
+module register ir_reg
+(
+    clk,
+	 .load(ld_ir),
+	 in(mem_rdata),
+	 output logic [width-1:0] out
+);
+
+module register mdr_reg
+(
+    .clk,
+	 .load(ld_mdr),
+	 .in(mem_wdata),
+	 output logic [width-1:0] out
+);
+
+module register mar_reg
+(
+    .clk,
+	 .load(ld_mar),
+	 .in(mem_address),
+	 output logic [width-1:0] out
+);
