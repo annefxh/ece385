@@ -21,12 +21,14 @@
 module slc3(
 	input logic [15:0] S,
 	input logic	Clk, Reset, Run, Continue,
-	output logic [11:0] LED,
+//	output logic [11:0] LED,
 	output logic [6:0] HEX0, HEX1, HEX2, HEX3,
 	output logic CE, UB, LB, OE, WE,
 	output logic [19:0] ADDR,
 	inout wire [15:0] Data //tristate buffers need to be of type wire
 );
+
+test_memory test(.I_O(Data), .A(ADDR), .*);
 
 // Declaration of push button active high signals	
 logic Reset_ah, Continue_ah, Run_ah;
@@ -40,10 +42,10 @@ assign Run_ah = ~Run;
 // For Week 2, they will be patched into the MEM2IO module so that Memory-mapped IO can take place
 logic [3:0][3:0] hex_4;
 // Remove the following assignments for Week 2
-assign hex_4[3][3:0] = IR[15:12];
-assign hex_4[2][3:0] = IR[11:8];
-assign hex_4[1][3:0] = IR[7:4];
-assign hex_4[0][3:0] = IR[3:0];
+//assign hex_4[3][3:0] = IR[15:12];
+//assign hex_4[2][3:0] = IR[11:8];
+//assign hex_4[1][3:0] = IR[7:4];
+//assign hex_4[0][3:0] = IR[3:0];
 
 HexDriver hex_drivers[3:0] (hex_4, {HEX3, HEX2, HEX1, HEX0});
 // This works thanks to http://stackoverflow.com/questions/1378159/verilog-can-we-have-an-array-of-custom-modules
@@ -68,9 +70,10 @@ assign MIO_EN = ~OE;
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
-datapath(.ld_pc(LD_PC), .ld_ir(LD_IR), .ld_mdr(LD_MDR), .ld_mar(LD_MAR), .clk(Clk),
+datapath D0(.ld_pc(LD_PC), .ld_ir(LD_IR), .ld_mdr(LD_MDR), .ld_mar(LD_MAR), .clk(Clk),
+						.GatePC(GatePC), .GateMDR(GateMDR), .GateALU(GateALU), .GateMARMUX(GateMARMUX),
 						.pcmux_sel(PCMUX),
-						.mio_en(MIO_EN), .marmux_sel(GateMARMUX),
+						.mio_en(MIO_EN), 
 						.mem_rdata(MDR_In),
 						.mem_address(MAR), 
 						.mem_wdata(MDR),

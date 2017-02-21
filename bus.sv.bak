@@ -1,0 +1,2 @@
+module bus(input logic GateMDR, GateMARMUX, GatePC, GateALU,
+			  input logic [15:0] mem_wdata, pc_out, alu_out, )

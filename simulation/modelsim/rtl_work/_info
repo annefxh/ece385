@@ -1,0 +1,376 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Suicheng Zhan/Desktop/385/ece385/simulation/modelsim
+vbus
+Z1 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+Z2 !s110 1487567406
+!i10b 1
+!s100 CCkZ5JOYloeTeQGNoU;_03
+IXK6E3k@YiDSgNoA4]koDC0
+Z3 V`JN@9S9cnhjKRR_L]QIcM3
+!s105 bus_sv_unit
+S1
+R0
+w1487560838
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/bus.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/bus.sv
+L0 1
+Z4 OV;L;10.3d;59
+r1
+!s85 0
+31
+!s108 1487567406.253000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/bus.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/bus.sv|
+!i113 1
+Z5 o-sv -work work
+Z6 !s92 -sv -work work {+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385}
+vdatapath
+R1
+R2
+!i10b 1
+!s100 LMZiTDaRKL1[[D;z@3HB21
+ITSm<HMC[mK]MIa8oZm7:73
+R3
+!s105 datapath_sv_unit
+S1
+R0
+w1487567361
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/datapath.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/datapath.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567406.465000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/datapath.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/datapath.sv|
+!i113 1
+R5
+R6
+vHexDriver
+R1
+Z7 !s110 1487567405
+!i10b 1
+!s100 UH7P[dTK1gbKnd]=kl[zQ3
+IRHZmdD87YJ=Td488>fBgV2
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1486957644
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/HexDriver.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/HexDriver.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567405.273000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/HexDriver.sv|
+!i113 1
+R5
+R6
+n@hex@driver
+vISDU
+R1
+R7
+!i10b 1
+!s100 ]lNNm?L9o=>ME?;TX5<gC2
+IeHdHb^7WKg0;@T9RLQb<:0
+R3
+!s105 ISDU_sv_unit
+S1
+R0
+Z8 w1487457758
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/ISDU.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/ISDU.sv
+L0 19
+R4
+r1
+!s85 0
+31
+!s108 1487567405.957000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/ISDU.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/ISDU.sv|
+!i113 1
+R5
+R6
+n@i@s@d@u
+vMem2IO
+R1
+R7
+!i10b 1
+!s100 4<^QV^?MSEza;`0CfC5c42
+I?a39DleMAi;z2TWkKNV>i1
+R3
+!s105 Mem2IO_sv_unit
+S1
+R0
+w1487465357
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/Mem2IO.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/Mem2IO.sv
+Z9 L0 16
+R4
+r1
+!s85 0
+31
+!s108 1487567405.865000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/Mem2IO.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/Mem2IO.sv|
+!i113 1
+R5
+R6
+n@mem2@i@o
+vmux2
+R1
+R7
+!i10b 1
+!s100 _Qa6Q]@51V9e>FP<me7j[3
+IejIjSo<UOo0SWSoOFUlVM1
+R3
+!s105 _2to1_mux_sv_unit
+S1
+R0
+w1487461666
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/2to1_mux.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/2to1_mux.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567405.597000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/2to1_mux.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/2to1_mux.sv|
+!i113 1
+R5
+R6
+vmux4
+R1
+R7
+!i10b 1
+!s100 TmcQZV81g_iG4mYR5:?Eh3
+Ie@i@RiZUi6MkB3<UQ68b42
+R3
+!s105 _4to1_mux_sv_unit
+S1
+R0
+w1487465091
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/4to1_mux.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/4to1_mux.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567405.505000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/4to1_mux.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/4to1_mux.sv|
+!i113 1
+R5
+R6
+vregister
+R1
+R7
+!i10b 1
+!s100 9M>KID99IdNeLU5fYmdHU0
+I1M=]Re^MdOH0<eXiDhOmS1
+R3
+!s105 register_sv_unit
+S1
+R0
+w1487459954
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/register.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/register.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567405.413000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/register.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/register.sv|
+!i113 1
+R5
+R6
+vslc3
+R1
+R2
+!i10b 1
+!s100 <7lXB5XKAmTPFlL0YUj][3
+I3ikcF;G7d^6eNO[bXFFT;2
+R3
+!s105 slc3_sv_unit
+S1
+R0
+w1487566724
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/slc3.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/slc3.sv
+L0 21
+R4
+r1
+!s85 0
+31
+!s108 1487567406.577000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/slc3.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/slc3.sv|
+!i113 1
+R5
+R6
+XSLC3_2
+R1
+R2
+!i10b 1
+!s100 YOGG]fo2<@5h3`@;QJ5JE3
+I=Xe13mGOjVf5zElT2TjLb1
+V=Xe13mGOjVf5zElT2TjLb1
+S1
+R0
+R8
+Z10 FC:/Users/Suicheng Zhan/Desktop/385/ece385/SLC3_2.sv
+Z11 8C:/Users/Suicheng Zhan/Desktop/385/ece385/test_memory.sv
+Z12 FC:/Users/Suicheng Zhan/Desktop/385/ece385/test_memory.sv
+L0 23
+R4
+r1
+!s85 0
+31
+Z13 !s108 1487567406.345000
+Z14 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/SLC3_2.sv|C:/Users/Suicheng Zhan/Desktop/385/ece385/test_memory.sv|
+Z15 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/test_memory.sv|
+!i113 1
+R5
+R6
+n@s@l@c3_2
+vtest_memory
+R1
+Z16 DXx4 work 6 SLC3_2 0 22 =Xe13mGOjVf5zElT2TjLb1
+DXx4 work 19 test_memory_sv_unit 0 22 N<_SQK3hDEDK;e77UF[TI1
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 d=S;G`a0]<UWeDNe`k6X43
+IDk1zD9Fe[iT?iY1M3Fm:>0
+!s105 test_memory_sv_unit
+S1
+R0
+R8
+R11
+R12
+L0 27
+R4
+R13
+R14
+R15
+!i113 1
+R5
+R6
+Xtest_memory_sv_unit
+R1
+R16
+VN<_SQK3hDEDK;e77UF[TI1
+r1
+!s85 0
+31
+!i10b 1
+!s100 LXW=d98k72Jbf3JWH`Z:00
+IN<_SQK3hDEDK;e77UF[TI1
+!i103 1
+S1
+R0
+R8
+R11
+R12
+R10
+L0 25
+R4
+R13
+R14
+R15
+!i113 1
+R5
+R6
+vtestbench
+R1
+R2
+!i10b 1
+!s100 NUOgbM4h@I;n17NFoCaQ50
+ILMkK]dWKR4n5zmzb6V=R]2
+R3
+!s105 testbench_sv_unit
+S1
+R0
+w1487565940
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/testbench.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/testbench.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567406.673000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/testbench.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/testbench.sv|
+!i113 1
+R5
+R6
+vtristate
+R1
+R7
+!i10b 1
+!s100 c5mQSNYgK9f]9@5BiLEz30
+IcjCcS?7RC1=DY:4R6WOh^0
+R3
+!s105 tristate_sv_unit
+S1
+R0
+R8
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/tristate.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/tristate.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1487567405.681000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/tristate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/tristate.sv|
+!i113 1
+R5
+R6
+vzext
+R1
+R2
+!i10b 1
+!s100 ?<O5IT0o;dU6?H2SX1^OX0
+I^]dTZ1OL[cW4IX]5z:@jb2
+R3
+!s105 zxt_sv_unit
+S1
+R0
+w1487461265
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/zxt.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/zxt.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1487567406.117000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/zxt.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385|C:/Users/Suicheng Zhan/Desktop/385/ece385/zxt.sv|
+!i113 1
+R5
+R6
