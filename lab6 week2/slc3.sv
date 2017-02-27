@@ -70,20 +70,41 @@ assign MIO_EN = ~OE;
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
-datapath D0(.ld_pc(LD_PC), .ld_ir(LD_IR), .ld_mdr(LD_MDR), .ld_mar(LD_MAR), .clk(Clk),
-						.GatePC(GatePC), .GateMDR(GateMDR), .GateALU(GateALU), .GateMARMUX(GateMARMUX),
-						.pcmux_sel(PCMUX),
-						.mio_en(MIO_EN), 
-						.mem_rdata(MDR_In),
-						.mem_address(MAR), 
-						.mem_wdata(MDR),
-						.IR(IR));
+datapath D0
+(
+	.LD_BEN, 
+	.LD_CC, 
+	.addr2mux_sel(ADDR2MUX), 
+	.ALUK, 
+	.drmux_sel(DRMUX), 
+	.sr1mux_sel(SR1MUX), 
+	.LD_REG, 
+	.sr2mux_sel(SR2MUX), 
+	.addr1mux_sel(ADDR1MUX),
+	.BEN,
+	.ld_pc(LD_PC), 
+	.ld_ir(LD_IR), 
+	.ld_mdr(LD_MDR), 
+	.ld_mar(LD_MAR), 
+	.clk(Clk), 
+	.reset(Reset_ah),
+	.GatePC(GatePC), 
+	.GateMDR(GateMDR), 
+	.GateALU(GateALU), 
+	.GateMARMUX(GateMARMUX),
+	.pcmux_sel(PCMUX),
+	.mio_en(MIO_EN), 
+	.mem_rdata(MDR_In),
+	.mem_address(MAR), 
+	.mem_wdata(MDR),
+	.IR(IR)
+);
 
 // Our SRAM and I/O controller
 Mem2IO memory_subsystem(
 	.*, .Reset(Reset_ah), .ADDR(ADDR), .Switches(S),
 //	Uncomment the following line for Week 2 to patch Hex display into Mem2IO
-//	.HEX0(hex_4[0][3:0]), .HEX1(hex_4[1][3:0]), .HEX2(hex_4[2][3:0]), .HEX3(hex_4[3][3:0]),
+	.HEX0(hex_4[0][3:0]), .HEX1(hex_4[1][3:0]), .HEX2(hex_4[2][3:0]), .HEX3(hex_4[3][3:0]),
 	.Data_from_CPU(MDR), .Data_to_CPU(MDR_In),
 	.Data_from_SRAM(Data_from_SRAM), .Data_to_SRAM(Data_to_SRAM)
 );

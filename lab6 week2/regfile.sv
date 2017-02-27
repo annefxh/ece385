@@ -1,6 +1,6 @@
 module regfile
 (
-
+	input logic clk,
 	input logic LD_REG,
 	input logic[2:0] drmuxout, sr1muxout, sr2,
 	input logic[15:0] busout,
@@ -19,7 +19,7 @@ end
 
 always_ff @(posedge clk)
 begin
-	if(load)
+	if(LD_REG)
 	begin
 		data[drmuxout] <= busout;
 	end

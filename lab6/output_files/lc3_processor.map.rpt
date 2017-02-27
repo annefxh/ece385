@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lc3_processor
-Mon Feb 20 13:09:47 2017
+Fri Feb 24 14:09:52 2017
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -30,15 +30,11 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
  22. Port Connectivity Checks: "datapath:D0|mux2:mdr_mux"
  23. Port Connectivity Checks: "datapath:D0|mux4:pcmux"
  24. Port Connectivity Checks: "datapath:D0"
- 25. Port Connectivity Checks: "HexDriver:hex_drivers[3]"
- 26. Port Connectivity Checks: "HexDriver:hex_drivers[2]"
- 27. Port Connectivity Checks: "HexDriver:hex_drivers[1]"
- 28. Port Connectivity Checks: "HexDriver:hex_drivers[0]"
- 29. Port Connectivity Checks: "test_memory:test"
- 30. Post-Synthesis Netlist Statistics for Top Partition
- 31. Elapsed Time Per Partition
- 32. Analysis & Synthesis Messages
- 33. Analysis & Synthesis Suppressed Messages
+ 25. Port Connectivity Checks: "test_memory:test"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+ 29. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -65,15 +61,15 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Feb 20 13:09:47 2017      ;
+; Analysis & Synthesis Status        ; Successful - Fri Feb 24 14:09:52 2017      ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                      ; lc3_processor                              ;
 ; Top-level Entity Name              ; slc3                                       ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 341                                        ;
-;     Total combinational functions  ; 325                                        ;
-;     Dedicated logic registers      ; 71                                         ;
-; Total registers                    ; 71                                         ;
+; Total logic elements               ; 402                                        ;
+;     Total combinational functions  ; 370                                        ;
+;     Dedicated logic registers      ; 87                                         ;
+; Total registers                    ; 87                                         ;
 ; Total pins                         ; 89                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
@@ -186,25 +182,25 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                 ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                             ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
-; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/HexDriver.sv   ;         ;
-; register.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/register.sv    ;         ;
-; 4to1_mux.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/4to1_mux.sv    ;         ;
-; 2to1_mux.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/2to1_mux.sv    ;         ;
-; tristate.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/tristate.sv    ;         ;
-; test_memory.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/test_memory.sv ;         ;
-; SLC3_2.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/SLC3_2.sv      ;         ;
-; slc3.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/slc3.sv        ;         ;
-; Mem2IO.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/Mem2IO.sv      ;         ;
-; ISDU.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/ISDU.sv        ;         ;
-; zxt.sv                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/zxt.sv         ;         ;
-; datapath.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/datapath.sv    ;         ;
-; bus.sv                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/bus.sv         ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                  ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
+; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/HexDriver.sv   ;         ;
+; register.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/register.sv    ;         ;
+; 4to1_mux.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/4to1_mux.sv    ;         ;
+; 2to1_mux.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/2to1_mux.sv    ;         ;
+; tristate.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/tristate.sv    ;         ;
+; test_memory.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/test_memory.sv ;         ;
+; SLC3_2.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/SLC3_2.sv      ;         ;
+; slc3.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/slc3.sv        ;         ;
+; Mem2IO.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/Mem2IO.sv      ;         ;
+; ISDU.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/ISDU.sv        ;         ;
+; zxt.sv                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/zxt.sv         ;         ;
+; datapath.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/datapath.sv    ;         ;
+; bus.sv                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/bus.sv         ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------+
@@ -212,20 +208,20 @@ agreement for further details.
 +---------------------------------------------+--------------------------------------+
 ; Resource                                    ; Usage                                ;
 +---------------------------------------------+--------------------------------------+
-; Estimated Total logic elements              ; 341                                  ;
+; Estimated Total logic elements              ; 402                                  ;
 ;                                             ;                                      ;
-; Total combinational functions               ; 325                                  ;
+; Total combinational functions               ; 370                                  ;
 ; Logic element usage by number of LUT inputs ;                                      ;
-;     -- 4 input functions                    ; 266                                  ;
-;     -- 3 input functions                    ; 24                                   ;
-;     -- <=2 input functions                  ; 35                                   ;
+;     -- 4 input functions                    ; 312                                  ;
+;     -- 3 input functions                    ; 13                                   ;
+;     -- <=2 input functions                  ; 45                                   ;
 ;                                             ;                                      ;
 ; Logic elements by mode                      ;                                      ;
-;     -- normal mode                          ; 310                                  ;
+;     -- normal mode                          ; 355                                  ;
 ;     -- arithmetic mode                      ; 15                                   ;
 ;                                             ;                                      ;
-; Total registers                             ; 71                                   ;
-;     -- Dedicated logic registers            ; 71                                   ;
+; Total registers                             ; 87                                   ;
+;     -- Dedicated logic registers            ; 87                                   ;
 ;     -- I/O registers                        ; 0                                    ;
 ;                                             ;                                      ;
 ; I/O pins                                    ; 89                                   ;
@@ -233,9 +229,9 @@ agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0                                    ;
 ;                                             ;                                      ;
 ; Maximum fan-out node                        ; datapath:D0|register:mar_reg|data[3] ;
-; Maximum fan-out                             ; 130                                  ;
-; Total fan-out                               ; 1557                                 ;
-; Average fan-out                             ; 2.64                                 ;
+; Maximum fan-out                             ; 131                                  ;
+; Total fan-out                               ; 1814                                 ;
+; Average fan-out                             ; 2.79                                 ;
 +---------------------------------------------+--------------------------------------+
 
 
@@ -244,16 +240,19 @@ agreement for further details.
 +------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
 ; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                ; Library Name ;
 +------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
-; |slc3                        ; 325 (0)           ; 71 (0)       ; 0           ; 0            ; 0       ; 0         ; 89   ; 0            ; |slc3                              ; work         ;
-;    |ISDU:state_controller|   ; 9 (9)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|ISDU:state_controller        ; work         ;
-;    |Mem2IO:memory_subsystem| ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|Mem2IO:memory_subsystem      ; work         ;
-;    |datapath:D0|             ; 48 (0)            ; 48 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0                  ; work         ;
-;       |bus:bus1|             ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|bus:bus1         ; work         ;
-;       |mux2:mdr_mux|         ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|mux2:mdr_mux     ; work         ;
+; |slc3                        ; 370 (0)           ; 87 (0)       ; 0           ; 0            ; 0       ; 0         ; 89   ; 0            ; |slc3                              ; work         ;
+;    |HexDriver:hex_driver0|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|HexDriver:hex_driver0        ; work         ;
+;    |HexDriver:hex_driver1|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|HexDriver:hex_driver1        ; work         ;
+;    |HexDriver:hex_driver2|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|HexDriver:hex_driver2        ; work         ;
+;    |HexDriver:hex_driver3|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|HexDriver:hex_driver3        ; work         ;
+;    |ISDU:state_controller|   ; 8 (8)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|ISDU:state_controller        ; work         ;
+;    |Mem2IO:memory_subsystem| ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|Mem2IO:memory_subsystem      ; work         ;
+;    |datapath:D0|             ; 64 (0)            ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0                  ; work         ;
+;       |register:ir_reg|      ; 31 (31)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|register:ir_reg  ; work         ;
 ;       |register:mar_reg|     ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|register:mar_reg ; work         ;
-;       |register:mdr_reg|     ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|register:mdr_reg ; work         ;
+;       |register:mdr_reg|     ; 17 (17)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|register:mdr_reg ; work         ;
 ;       |register:pc_reg|      ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|datapath:D0|register:pc_reg  ; work         ;
-;    |test_memory:test|        ; 263 (263)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|test_memory:test             ; work         ;
+;    |test_memory:test|        ; 264 (264)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|test_memory:test             ; work         ;
 ;    |tristate:tr0|            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |slc3|tristate:tr0                 ; work         ;
 +------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -4378,14 +4377,13 @@ Encoding Type:  One-Hot
 ; test_memory:test|mem_array[0][3]         ; Stuck at GND due to stuck port clock_enable ;
 ; test_memory:test|mem_array[0][2]         ; Stuck at GND due to stuck port clock_enable ;
 ; test_memory:test|mem_array[0][1]         ; Stuck at GND due to stuck port clock_enable ;
-; datapath:D0|register:ir_reg|data[12..15] ; Lost fanout                                 ;
 ; ISDU:state_controller|State.S_32         ; Lost fanout                                 ;
 ; ISDU:state_controller|State.S_01         ; Lost fanout                                 ;
 ; ISDU:state_controller|State~2            ; Lost fanout                                 ;
 ; ISDU:state_controller|State~3            ; Lost fanout                                 ;
 ; ISDU:state_controller|State~4            ; Lost fanout                                 ;
 ; tristate:tr0|Data_write_buffer[0..15]    ; Lost fanout                                 ;
-; Total Number of Removed Registers = 4121 ;                                             ;
+; Total Number of Removed Registers = 4117 ;                                             ;
 +------------------------------------------+---------------------------------------------+
 
 
@@ -4434,26 +4432,25 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 71    ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 4     ;
+; Total registers                              ; 87    ;
+; Number of registers using Synchronous Clear  ; 18    ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 48    ;
+; Number of registers using Clock Enable       ; 64    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
-; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |slc3|datapath:D0|register:mar_reg|data[10] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |slc3|datapath:D0|register:mdr_reg|data[5]  ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |slc3|datapath:D0|bus:bus1|out[13]          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |slc3|ISDU:state_controller|State           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |slc3|datapath:D0|register:mdr_reg|data[1] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |slc3|datapath:D0|register:ir_reg|data     ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |slc3|ISDU:state_controller|State          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 
 
 +---------------------------------------------------------------+
@@ -4580,45 +4577,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Port        ; Type   ; Severity ; Details                                                                                                                            ;
 +-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------+
 ; mem_address ; Output ; Warning  ; Output or bidir port (20 bits) is wider than the port expression (16 bits) it drives; bit(s) "mem_address[19..16]" have no fanouts ;
-; IR[10..6]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                ;
-; IR[4..0]    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                ;
 +-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------+
-; Port Connectivity Checks: "HexDriver:hex_drivers[3]" ;
-+------+-------+----------+----------------------------+
-; Port ; Type  ; Severity ; Details                    ;
-+------+-------+----------+----------------------------+
-; In0  ; Input ; Info     ; Stuck at GND               ;
-+------+-------+----------+----------------------------+
-
-
-+------------------------------------------------------+
-; Port Connectivity Checks: "HexDriver:hex_drivers[2]" ;
-+------+-------+----------+----------------------------+
-; Port ; Type  ; Severity ; Details                    ;
-+------+-------+----------+----------------------------+
-; In0  ; Input ; Info     ; Stuck at GND               ;
-+------+-------+----------+----------------------------+
-
-
-+------------------------------------------------------+
-; Port Connectivity Checks: "HexDriver:hex_drivers[1]" ;
-+------+-------+----------+----------------------------+
-; Port ; Type  ; Severity ; Details                    ;
-+------+-------+----------+----------------------------+
-; In0  ; Input ; Info     ; Stuck at GND               ;
-+------+-------+----------+----------------------------+
-
-
-+------------------------------------------------------+
-; Port Connectivity Checks: "HexDriver:hex_drivers[0]" ;
-+------+-------+----------+----------------------------+
-; Port ; Type  ; Severity ; Details                    ;
-+------+-------+----------+----------------------------+
-; In0  ; Input ; Info     ; Stuck at GND               ;
-+------+-------+----------+----------------------------+
 
 
 +----------------------------------------------+
@@ -4636,23 +4595,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 89                          ;
-; cycloneiii_ff         ; 71                          ;
-;     ENA               ; 44                          ;
-;     ENA SLD           ; 4                           ;
-;     plain             ; 23                          ;
+; cycloneiii_ff         ; 87                          ;
+;     ENA               ; 48                          ;
+;     ENA SCLR          ; 16                          ;
+;     SCLR              ; 2                           ;
+;     plain             ; 21                          ;
 ; cycloneiii_io_obuf    ; 16                          ;
-; cycloneiii_lcell_comb ; 328                         ;
+; cycloneiii_lcell_comb ; 377                         ;
 ;     arith             ; 15                          ;
 ;         2 data inputs ; 15                          ;
-;     normal            ; 313                         ;
+;     normal            ; 362                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 19                          ;
-;         3 data inputs ; 24                          ;
-;         4 data inputs ; 266                         ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 29                          ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 312                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 3.26                        ;
+; Average LUT depth     ; 3.07                        ;
 +-----------------------+-----------------------------+
 
 
@@ -4661,7 +4621,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -4671,7 +4631,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Mon Feb 20 13:09:25 2017
+    Info: Processing started: Fri Feb 24 14:09:29 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lc3_processor -c lc3_processor
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
@@ -4708,13 +4668,11 @@ Warning (10236): Verilog HDL Implicit Net warning at Mem2IO.sv(50): created impl
 Warning (10236): Verilog HDL Implicit Net warning at Mem2IO.sv(51): created implicit net for "HEX1"
 Warning (10236): Verilog HDL Implicit Net warning at Mem2IO.sv(52): created implicit net for "HEX2"
 Warning (10236): Verilog HDL Implicit Net warning at Mem2IO.sv(53): created implicit net for "HEX3"
-Warning (10236): Verilog HDL Implicit Net warning at datapath.sv(78): created implicit net for "alu_out"
+Warning (10236): Verilog HDL Implicit Net warning at datapath.sv(82): created implicit net for "alu_out"
 Info (12127): Elaborating entity "slc3" for the top level hierarchy
-Warning (10030): Net "hex_4" at slc3.sv(43) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "BEN" at slc3.sv(54) has no driver or initial value, using a default initial value '0'
 Info (12128): Elaborating entity "test_memory" for hierarchy "test_memory:test"
 Warning (10230): Verilog HDL assignment warning at SLC3_2.sv(110): truncated value with size 32 to match size of target (5)
-Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:hex_drivers[0]"
 Info (12128): Elaborating entity "datapath" for hierarchy "datapath:D0"
 Info (12128): Elaborating entity "mux4" for hierarchy "datapath:D0|mux4:pcmux"
 Info (12128): Elaborating entity "register" for hierarchy "datapath:D0|register:pc_reg"
@@ -4732,6 +4690,7 @@ Warning (10230): Verilog HDL assignment warning at Mem2IO.sv(52): truncated valu
 Warning (10230): Verilog HDL assignment warning at Mem2IO.sv(53): truncated value with size 4 to match size of target (1)
 Info (12128): Elaborating entity "tristate" for hierarchy "tristate:tr0"
 Info (12128): Elaborating entity "ISDU" for hierarchy "ISDU:state_controller"
+Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:hex_driver3"
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13027): Removed fan-outs from the following always-disabled I/O buffers
     Warning (13028): Removed fan-out from the always-disabled I/O buffer "tristate:tr0|Data[0]" to the node "Data[0]"
@@ -4751,34 +4710,6 @@ Warning (13027): Removed fan-outs from the following always-disabled I/O buffers
     Warning (13028): Removed fan-out from the always-disabled I/O buffer "tristate:tr0|Data[14]" to the node "Data[14]"
     Warning (13028): Removed fan-out from the always-disabled I/O buffer "tristate:tr0|Data[15]" to the node "Data[15]"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[0]" is stuck at GND
-    Warning (13410): Pin "HEX0[1]" is stuck at GND
-    Warning (13410): Pin "HEX0[2]" is stuck at GND
-    Warning (13410): Pin "HEX0[3]" is stuck at GND
-    Warning (13410): Pin "HEX0[4]" is stuck at GND
-    Warning (13410): Pin "HEX0[5]" is stuck at GND
-    Warning (13410): Pin "HEX0[6]" is stuck at VCC
-    Warning (13410): Pin "HEX1[0]" is stuck at GND
-    Warning (13410): Pin "HEX1[1]" is stuck at GND
-    Warning (13410): Pin "HEX1[2]" is stuck at GND
-    Warning (13410): Pin "HEX1[3]" is stuck at GND
-    Warning (13410): Pin "HEX1[4]" is stuck at GND
-    Warning (13410): Pin "HEX1[5]" is stuck at GND
-    Warning (13410): Pin "HEX1[6]" is stuck at VCC
-    Warning (13410): Pin "HEX2[0]" is stuck at GND
-    Warning (13410): Pin "HEX2[1]" is stuck at GND
-    Warning (13410): Pin "HEX2[2]" is stuck at GND
-    Warning (13410): Pin "HEX2[3]" is stuck at GND
-    Warning (13410): Pin "HEX2[4]" is stuck at GND
-    Warning (13410): Pin "HEX2[5]" is stuck at GND
-    Warning (13410): Pin "HEX2[6]" is stuck at VCC
-    Warning (13410): Pin "HEX3[0]" is stuck at GND
-    Warning (13410): Pin "HEX3[1]" is stuck at GND
-    Warning (13410): Pin "HEX3[2]" is stuck at GND
-    Warning (13410): Pin "HEX3[3]" is stuck at GND
-    Warning (13410): Pin "HEX3[4]" is stuck at GND
-    Warning (13410): Pin "HEX3[5]" is stuck at GND
-    Warning (13410): Pin "HEX3[6]" is stuck at VCC
     Warning (13410): Pin "CE" is stuck at GND
     Warning (13410): Pin "UB" is stuck at GND
     Warning (13410): Pin "LB" is stuck at GND
@@ -4788,25 +4719,25 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "ADDR[18]" is stuck at GND
     Warning (13410): Pin "ADDR[19]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 25 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/Suicheng Zhan/Desktop/385/ece385/output_files/lc3_processor.map.smsg
+Info (17049): 21 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/output_files/lc3_processor.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 430 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 507 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 20 input pins
     Info (21059): Implemented 53 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 341 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 71 warnings
-    Info: Peak virtual memory: 675 megabytes
-    Info: Processing ended: Mon Feb 20 13:09:47 2017
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:43
+    Info (21061): Implemented 418 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 42 warnings
+    Info: Peak virtual memory: 678 megabytes
+    Info: Processing ended: Fri Feb 24 14:09:52 2017
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:45
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/Suicheng Zhan/Desktop/385/ece385/output_files/lc3_processor.map.smsg.
+The suppressed messages can be found in C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6/output_files/lc3_processor.map.smsg.
 
 

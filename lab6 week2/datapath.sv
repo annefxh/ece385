@@ -1,22 +1,30 @@
-module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk, reset,
+module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk, reset, LD_BEN, LD_CC,
 						input logic GatePC, GateMDR, GateALU, GateMARMUX,
-						input logic [1:0]pcmux_sel,
-						input logic mio_en,
+						input logic [1:0]pcmux_sel, addr2mux_sel, ALUK, 
+						input logic mio_en, drmux_sel, sr1mux_sel, LD_REG, sr2mux_sel, addr1mux_sel, 
 						input logic [15:0] mem_rdata, 
+						output logic BEN,
 						output logic[19:0] mem_address, 
 						output logic[15:0] mem_wdata,
 						output logic[15:0] IR);
 						
 						
 logic[15:0] pc_out, mar_out, pcmux_out, bus_out, mdrmux_out;
+logic[15:0] addr1mux_out, addr2mux_out, addradder_out;
+logic[15:0] sext11_out, sext9_out, sext6_out, sext5_out;
+logic[2:0]  sr1muxout, drmuxout, nzp, nzpreg_out; 
+logic[15:0] sr2mux_out, alu_out, sr1out, sr2out;
+
+
+assign addradder_out = addr1mux_out + addr2mux_out;
 
 mux4 pcmux
 (
 	.S(pcmux_sel),
 	.In0(pc_out + 4'h0001),
-	.In1(),
-	.In2(),
-	.In3(),
+	.In1(addradder_out),
+	.In2(bus_out),
+	.In3(16'b0),
 	.Out(pcmux_out)
 );
 
@@ -36,6 +44,28 @@ register ir_reg
 	 .load(ld_ir),
 	 .in(bus_out),
 	 .out(IR)
+);
+
+ben_logic BEN_logic
+(
+	.bus_out,
+	.nzp
+);
+
+register #(.width(3)) nzp_reg
+(
+	.clk,
+	.load(LD_CC),
+	.reset,
+	.in(nzp),
+	.out(nzpreg_out)
+);
+
+ben ben2logic
+(
+	.nzp(nzpreg_out),
+	.NZP(IR[11:9]),
+	.BEN
 );
 
 sext #(.width(11)) sext_11
@@ -84,7 +114,7 @@ mux2 sr2mux
 (	
 	.In0(sext5_out),
 	.In1(sr2out),
-	.S(sr2mux_sel,)
+	.S(sr2mux_sel),
 	.Out(sr2mux_out)
 );
 
@@ -114,11 +144,12 @@ mux2 sr1mux
 
 regfile register_file
 (
+	.clk,
 	.LD_REG,
 	.busout(bus_out),
 	.drmuxout,
 	.sr1muxout,
-	.sr2,
+	.sr2(IR[2:0]),
 	.sr2out,
 	.sr1out
 );
@@ -126,7 +157,7 @@ regfile register_file
 mux2 mdr_mux
 (
 	.S(mio_en),
-	.In0(),
+	.In0(bus_out),
 	.In1(mem_rdata),
 	.Out(mdrmux_out)
 );
@@ -149,13 +180,6 @@ register mar_reg
 	 .out(mar_out)
 );
 
-//mux2 marmux
-//(
-// .S(marmux_sel),
-// .In0(pc_out), 
-// .In1(),
-// .Out(marmux_out)
-// );
  
  zext mar_zext
  (

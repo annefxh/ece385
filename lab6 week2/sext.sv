@@ -1,6 +1,6 @@
-module sext(#parameter width = 16)
+module sext #(parameter width = 16)
 (
-	input[witdth-1:0] a,
+	input[width-1:0] a,
 	output[15:0] y
 );
 

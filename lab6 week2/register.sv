@@ -16,16 +16,13 @@ end
 
 always_ff @ (posedge clk)
 begin
-	if(load)
-	begin
-		if(reset) 
+	if(reset) 
 		begin
 			data <= 0;
 		end
-		else
-		begin
-			data <= in;
-		end
+	else if(load)
+	begin
+		data <= in;
 	end
 end
 

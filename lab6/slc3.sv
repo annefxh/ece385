@@ -47,7 +47,7 @@ logic [3:0][3:0] hex_4;
 //assign hex_4[1][3:0] = IR[7:4];
 //assign hex_4[0][3:0] = IR[3:0];
 
-HexDriver hex_drivers[3:0] (hex_4, {HEX3, HEX2, HEX1, HEX0});
+//HexDriver hex_drivers[3:0] (hex_4, {HEX3, HEX2, HEX1, HEX0});
 // This works thanks to http://stackoverflow.com/questions/1378159/verilog-can-we-have-an-array-of-custom-modules
 
 // Internal connections
@@ -70,7 +70,7 @@ assign MIO_EN = ~OE;
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
-datapath D0(.ld_pc(LD_PC), .ld_ir(LD_IR), .ld_mdr(LD_MDR), .ld_mar(LD_MAR), .clk(Clk),
+datapath D0(.ld_pc(LD_PC), .ld_ir(LD_IR), .ld_mdr(LD_MDR), .ld_mar(LD_MAR), .clk(Clk), .reset(Reset_ah),
 						.GatePC(GatePC), .GateMDR(GateMDR), .GateALU(GateALU), .GateMARMUX(GateMARMUX),
 						.pcmux_sel(PCMUX),
 						.mio_en(MIO_EN), 
@@ -99,6 +99,11 @@ ISDU state_controller(
 	.Opcode(IR[15:12]), .IR_5(IR[5]), .IR_11(IR[11]),
 	.Mem_CE(CE), .Mem_UB(UB), .Mem_LB(LB), .Mem_OE(OE), .Mem_WE(WE)
 );
+
+HexDriver hex_driver3 (IR[15:12], HEX3);
+HexDriver hex_driver2 (IR[11:8], HEX2);
+HexDriver hex_driver1 (IR[7:4], HEX1);
+HexDriver hex_driver0 (IR[3:0], HEX0);
 
 // An example of instantiating the test_memory. Do not instantiate it here.
 // Read the instructions in the header of test_memory.sv about how to use it.

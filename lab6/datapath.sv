@@ -1,4 +1,4 @@
-module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk,
+module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk, reset,
 						input logic GatePC, GateMDR, GateALU, GateMARMUX,
 						input logic [1:0]pcmux_sel,
 						input logic mio_en,
@@ -23,6 +23,7 @@ mux4 pcmux
 register pc_reg
 (
     .clk,
+	 .reset,
 	 .load(ld_pc),
 	 .in(pcmux_out),
 	 .out(pc_out)
@@ -31,6 +32,7 @@ register pc_reg
 register ir_reg
 (
     .clk,
+	 .reset,
 	 .load(ld_ir),
 	 .in(bus_out),
 	 .out(IR)
@@ -47,6 +49,7 @@ mux2 mdr_mux
 register mdr_reg
 (
     .clk,
+	 .reset,
 	 .load(ld_mdr),
 	 .in(mdrmux_out),
 	 .out(mem_wdata)
@@ -55,6 +58,7 @@ register mdr_reg
 register mar_reg
 (
     .clk,
+	 .reset,
 	 .load(ld_mar),
 	 .in(bus_out),
 	 .out(mar_out)

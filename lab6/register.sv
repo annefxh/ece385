@@ -2,6 +2,7 @@ module register #(parameter width=16)
 (
     input clk,
 	 input load,
+	 input reset,
 	 input [width-1:0] in,
 	 output logic [width-1:0] out
 );
@@ -17,7 +18,14 @@ always_ff @ (posedge clk)
 begin
 	if(load)
 	begin
-		data = in;
+		if(reset) 
+		begin
+			data <= 0;
+		end
+		else
+		begin
+			data <= in;
+		end
 	end
 end
 

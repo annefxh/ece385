@@ -3,13 +3,13 @@ module ben_logic(input logic [15:0] bus_out,
 
 always_comb
 	begin
-		if(bus_out[16])
+		if(bus_out[15])
 			begin
 				nzp = 3'b100;
 			end
 		else	
 			begin
-				if(bus_out = 16'h0000)
+				if(bus_out == 16'h0000)
 					begin
 						nzp = 3'b010;
 					end
