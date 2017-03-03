@@ -26,6 +26,7 @@ initial begin: TEST_VECTORS
 Reset = 0;
 Run = 1;
 Continue = 1;
+S = 16'h000B;
 
 #2 Reset = 1;
 
@@ -36,6 +37,8 @@ Continue = 1;
 
 #6 Continue = 0;
 #6 Continue = 1;
+
+
 
 
 

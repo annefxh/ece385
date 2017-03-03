@@ -21,7 +21,7 @@
 module slc3(
 	input logic [15:0] S,
 	input logic	Clk, Reset, Run, Continue,
-//	output logic [11:0] LED,
+	output logic [11:0] LED,
 	output logic [6:0] HEX0, HEX1, HEX2, HEX3,
 	output logic CE, UB, LB, OE, WE,
 	output logic [19:0] ADDR,
@@ -46,6 +46,8 @@ logic [3:0][3:0] hex_4;
 //assign hex_4[2][3:0] = IR[11:8];
 //assign hex_4[1][3:0] = IR[7:4];
 //assign hex_4[0][3:0] = IR[3:0];
+
+//.HEX0(hex_4[0][3:0]); .HEX1(hex_4[1][3:0]); .HEX2(hex_4[2][3:0]); .HEX3(hex_4[3][3:0]);
 
 HexDriver hex_drivers[3:0] (hex_4, {HEX3, HEX2, HEX1, HEX0});
 // This works thanks to http://stackoverflow.com/questions/1378159/verilog-can-we-have-an-array-of-custom-modules
@@ -97,7 +99,9 @@ datapath D0
 	.mem_rdata(MDR_In),
 	.mem_address(MAR), 
 	.mem_wdata(MDR),
-	.IR(IR)
+	.IR(IR),
+	.LD_LED,
+	.LED
 );
 
 // Our SRAM and I/O controller

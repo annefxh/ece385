@@ -110,16 +110,16 @@ module ISDU ( 	input logic			Clk,
                 Next_state <= S_32;
             // PauseIR1 and PauseIR2 are only for Week 1 such that TAs can see 
             // the values in IR. They should be removed in Week 2
-            //PauseIR1 : 
-              //  if (~Continue) 
-                //    Next_state <= PauseIR1;
-                //else 
-                  //  Next_state <= PauseIR2;
-//            PauseIR2 : 
-//                if (Continue) 
-//                    Next_state <= PauseIR2;
-//                else 
-//                    Next_state <= S_18;
+            PauseIR1 : 
+                if (~Continue) 
+                    Next_state <= PauseIR1;
+                else 
+                    Next_state <= PauseIR2;
+            PauseIR2 : 
+                if (Continue) 
+                    Next_state <= PauseIR2;
+                else 
+                    Next_state <= S_18;
             S_32 : 
 				case (Opcode)
 					4'b0001 : 
@@ -138,6 +138,8 @@ module ISDU ( 	input logic			Clk,
 						Next_state <= S_6;
 					4'b0111:
 						Next_state <= S_7;
+					4'b1101:
+						Next_state <= PauseIR1;
 
 					// You need to finish the rest of opcodes.....
 
@@ -184,7 +186,8 @@ module ISDU ( 	input logic			Clk,
 			
 			// You need to finish the rest of states.....
 
-			default : ;
+			default : 
+				Next_state = S_18;
 
 	     endcase
     end
@@ -221,6 +224,8 @@ module ISDU ( 	input logic			Clk,
 		
 		// Assign control signals based on current state
 	    case (State)
+			S_32:
+				LD_BEN = 1'b1;
 			Halted: ;
 			S_18 : 
 				begin 
@@ -245,29 +250,36 @@ module ISDU ( 	input logic			Clk,
                 LD_BEN = 1'b1;
             S_01 : 
                 begin 
+					SR1MUX = 1'b1;
 					SR2MUX = IR_5;
 					ALUK = 2'b00;
 					GateALU = 1'b1;
+					DRMUX = 1'b1;
 					LD_REG = 1'b1;
 					LD_CC = 1'b1;
                 end
 				S_5:
 					begin
+					SR1MUX = 1'b1;
 					SR2MUX = IR_5;
 					ALUK = 2'b01;
 					GateALU = 1'b1;
+					DRMUX = 1'b1;
 					LD_REG = 1'b1;
 					LD_CC = 1'b1;
 					end
 				S_9:
 					begin
+					SR1MUX = 1'b1;
 					ALUK = 2'b10;
 					GateALU = 1'b1;
+					DRMUX = 1'b1;
 					LD_REG =  1'b1;
 					LD_CC = 1'b1;
 					end
 				S_6:
 					begin
+					SR1MUX = 1'b1;
 					ADDR2MUX = 2'b10;
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
@@ -277,7 +289,6 @@ module ISDU ( 	input logic			Clk,
 				S_25_2:
 					begin
 					Mem_OE = 1'b0;
-					Mem_OE = 1'b1;
 					LD_MDR = 1'b1;
 					end
 				S_27:
@@ -289,6 +300,7 @@ module ISDU ( 	input logic			Clk,
 					end
 				S_7:
 					begin
+					SR1MUX = 1'b1;
 					ADDR2MUX = 2'b10;
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
@@ -298,11 +310,13 @@ module ISDU ( 	input logic			Clk,
 					ALUK = 2'b11;
 					GateALU = 1'b1;
 					LD_MDR = 1'b1;
+					//Mem_WE = 1'b0;
+					//Mem_OE = 1'b1;
 					end
 				S_16_1:
-					Mem_WE = 1'b1;
+					Mem_WE = 1'b0;
 				S_16_2:
-					Mem_WE = 1'b1;
+					Mem_WE = 1'b0;
 				S_4:
 					begin
 					GatePC = 1'b1;
@@ -311,7 +325,7 @@ module ISDU ( 	input logic			Clk,
 				S_21:
 					begin
 					//ADDR2MUX = 1'b0;
-					//ADDR1MUX = 1'b0;
+					ADDR1MUX = 1'b1;
 					PCMUX = 2'b01;
 					LD_PC = 1'b1;
 					end
@@ -324,9 +338,10 @@ module ISDU ( 	input logic			Clk,
 					LD_PC = 1'b1;
 					end 
 				S_0:
-					begin
-					LD_BEN = 1'b1;
-					end
+					//begin
+					//LD_BEN = 1'b1;
+					//end
+					;
 				S_22:
 					begin
 					ADDR1MUX = 1'b1;
@@ -334,6 +349,10 @@ module ISDU ( 	input logic			Clk,
 					PCMUX = 2'b01;
 					LD_PC = 1'b1;
 					end
+				PauseIR1:
+					LD_LED = 1'b1;
+				PauseIR2:
+					LD_LED = 1'b1;
             // You need to finish the rest of states.....
 
             default : ;

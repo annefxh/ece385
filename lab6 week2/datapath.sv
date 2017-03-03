@@ -1,4 +1,4 @@
-module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk, reset, LD_BEN, LD_CC,
+module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk, reset, LD_BEN, LD_CC, LD_LED,
 						input logic GatePC, GateMDR, GateALU, GateMARMUX,
 						input logic [1:0]pcmux_sel, addr2mux_sel, ALUK, 
 						input logic mio_en, drmux_sel, sr1mux_sel, LD_REG, sr2mux_sel, addr1mux_sel, 
@@ -6,7 +6,8 @@ module datapath(input logic ld_pc, ld_ir, ld_mdr, ld_mar, clk, reset, LD_BEN, LD
 						output logic BEN,
 						output logic[19:0] mem_address, 
 						output logic[15:0] mem_wdata,
-						output logic[15:0] IR);
+						output logic[15:0] IR,
+						output logic[11:0] LED);
 						
 						
 logic[15:0] pc_out, mar_out, pcmux_out, bus_out, mdrmux_out;
@@ -112,8 +113,8 @@ mux2 addr1mux
 
 mux2 sr2mux
 (	
-	.In0(sext5_out),
-	.In1(sr2out),
+	.In0(sr2out),
+	.In1(sext5_out),
 	.S(sr2mux_sel),
 	.Out(sr2mux_out)
 );
@@ -187,8 +188,17 @@ register mar_reg
 	.out(mem_address)
  );
  
+ register #(.width(12)) led
+(
+	.clk,
+	.reset,
+	.load(LD_LED),
+	.in(IR[11:0]),
+	.out(LED)
+);
+ 
 bus bus1(.GateMDR(GateMDR), .GateMARMUX(GateMARMUX), .GatePC(GatePC), .GateALU(GateALU),
-			.mem_wdata(mem_wdata), .pc_out(pc_out), .alu_out(alu_out), .marmux_out(),
+			.mem_wdata(mem_wdata), .pc_out(pc_out), .alu_out(alu_out), .marmux_out(addradder_out),
 			.out(bus_out));
  		
 endmodule
