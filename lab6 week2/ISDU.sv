@@ -110,16 +110,16 @@ module ISDU ( 	input logic			Clk,
                 Next_state <= S_32;
             // PauseIR1 and PauseIR2 are only for Week 1 such that TAs can see 
             // the values in IR. They should be removed in Week 2
-            PauseIR1 : 
-                if (~Continue) 
-                    Next_state <= PauseIR1;
-                else 
-                    Next_state <= PauseIR2;
-            PauseIR2 : 
-                if (Continue) 
-                    Next_state <= PauseIR2;
-                else 
-                    Next_state <= S_18;
+//            PauseIR1 : 
+//                if (~Continue) 
+//                    Next_state <= PauseIR1;
+//                else 
+//                    Next_state <= PauseIR2;
+//            PauseIR2 : 
+//                if (Continue) 
+//                    Next_state <= PauseIR2;
+//                else 
+//                    Next_state <= S_18;
             S_32 : 
 				case (Opcode)
 					4'b0001 : 
@@ -314,9 +314,15 @@ module ISDU ( 	input logic			Clk,
 					//Mem_OE = 1'b1;
 					end
 				S_16_1:
+					begin
 					Mem_WE = 1'b0;
+					//GateMDR = 1'b1;
+					end
 				S_16_2:
+					begin
 					Mem_WE = 1'b0;
+					//GateMDR = 1'b1;
+					end
 				S_4:
 					begin
 					GatePC = 1'b1;

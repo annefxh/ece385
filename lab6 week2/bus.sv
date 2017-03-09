@@ -13,6 +13,6 @@ always_comb
 		else if(GateALU)
 			out = alu_out;
 		else	
-			out = 4'h0000;
+			out = 16'h0000;
 	end
 endmodule
