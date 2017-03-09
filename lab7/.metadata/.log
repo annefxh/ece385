@@ -1,0 +1,225 @@
+!SESSION 2017-03-09 12:51:08.373 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-03-09 12:52:28.683
+!MESSAGE Indexed 'lab7_app1_bsp' (74 sources, 158 headers) in 4.11 sec: 5,034 declarations; 7,270 references; 40 unresolved inclusions; 3 syntax errors; 83 unresolved names (0.67%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-03-09 12:52:41.636
+!MESSAGE Indexed 'lab7_app1' (0 sources, 0 headers) in 0.00 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-03-09 12:54:00.949
+!MESSAGE Indexed 'lab7_app_bsp' (74 sources, 96 headers) in 2.79 sec: 2,354 declarations; 3,782 references; 84 unresolved inclusions; 6 syntax errors; 161 unresolved names (2.56%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-03-09 12:54:06.199
+!MESSAGE Indexed 'lab7_app' (0 sources, 0 headers) in 0.00 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 12:57:18.197
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 12:57:19.468
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 12:57:21.473
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:10:02.226
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 13:10:03.105
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:10:03.121
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:10:05.121
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:24:53.184
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 13:24:54.084
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:24:54.100
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:24:56.107
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:27:43.119
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 13:27:44.000
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:27:44.016
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:27:46.014
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+!SESSION 2017-03-09 13:36:31.518 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-03-09 13:36:34.090
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2017-03-09 13:38:43.444 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-03-09 13:38:48.607
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2017-03-09 13:44:41.943 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-03-09 13:44:44.776
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2017-03-09 13:50:29.500 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-03-09 13:50:32.452
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 13:54:36.442
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:54:36.464
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:54:38.527
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:56:00.950
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 13:56:03.107
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:56:03.123
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:56:05.125
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:58:17.345
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 13:58:18.230
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:58:18.246
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 13:58:20.256
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:09:40.232
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:09:41.136
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:09:41.152
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:09:43.161
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+!SESSION 2017-03-09 14:10:36.985 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:12:51.721
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:12:51.742
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:12:53.741
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:15:16.953
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:15:17.827
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:15:17.843
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:15:19.846
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:30:28.052
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:30:28.936
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:30:28.952
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:30:30.977
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:47:28.278
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:47:29.176
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:47:29.192
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:47:31.205
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:47:47.464
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:47:50.903
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:47:50.935
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:47:52.941
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:49:43.781
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2017-03-09 14:49:44.680
+!MESSAGE No Byte Stream Services found for Nios II Console View
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:49:44.695
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x78 --id=0x0 --timestamp=1489014401]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-03-09 14:49:49.800
+!MESSAGE Executing: [C:/altera/15.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x78 --id=0x0 --timestamp=1489014401 /cygdrive/i/lab7/software/lab7_app/lab7_app.elf]

@@ -1,5 +1,5 @@
 EDA Netlist Writer report for lab7
-Wed Mar 08 00:47:36 2017
+Thu Mar 09 14:46:13 2017
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Mar 08 00:47:36 2017 ;
+; EDA Netlist Writer Status ; Successful - Thu Mar 09 14:46:11 2017 ;
 ; Revision Name             ; lab7                                  ;
 ; Top-level Entity Name     ; lab7                                  ;
 ; Family                    ; Cyclone IV E                          ;
@@ -67,20 +67,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                       ;
-+--------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                  ;
-+--------------------------------------------------------------------------------------------------+
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_7_1200mv_85c_slow.svo    ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_7_1200mv_0c_slow.svo     ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_min_1200mv_0c_fast.svo   ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7.svo                      ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_7_1200mv_85c_v_slow.sdo  ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_7_1200mv_0c_v_slow.sdo   ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_min_1200mv_0c_v_fast.sdo ;
-; C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/lab7_v.sdo                    ;
-+--------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------+
+; Simulation Generated Files                                ;
++-----------------------------------------------------------+
+; Generated Files                                           ;
++-----------------------------------------------------------+
+; I:/lab7/simulation/modelsim/lab7_7_1200mv_85c_slow.svo    ;
+; I:/lab7/simulation/modelsim/lab7_7_1200mv_0c_slow.svo     ;
+; I:/lab7/simulation/modelsim/lab7_min_1200mv_0c_fast.svo   ;
+; I:/lab7/simulation/modelsim/lab7.svo                      ;
+; I:/lab7/simulation/modelsim/lab7_7_1200mv_85c_v_slow.sdo  ;
+; I:/lab7/simulation/modelsim/lab7_7_1200mv_0c_v_slow.sdo   ;
+; I:/lab7/simulation/modelsim/lab7_min_1200mv_0c_v_fast.sdo ;
+; I:/lab7/simulation/modelsim/lab7_v.sdo                    ;
++-----------------------------------------------------------+
 
 
 +-----------------------------+
@@ -89,20 +89,20 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Wed Mar 08 00:47:30 2017
+    Info: Processing started: Thu Mar 09 14:43:44 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off lab7 -c lab7
-Info (204019): Generated file lab7_7_1200mv_85c_slow.svo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7_7_1200mv_0c_slow.svo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7_min_1200mv_0c_fast.svo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7.svo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7_7_1200mv_85c_v_slow.sdo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7_7_1200mv_0c_v_slow.sdo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file lab7_v.sdo in folder "C:/Users/Suicheng Zhan/Desktop/385/ece385/Lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_7_1200mv_85c_slow.svo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_7_1200mv_0c_slow.svo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_min_1200mv_0c_fast.svo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7.svo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_7_1200mv_85c_v_slow.sdo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_7_1200mv_0c_v_slow.sdo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_min_1200mv_0c_v_fast.sdo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file lab7_v.sdo in folder "I:/lab7/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 640 megabytes
-    Info: Processing ended: Wed Mar 08 00:47:36 2017
-    Info: Elapsed time: 00:00:06
+    Info: Peak virtual memory: 636 megabytes
+    Info: Processing ended: Thu Mar 09 14:46:14 2017
+    Info: Elapsed time: 00:02:30
     Info: Total CPU time (on all processors): 00:00:06
 
 
