@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/simulation/modelsim
 vALU
 Z1 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
-Z2 !s110 1488529389
+Z2 !s110 1489195596
 !i10b 1
 !s100 m4gig;c==o8lP3h^HHd0@2
 I9;fz3fAeENmF35nXjUJeU3
@@ -26,7 +26,7 @@ Z4 OV;L;10.3d;59
 r1
 !s85 0
 31
-!s108 1488529389.265000
+!s108 1489195596.160000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/alu.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/alu.sv|
 !i113 1
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529389.731000
+!s108 1489195596.441000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ben.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ben.sv|
 !i113 1
@@ -75,7 +75,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529389.872000
+!s108 1489195596.551000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/benlogic.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/benlogic.sv|
 !i113 1
@@ -83,15 +83,15 @@ R5
 R6
 vbus
 R1
-Z7 !s110 1488529388
+Z7 !s110 1489195595
 !i10b 1
-!s100 bCYOA]`XEo>7dUOUaE1c42
-ImnB@0`B^T]7X@ScKO2CL62
+!s100 CCkZ5JOYloeTeQGNoU;_03
+I8Jd]D@`RAdo6A`W^QkZC:0
 R3
 !s105 bus_sv_unit
 S1
 R0
-w1488527261
+w1487560840
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv
 L0 1
@@ -99,7 +99,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529388.773000
+!s108 1489195595.863000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv|
 !i113 1
@@ -107,15 +107,15 @@ R5
 R6
 vdatapath
 R1
-Z8 !s110 1488529390
+R2
 !i10b 1
-!s100 ?zPH6Y1g2bP^e:b9i`z7C3
-IH2=D<gF@Ab7F1z][>X9TZ0
+!s100 [zkE2Go7Lm>Y`SJ[2Zan61
+IPe^;ULL9H3RMUQVYj55FY3
 R3
 !s105 datapath_sv_unit
 S1
 R0
-w1488529145
+w1488426888
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv
 L0 1
@@ -123,7 +123,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529390.201000
+!s108 1489195596.754000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv|
 !i113 1
@@ -147,7 +147,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529388.552000
+!s108 1489195595.754000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/HexDriver.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/HexDriver.sv|
 !i113 1
@@ -158,13 +158,13 @@ vISDU
 R1
 R7
 !i10b 1
-!s100 CeG`zQ25YUekScAR9SF;>0
-IQHEK@=>mBk^6D`1T2SKbU0
+!s100 kcOi[_LI[:OW3<;>PYC^H2
+Ii@b81GXI5_DFZO2B]637g3
 R3
 !s105 ISDU_sv_unit
 S1
 R0
-w1488528674
+w1488510554
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ISDU.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ISDU.sv
 L0 19
@@ -172,7 +172,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529388.226000
+!s108 1489195595.644000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ISDU.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ISDU.sv|
 !i113 1
@@ -192,12 +192,12 @@ R0
 w1488154630
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/Mem2IO.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/Mem2IO.sv
-Z9 L0 16
+Z8 L0 16
 R4
 r1
 !s85 0
 31
-!s108 1488529388.082000
+!s108 1489195595.551000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/Mem2IO.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/Mem2IO.sv|
 !i113 1
@@ -222,7 +222,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529389.110000
+!s108 1489195596.066000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/2to1_mux.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/2to1_mux.sv|
 !i113 1
@@ -230,7 +230,7 @@ R5
 R6
 vmux4
 R1
-R2
+R7
 !i10b 1
 !s100 TmcQZV81g_iG4mYR5:?Eh3
 I10:=Sln5?bOCSAQoEhYYR3
@@ -246,7 +246,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529388.973000
+!s108 1489195595.972000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/4to1_mux.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/4to1_mux.sv|
 !i113 1
@@ -270,7 +270,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529389.423000
+!s108 1489195596.254000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/regfile.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/regfile.sv|
 !i113 1
@@ -278,7 +278,7 @@ R5
 R6
 vregister
 R1
-Z10 !s110 1488529387
+R7
 !i10b 1
 !s100 b[LU5HFQzTgW:RBE:K]H[2
 InOT2C6hWS<VLbT8AQ:A9Z1
@@ -294,7 +294,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529387.943000
+!s108 1489195595.441000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv|
 !i113 1
@@ -318,7 +318,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529389.575000
+!s108 1489195596.363000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/sext.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/sext.sv|
 !i113 1
@@ -326,15 +326,15 @@ R5
 R6
 vslc3
 R1
-R8
+R2
 !i10b 1
-!s100 ;O3_`K8L2c`72mF4aIH>]2
-Ibddi;5l^25T]:N]SUcJOa0
+!s100 >L5RUhZkK=X7P2dJaN_]02
+IMZ]LkzMh?V?m2?<]2bL>?3
 R3
 !s105 slc3_sv_unit
 S1
 R0
-w1488425968
+w1489195221
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv
 L0 21
@@ -342,7 +342,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529390.356000
+!s108 1489195596.847000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv|
 !i113 1
@@ -350,32 +350,32 @@ R5
 R6
 XSLC3_2
 R1
-R8
+R2
 !i10b 1
 !s100 YOGG]fo2<@5h3`@;QJ5JE3
 I0OmE^KK8TiV9`dahJD70;2
 V0OmE^KK8TiV9`dahJD70;2
 S1
 R0
-Z11 w1488432520
-Z12 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv
-Z13 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv
-Z14 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv
+Z9 w1488432520
+Z10 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv
+Z11 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv
+Z12 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv
 L0 23
 R4
 r1
 !s85 0
 31
-Z15 !s108 1488529390.005000
-Z16 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv|
-Z17 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv|
+Z13 !s108 1489195596.629000
+Z14 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv|
+Z15 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv|
 !i113 1
 R5
 R6
 n@s@l@c3_2
 vtest_memory
 R1
-Z18 DXx4 work 6 SLC3_2 0 22 0OmE^KK8TiV9`dahJD70;2
+Z16 DXx4 work 6 SLC3_2 0 22 0OmE^KK8TiV9`dahJD70;2
 DXx4 work 19 test_memory_sv_unit 0 22 A08JP3T?d`R=:F=j_Ynbo3
 R3
 r1
@@ -387,20 +387,20 @@ IPEkl0[N:2k1jP??5i5;@a1
 !s105 test_memory_sv_unit
 S1
 R0
+R9
 R11
-R13
-R14
+R12
 L0 27
 R4
+R13
+R14
 R15
-R16
-R17
 !i113 1
 R5
 R6
 Xtest_memory_sv_unit
 R1
-R18
+R16
 VA08JP3T?d`R=:F=j_Ynbo3
 r1
 !s85 0
@@ -411,29 +411,29 @@ IA08JP3T?d`R=:F=j_Ynbo3
 !i103 1
 S1
 R0
+R9
 R11
-R13
-R14
 R12
+R10
 L0 25
 R4
+R13
+R14
 R15
-R16
-R17
 !i113 1
 R5
 R6
 vtestbench
 R1
-R8
+R2
 !i10b 1
-!s100 L^6o8U47OdgMXIz?3VPDC3
-InSd0oSVBVh95L]J4ZWa7h2
+!s100 TG>c:cFiT6<Va1F;OX81Q3
+INP:8o4SH<EYkN:n74decf0
 R3
 !s105 testbench_sv_unit
 S1
 R0
-w1488431966
+w1489195504
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/testbench.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/testbench.sv
 L0 1
@@ -441,7 +441,7 @@ R4
 r1
 !s85 0
 31
-!s108 1488529390.514000
+!s108 1489195596.941000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/testbench.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/testbench.sv|
 !i113 1
@@ -449,7 +449,7 @@ R5
 R6
 vtristate
 R1
-R10
+R7
 !i10b 1
 !s100 c5mQSNYgK9f]9@5BiLEz30
 I;R5Y=OgL^@8mjfcg40DUG0
@@ -460,14 +460,38 @@ R0
 w1487457760
 8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv
 FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv
-R9
+R8
 R4
 r1
 !s85 0
 31
-!s108 1488529387.598000
+!s108 1489195595.113000
 !s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv|
+!i113 1
+R5
+R6
+vzext
+R1
+R7
+!i10b 1
+!s100 ?<O5IT0o;dU6?H2SX1^OX0
+I;4QL4AJKh=<2hU]_B@X>F2
+R3
+!s105 zxt_sv_unit
+S1
+R0
+w1487461266
+8C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv
+FC:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1489195594.941000
+!s107 C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2|C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv|
 !i113 1
 R5
 R6

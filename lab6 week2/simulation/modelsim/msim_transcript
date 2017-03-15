@@ -12,149 +12,161 @@
 # ** Warning: Copied C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
+# vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 09:26:34 on Mar 11,2017
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv 
+# -- Compiling module zext
+# 
+# Top level modules:
+# 	zext
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:07 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv 
 # -- Compiling module tristate
 # 
 # Top level modules:
 # 	tristate
-# End time: 16:23:07 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:07 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv 
 # -- Compiling package SLC3_2
 # 
 # Top level modules:
 # 	--none--
-# End time: 16:23:07 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:07 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv 
 # -- Compiling module register
 # 
 # Top level modules:
 # 	register
-# End time: 16:23:07 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/Mem2IO.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:08 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/Mem2IO.sv 
 # -- Compiling module Mem2IO
 # 
 # Top level modules:
 # 	Mem2IO
-# End time: 16:23:08 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ISDU.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:08 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ISDU.sv 
 # -- Compiling module ISDU
 # 
 # Top level modules:
 # 	ISDU
-# End time: 16:23:08 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/HexDriver.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:08 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/HexDriver.sv 
 # -- Compiling module HexDriver
 # 
 # Top level modules:
 # 	HexDriver
-# End time: 16:23:08 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:08 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv 
 # -- Compiling module bus
+# ** Warning: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/bus.sv(16): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
 # 
 # Top level modules:
 # 	bus
-# End time: 16:23:08 on Mar 03,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/4to1_mux.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:08 on Mar 03,2017
+# Start time: 09:26:35 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/4to1_mux.sv 
 # -- Compiling module mux4
 # 
 # Top level modules:
 # 	mux4
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:01
+# End time: 09:26:35 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/2to1_mux.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/2to1_mux.sv 
 # -- Compiling module mux2
 # 
 # Top level modules:
 # 	mux2
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/alu.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/alu.sv 
 # -- Compiling module ALU
 # 
 # Top level modules:
 # 	ALU
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/regfile.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/regfile.sv 
 # -- Compiling module regfile
 # 
 # Top level modules:
 # 	regfile
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/sext.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/sext.sv 
 # -- Compiling module sext
 # 
 # Top level modules:
 # 	sext
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ben.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/ben.sv 
 # -- Compiling module ben
 # 
 # Top level modules:
 # 	ben
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/benlogic.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/benlogic.sv 
 # -- Compiling module ben_logic
 # 
 # Top level modules:
 # 	ben_logic
-# End time: 16:23:09 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:09 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/test_memory.sv 
 # -- Compiling package SLC3_2
 # -- Compiling package test_memory_sv_unit
@@ -163,49 +175,48 @@
 # 
 # Top level modules:
 # 	test_memory
-# End time: 16:23:10 on Mar 03,2017, Elapsed time: 0:00:01
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:10 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv 
 # -- Compiling module datapath
+# ** Warning: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(25): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
 # 
 # Top level modules:
 # 	datapath
-# End time: 16:23:10 on Mar 03,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:10 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv 
 # -- Compiling module slc3
 # 
 # Top level modules:
 # 	slc3
-# End time: 16:23:10 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/testbench.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 16:23:10 on Mar 03,2017
+# Start time: 09:26:36 on Mar 11,2017
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2" C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 16:23:10 on Mar 03,2017, Elapsed time: 0:00:00
+# End time: 09:26:36 on Mar 11,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  testbench
 # vsim -gui "+altera" -l msim_transcript -do "lc3_run_msim_rtl_verilog.do" 
-# Start time: 16:23:10 on Mar 03,2017
+# Start time: 09:26:37 on Mar 11,2017
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.slc3
-# Loading work.SLC3_2
-# Loading work.test_memory_sv_unit
-# Loading work.test_memory
 # Loading work.datapath
 # Loading work.mux4
 # Loading work.register
@@ -215,10 +226,14 @@
 # Loading work.mux2
 # Loading work.ALU
 # Loading work.regfile
+# Loading work.zext
 # Loading work.bus
 # Loading work.Mem2IO
 # Loading work.tristate
 # Loading work.ISDU
+# Loading work.SLC3_2
+# Loading work.test_memory_sv_unit
+# Loading work.test_memory
 # Loading work.HexDriver
 # ** Warning: (vsim-3015) C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv(75): [PCDPC] - Port size (20) does not match connection size (16) for port 'mem_address'. The port definition is at: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(7).
 # 
@@ -241,9 +256,6 @@
 # ** Warning: (vsim-3015) C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(138): [PCDPC] - Port size (16) does not match connection size (3) for port 'Out'. The port definition is at: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/2to1_mux.sv(3).
 # 
 #         Region: /testbench/slc3/D0/sr1mux
-# ** Warning: (vsim-3015) C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(175): [PCDPC] - Port size (16) does not match connection size (20) for port 'out'. The port definition is at: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv(7).
-# 
-#         Region: /testbench/slc3/D0/mar_reg
 # 
 # add wave *
 # view structure
@@ -251,16 +263,11 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run 1000 ns
-add wave -position end  sim:/testbench/slc3/D0/mdr_reg/out
-add wave -position end  sim:/testbench/slc3/D0/ir_reg/out
-add wave -position end  sim:/testbench/slc3/D0/mar_reg/out
+add wave -position end  sim:/testbench/slc3/state_controller/State
 restart -f
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.slc3
-# Loading work.SLC3_2
-# Loading work.test_memory_sv_unit
-# Loading work.test_memory
 # Loading work.datapath
 # Loading work.mux4
 # Loading work.register
@@ -270,10 +277,14 @@ restart -f
 # Loading work.mux2
 # Loading work.ALU
 # Loading work.regfile
+# Loading work.zext
 # Loading work.bus
 # Loading work.Mem2IO
 # Loading work.tristate
 # Loading work.ISDU
+# Loading work.SLC3_2
+# Loading work.test_memory_sv_unit
+# Loading work.test_memory
 # Loading work.HexDriver
 # ** Warning: (vsim-3015) C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/slc3.sv(75): [PCDPC] - Port size (20) does not match connection size (16) for port 'mem_address'. The port definition is at: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(7).
 # 
@@ -296,9 +307,6 @@ restart -f
 # ** Warning: (vsim-3015) C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(138): [PCDPC] - Port size (16) does not match connection size (3) for port 'Out'. The port definition is at: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/2to1_mux.sv(3).
 # 
 #         Region: /testbench/slc3/D0/sr1mux
-# ** Warning: (vsim-3015) C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/datapath.sv(175): [PCDPC] - Port size (16) does not match connection size (20) for port 'out'. The port definition is at: C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv(7).
-# 
-#         Region: /testbench/slc3/D0/mar_reg
-run 4000ns
-# End time: 16:25:17 on Mar 03,2017, Elapsed time: 0:02:07
-# Errors: 0, Warnings: 16
+run 1000ns
+# End time: 12:05:00 on Mar 11,2017, Elapsed time: 2:38:23
+# Errors: 0, Warnings: 14

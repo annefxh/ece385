@@ -28,7 +28,7 @@ module slc3(
 	inout wire [15:0] Data //tristate buffers need to be of type wire
 );
 
-test_memory test(.I_O(Data), .A(ADDR), .*);
+//test_memory test(.I_O(Data), .A(ADDR), .*);
 
 // Declaration of push button active high signals	
 logic Reset_ah, Continue_ah, Run_ah;
@@ -129,11 +129,11 @@ ISDU state_controller(
 // Read the instructions in the header of test_memory.sv about how to use it.
 // Test memory is only for simulation, and should NOT be included when circuit is tested on FPGA board.
 // Otherwise, the circuit will not function correctly.
-/*
+
 test_memory test_memory0(
 	.Clk(Clk), .Reset(~Reset),
 	.I_O(Data), .A(ADDR),
 	.*
 );
-*/
+
 endmodule

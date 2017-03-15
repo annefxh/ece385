@@ -5,6 +5,7 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
+vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/zxt.sv}
 vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/tristate.sv}
 vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/SLC3_2.sv}
 vlog -sv -work work +incdir+C:/Users/Suicheng\ Zhan/Desktop/385/ece385/lab6\ week2 {C:/Users/Suicheng Zhan/Desktop/385/ece385/lab6 week2/register.sv}

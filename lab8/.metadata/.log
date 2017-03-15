@@ -1,0 +1,33 @@
+!SESSION 2017-03-15 02:38:43.343 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera/15.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-03-15 02:48:06.621
+!MESSAGE Indexed 'usb_kb' (3 sources, 5 headers) in 1.11 sec: 68 declarations; 1,121 references; 18 unresolved inclusions; 0 syntax errors; 38 unresolved names (3.10%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-03-15 02:49:01.296
+!MESSAGE Indexed 'usb_kb_bsp' (79 sources, 65 headers) in 1.59 sec: 1,191 declarations; 2,453 references; 109 unresolved inclusions; 8 syntax errors; 204 unresolved names (5.30%)
+
+!ENTRY com.altera.sbtgui.core 4 0 2017-03-15 02:49:14.958
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: Paths cannot contain spaces: "--bsp-dir C:\Users\Suicheng Zhan\Desktop\385\ece385\lab8\software\usb_kb_bsp"
+SEVERE: Paths cannot contain spaces: "--bsp-dir C:\Users\Suicheng Zhan\Desktop\385\ece385\lab8\software\usb_kb_bsp"
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.core 4 0 2017-03-15 02:49:48.466
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: Paths cannot contain spaces: "--bsp-dir C:\Users\Suicheng Zhan\Desktop\385\ece385\lab8\software\usb_kb_bsp"
+SEVERE: Paths cannot contain spaces: "--bsp-dir C:\Users\Suicheng Zhan\Desktop\385\ece385\lab8\software\usb_kb_bsp"
+SEVERE: nios2-bsp-generate-files failed.
+

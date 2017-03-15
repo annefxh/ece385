@@ -22,7 +22,7 @@ assign addradder_out = addr1mux_out + addr2mux_out;
 mux4 pcmux
 (
 	.S(pcmux_sel),
-	.In0(pc_out +16'h0001),
+	.In0(pc_out + 4'h0001),
 	.In1(addradder_out),
 	.In2(bus_out),
 	.In3(16'b0),
