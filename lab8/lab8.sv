@@ -17,7 +17,7 @@ module lab8( input               CLOCK_50,
              output logic [7:0]  VGA_R,        //VGA Red
                                  VGA_G,        //VGA Green
                                  VGA_B,        //VGA Blue
-             output logic        VGA_CLK,      //VGA Clock
+             output logic        VGA_CLK,       //VGA Clock
                                  VGA_SYNC_N,   //VGA Sync signal
                                  VGA_BLANK_N,  //VGA Blank signal
                                  VGA_VS,       //VGA virtical sync signal
@@ -43,11 +43,12 @@ module lab8( input               CLOCK_50,
                                  DRAM_CLK      //SDRAM Clock
                     );
     
-    logic Reset_h, Clk;
+    logic Reset_h, Clk, Reset_ball;
     logic [15:0] keycode;
     
     assign Clk = CLOCK_50;
     assign {Reset_h} = ~(KEY[0]);  // The push buttons are active low
+	 assign {Reset_ball} = ~(KEY[2]);
     
     logic [1:0] hpi_addr;
     logic [15:0] hpi_data_in, hpi_data_out;
@@ -113,8 +114,8 @@ module lab8( input               CLOCK_50,
 														 );
 													
    
-    ball ball_instance(.Reset(Reset_h), 
-                       .frame_clk(VGA_CLK),          
+    ball ball_instance(.Reset(Reset_ball), 
+                       .frame_clk(VGA_VS),          
 							  .keycode(keycode[7:0]),	  
 							  .BallX, 
 							  .BallY, 

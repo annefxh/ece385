@@ -2,7 +2,7 @@
 CLOCK_50 => Clk.IN2
 KEY[0] => KEY[0].IN1
 KEY[1] => ~NO_FANOUT~
-KEY[2] => ~NO_FANOUT~
+KEY[2] => ball:ball_instance.Reset
 KEY[3] => ~NO_FANOUT~
 HEX0[0] <= HexDriver:hex_inst_0.port1
 HEX0[1] <= HexDriver:hex_inst_0.port1

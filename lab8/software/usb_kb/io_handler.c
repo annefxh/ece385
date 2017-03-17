@@ -46,7 +46,7 @@ alt_u16 IO_read(alt_u8 Address)
 	*otg_hpi_address = Address;
 	*otg_hpi_cs = 0;
 	*otg_hpi_r = 0;
-	temp = *mdr;
+	temp = *otg_hpi_data;
 	//printf("%x\n",temp);
 	*otg_hpi_r = 1;
 	*otg_hpi_cs = 1;

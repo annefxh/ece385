@@ -82,6 +82,11 @@ module  ball ( input         Reset,
 					Ball_X_Motion_in = 10'd0;
 					Ball_Y_Motion_in = ~(Ball_Y_Step) + 1'b1;
 				end
+			default:
+				begin
+					Ball_X_Motion_in = Ball_X_Motion;
+					Ball_Y_Motion_in = Ball_Y_Motion;
+				end
 			endcase
         // Be careful when using comparators with "logic" datatype because compiler treats 
         //   both sides of the operator UNSIGNED numbers. (unless with further type casting)
@@ -91,10 +96,10 @@ module  ball ( input         Reset,
             Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1);  // 2's complement.  
         else if ( Ball_Y_Pos <= Ball_Y_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
             Ball_Y_Motion_in = Ball_Y_Step;
-		  else if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
+		  else if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  // Ball is at the left edge, BOUNCE!
             Ball_X_Motion_in = Ball_X_Step;
-        else if ( Ball_X_Pos + Ball_Size >= Ball_X_Max )  // Ball is at the top edge, BOUNCE!
-            Ball_Y_Motion_in = (~(Ball_X_Step) + 1'b1);
+        else if ( Ball_X_Pos + Ball_Size >= Ball_X_Max )  // Ball is at the right edge, BOUNCE!
+            Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);
         // Update the ball's position with its motion
         Ball_X_Pos_in = Ball_X_Pos + Ball_X_Motion;
         Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion;

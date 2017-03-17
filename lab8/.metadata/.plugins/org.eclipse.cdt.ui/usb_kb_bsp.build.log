@@ -1,6 +1,6 @@
-02:48:59 **** Clean-only build of configuration Nios II for project usb_kb_bsp ****
-make clean 
-[BSP clean complete]
+11:24:22 **** Incremental Build of configuration Nios II for project usb_kb_bsp ****
+make all 
+[BSP build complete]
 
-02:49:01 Build Finished (took 1s.531ms)
+11:24:28 Build Finished (took 6s.390ms)
 
