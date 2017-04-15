@@ -1,0 +1,9 @@
+22:09:00 **** Incremental Build of configuration Nios II for project AES ****
+make all 
+Info: Building ../AES_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../AES_bsp/
+[BSP build complete]
+[AES build complete]
+
+22:09:00 Build Finished (took 471ms)
+

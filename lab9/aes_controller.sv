@@ -24,10 +24,15 @@ module aes_controller(
 
 enum logic [1:0] {WAIT, COMPUTE, READY} state, next_state;
 logic [15:0] counter, counter_in;
+logic run, run_in, aes_done;
+logic reset;
+
+assign reset = ~reset_n;
 
 // This instantiation is for week 1. For week 2, instantiate AES according to new interfaces.
-AES aes0(clk, key[127:96], key[95:64], key[63:32], key[31:0], msg_de[127:96], msg_de[95:64], msg_de[63:32], msg_de[31:0]);
-     
+//AES aes0(clk, key[127:96], key[95:64], key[63:32], key[31:0], msg_de[127:96], msg_de[95:64], msg_de[63:32], msg_de[31:0]);
+AES aes0(.clk, .reset_n(reset), .run, .msg_en, .key, .msg_de, .ready(aes_done));
+					
 always_ff @ (posedge clk) begin
     if (reset_n == 1'b0) begin
         state <= WAIT;
@@ -36,12 +41,16 @@ always_ff @ (posedge clk) begin
     else begin
         state <= next_state;
         counter <= counter_in;
+		  run <= run_in;
     end
 end
 
 always_comb begin
     // Next state logic
     next_state = state;
+	 aes_ready = 1'b0;
+    counter_in = 16'd0;
+	 run_in = 1'b0;
     case (state)
         // Wait until IO is ready.
         WAIT: begin
@@ -51,7 +60,8 @@ always_comb begin
         // Wait for AES decryption until it is ready.
         // (The counter prevents getting stuck in this state.)
         COMPUTE: begin
-            if (counter == 16'd65535)
+		  //counter == 16'd65535 ||
+            if ( aes_done == 1'b1)
                 next_state = READY;
         end
         // AES decryption is finished.
@@ -59,14 +69,16 @@ always_comb begin
         end
     endcase
     // Control signals
-    aes_ready = 1'b0;
-    counter_in = 16'd0;
+    //aes_ready = 1'b0;
+    //counter_in = 16'd0;
+	// run_in = 1'b0;
     case (state)
         WAIT: begin
         end
             
         COMPUTE: begin
             counter_in = counter + 16'd1;
+				run_in = 1'b1;
         end
   
         READY: begin
