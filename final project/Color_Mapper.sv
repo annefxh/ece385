@@ -13,10 +13,10 @@
 //    University of Illinois ECE Department                              --
 //-------------------------------------------------------------------------
 
-
-module  color_mapper ( input        [9:0] x_min, x_max, y_min, y_max       // Ball coordinates
+import tetris_types::*;
+module  color_mapper ( input logic[3:0] pixel ;       // Ball coordinates
                                                              // Ball size (defined in ball.sv)
-                                          DrawX, DrawY,       // Coordinates of current drawing pixel
+                       input  [9:0]             DrawX, DrawY,       // Coordinates of current drawing pixel
 							  input [3:0] shape,
                        output logic [7:0] VGA_R, VGA_G, VGA_B // VGA RGB output
                      );
@@ -43,7 +43,7 @@ module  color_mapper ( input        [9:0] x_min, x_max, y_min, y_max       // Ba
     always_comb
     begin : Ball_on_proc
         //if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
-		  if(DrawX >= x_min && DrawX <= x_max && DrawY >= y_min && DrawY <= y_max)
+		  if(DrawX >= 240 && DrawX <= 400 && DrawY >= 80 && DrawY <= 400)
             squre_on = 1'b1;
         else 
             squre_on = 1'b0;
@@ -53,7 +53,7 @@ module  color_mapper ( input        [9:0] x_min, x_max, y_min, y_max       // Ba
     always_comb
     begin : RGB_Display
         if ((squre_on == 1'b1)) 
-			case(shape):
+			case(pixel):
 				3'b000:
 					begin
 						Red = 8'hff;
@@ -95,6 +95,12 @@ module  color_mapper ( input        [9:0] x_min, x_max, y_min, y_max       // Ba
 						Red = 8'hff;
 						Green = 8'h00;
 						Blue = 8'hff;
+					end
+				3'b111:
+					begin
+						Red = 8'h00;
+						Green = 8'h00;
+						Blue = 8'h00;
 					end
 				endcase;
         else 
