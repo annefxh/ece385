@@ -23,7 +23,7 @@ module  color_mapper ( input logic[3:0] pixel ;       // Ball coordinates
                      );
     
     logic screen_on
-    logic squre_on;
+    logic square_on;
     logic [7:0] Red, Green, Blue;
      
  /* The ball's (pixelated) circle is generated using the standard circle formula.  Note that while 

@@ -114,13 +114,13 @@ module lab8( input               CLOCK_50,
 														 );
 													
    
-    ball ball_instance(.Reset(Reset_ball), 
+    /*ball ball_instance(.Reset(Reset_ball), 
                        .frame_clk(VGA_VS),          
 							  .keycode(keycode[7:0]),	  
 							  .BallX, 
 							  .BallY, 
 							  .BallS
-							 );
+							 );*/
     
     color_mapper color_instance(.BallX, 
 	                             .BallY,       // Ball coordinates
@@ -134,7 +134,7 @@ module lab8( input               CLOCK_50,
 										 
 tetris_control control
 ( 
-		.clk,
+		.clk(Clk),
 		.reset,
 		.decolored,
 		.canmove,
@@ -154,9 +154,9 @@ tetris_control control
 		.r_initialize
 );
     
-	 register #(.width(4)) x0
+	 /*register #(.width(4)) x0
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -165,7 +165,7 @@ tetris_control control
 	 
 	 register #(.width(4)) x1
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -174,7 +174,7 @@ tetris_control control
 
 	 register #(.width(4)) x2
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -183,7 +183,7 @@ tetris_control control
 
 	 register #(.width(4)) x3
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -192,7 +192,7 @@ tetris_control control
 	 
 	 register #(.width(5)) y0
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -201,7 +201,7 @@ tetris_control control
 
     register #(.width(5)) y1
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -210,7 +210,7 @@ tetris_control control
 
     register #(.width(5)) y2
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -219,7 +219,7 @@ tetris_control control
 
     register #(.width(5)) y3
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -228,7 +228,7 @@ tetris_control control
 
     register #(.width(3)) shape
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
@@ -237,12 +237,12 @@ tetris_control control
 
 	 register #(.width(2)) orientation
 (
-    .clk,
+    .clk(Clk),
 	 .load,
 	 .reset,
 	 .in,
 	 .out
-);
+);*/
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
