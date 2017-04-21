@@ -1,5 +1,11 @@
-module rotate(input x, y, square_no, orientation_in, shape,
-				  output x_out, y_out,orientation_out
+module rotate(input clk, reset, run,
+	      input logic[4:0] x, 
+	      input logic[5:0] y, 
+	      input[1:0] square_no, orientation_in, 
+	      input[2:0] shape,
+	      output logic[4:0] x_out, 
+	      output logic[5:0]y_out,
+	      output logic[1:0] orientation_out
 						
 );
 always_comb
