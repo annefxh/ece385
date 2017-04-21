@@ -15,13 +15,14 @@
 
 
 module  color_mapper ( input logic[3:0] pixel ;       // Ball coordinates
-                                                             // Ball size (defined in ball.sv)
-                       input  [9:0]             DrawX, DrawY,       // Coordinates of current drawing pixel
-							  input [3:0] shape,
+		      input logic  [4:0] x0,x1,x2,x3,
+		      input logic [5:0] y0, y1,y2,y3,// Ball size (defined in ball.sv)
+                       input logic [9:0]             DrawX, DrawY,       // Coordinates of current drawing pixel
+		       input logic [3:0] shape,
                        output logic [7:0] VGA_R, VGA_G, VGA_B // VGA RGB output
                      );
     
-    
+    logic screen_on
     logic squre_on;
     logic [7:0] Red, Green, Blue;
      
@@ -44,15 +45,33 @@ module  color_mapper ( input logic[3:0] pixel ;       // Ball coordinates
     begin : Ball_on_proc
         //if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
 		  if(DrawX >= 240 && DrawX <= 400 && DrawY >= 80 && DrawY <= 400)
-            squre_on = 1'b1;
+			  begin
+            			screen_on = 1'b1;
+				  if (DrawX >= (x0)*8 && DrawX < (x0+1)*8 && DrawY >= y0*8 && DrawY <= (y0+1)*8)
+					  square_on = 1'b1;
+				  if (DrawX >= (x1)*8 && DrawX < (x1+1)*8 && DrawY >= y1*8 && DrawY <= (y1+1)*8)
+					  square_on = 1'b1;
+				  if (DrawX >= (x2)*8 && DrawX < (x2+1)*8 && DrawY >= y2*8 && DrawY <= (y2+1)*8)
+					  square_on = 1'b1;
+				  if (DrawX >= (x3)*8 && DrawX < (x3+1)*8 && DrawY >= y3*8 && DrawY <= (y3+1)*8)
+					  square_on = 1'b1;
+			  end
         else 
-            squre_on = 1'b0;
+            screen_on = 1'b0;
     end
     
     // Assign color based on ball_on signal
     always_comb
     begin : RGB_Display
-        if ((squre_on == 1'b1)) 
+	    if (screen_on ==1 && square_on == 0 )
+		    begin
+			Red = 8'hff; 
+            		Green = 8'hff;
+            		Blue = 8'hff;    
+		    end
+	  else
+          begin
+		  if (screen_on ==1 &&square_on == 1'b1) 
 			case(pixel):
 				3'b000:
 					begin
@@ -106,10 +125,11 @@ module  color_mapper ( input logic[3:0] pixel ;       // Ball coordinates
         else 
         begin
             // Background with nice color gradient
-            Red = 8'hff; 
-            Green = 8'hff;
-            Blue = 8'hff; //.- {1'b0, DrawX[9:3]};
+            Red = 8'h00; 
+            Green = 8'h00;
+            Blue = 8'h00; //.- {1'b0, DrawX[9:3]};
         end
+	  end
     end 
     
 endmodule
