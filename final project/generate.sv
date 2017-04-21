@@ -1,11 +1,12 @@
-module generate (input logic[2:0]  data_in,
+module generate ( input logic game_start,
+                  input logic[2:0]  data_in,
                  output logic[2:0] data_out
 );
-
+  
 always_comb
 begin
-  if(reset)
-    data_out = 3'b000;
+  if(game_start)
+    data_out = 3'b111;
   else
   begin
     data_out[0]=data_in[1] ^ data_in[2];
