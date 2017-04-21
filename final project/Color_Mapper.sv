@@ -13,7 +13,7 @@
 //    University of Illinois ECE Department                              --
 //-------------------------------------------------------------------------
 
-import tetris_types::*;
+
 module  color_mapper ( input logic[3:0] pixel ;       // Ball coordinates
                                                              // Ball size (defined in ball.sv)
                        input  [9:0]             DrawX, DrawY,       // Coordinates of current drawing pixel

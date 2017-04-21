@@ -131,7 +131,108 @@ module lab8( input               CLOCK_50,
 										  .VGA_G, 
 										  .VGA_B // VGA RGB output
 										 );
+										 
+	tetris_control 
+( 
+	.clk,
+	.reset,
+	.decolored,
+	.canmove,
+	.reached_top,
+	.reached_right,
+	.keycode
+);
     
+	 register #(.width(4)) x0
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+	 
+	 register #(.width(4)) x1
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+	 register #(.width(4)) x2
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+	 register #(.width(4)) x3
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+	 
+	 register #(.width(5)) y0
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+    register #(.width(5)) y1
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+    register #(.width(5)) y2
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+    register #(.width(5)) y3
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+    register #(.width(3)) shape
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
+	 register #(.width(2)) orientation
+(
+    .clk,
+	 .load,
+	 .reset,
+	 .in,
+	 .out
+);
+
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
     

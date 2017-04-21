@@ -601,3 +601,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE ball.sv
 set_global_assignment -name SYSTEMVERILOG_FILE shape.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rorate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE movement.sv
+set_global_assignment -name SYSTEMVERILOG_FILE down.sv
+set_global_assignment -name SYSTEMVERILOG_FILE left.sv
+set_global_assignment -name SYSTEMVERILOG_FILE right.sv
+set_global_assignment -name SYSTEMVERILOG_FILE "../lab6 week2/register.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "../lab6 week2/mux.sv"
