@@ -168,7 +168,7 @@ tetris_control control
 );	
 	
 initialize initialize0(
-	            .shape,
+	.shape(shape_o),
                     .orientation,
                     .x0, .x1, .x2, .x3,
                     .y0, .y1, .y2, .y3
