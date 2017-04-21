@@ -132,15 +132,26 @@ module lab8( input               CLOCK_50,
 										  .VGA_B // VGA RGB output
 										 );
 										 
-	tetris_control 
+tetris_control control
 ( 
-	.clk,
-	.reset,
-	.decolored,
-	.canmove,
-	.reached_top,
-	.reached_right,
-	.keycode
+		.clk,
+		.reset,
+		.decolored,
+		.canmove,
+		.reached_top,
+		.reached_right,
+		.keycode,
+		.r_rotate,
+		.r_down,
+		.r_left,
+		.r_right,
+		.r_color,
+		.r_wsram,
+		.r_checkcanmove,
+		.r_decolor,
+		.game_start,
+		.r_generate,
+		.r_initialize
 );
     
 	 register #(.width(4)) x0
