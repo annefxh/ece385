@@ -16,11 +16,13 @@ module tetris_control ( input logic clk,
 		       		     r_decolor,
 		       		     game_start,
 		       		     r_generate,
+		       		     r_initialize
 );
 
 enum int unsigned {
 	s_init,
 	s_generate,
+	s_initialize,
 	s_color,
 	s_wsram,
 	s_wait, 
@@ -61,6 +63,8 @@ begin: state actions
 			game_start=1;
 		s_generate:
 			r_generate=1;
+		s_initialize:
+			r_initialize=1;
 		s_color:
 			r_color=1;	
 		s_wsram:
@@ -104,6 +108,11 @@ begin:  next_state_logic
 			end
 
 			s_generate:
+			begin
+				next_state = s_initialize;
+			end
+			
+			s_initialize:
 			begin
 				next_state = s_color;
 			end
