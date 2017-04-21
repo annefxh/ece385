@@ -54,7 +54,12 @@ module lab8( input               CLOCK_50,
     logic [15:0] hpi_data_in, hpi_data_out;
     logic hpi_r, hpi_w,hpi_cs;
 	 
-	 logic[9:0] DrawX, DrawY, BallS, BallX, BallY;
+	 logic[9:0] DrawX, DrawY;
+	logic [3:0] shape_o, shape;
+	logic [1:0] orietantion, orientation_o;
+	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o;
+	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o;
+	logic r_color, r_generate, r_write, game_start;
     
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
@@ -101,7 +106,8 @@ module lab8( input               CLOCK_50,
     );
     
     //Fill in the connections for the rest of the modules 
-    VGA_controller vga_controller_instance(.Clk,         // 50 MHz clock
+    VGA_controller vga_controller_instance(
+	    			.Clk,         // 50 MHz clock
                                            .Reset(Reset_h),       // reset signal
                                            .VGA_HS,      // Horizontal sync pulse.  Active low
                                            .VGA_VS,      // Vertical sync pulse.  Active low
@@ -122,9 +128,10 @@ module lab8( input               CLOCK_50,
 							  .BallS
 							 );*/
     
-    color_mapper color_instance(.BallX, 
-	                             .BallY,       // Ball coordinates
-                                .BallS,              // Ball size (defined in ball.sv)
+	color_mapper color_instance( .pixel(color),       // Ball coordinates
+		      .x0,.x1,.x2,.x3,
+		      .y0, .y1,.y2,.y3,// Ball size (defined in ball.sv)
+                       
                                 .DrawX, 
 										  .DrawY,       // Coordinates of current drawing pixel
                                 .VGA_R, 
@@ -135,114 +142,127 @@ module lab8( input               CLOCK_50,
 tetris_control control
 ( 
 		.clk(Clk),
-		.reset,
-		.decolored,
-		.canmove,
-		.reached_top,
-		.reached_right,
-		.keycode,
-		.r_rotate,
-		.r_down,
-		.r_left,
-		.r_right,
-		.r_color,
-		.r_wsram,
-		.r_checkcanmove,
-		.r_decolor,
-		.game_start,
-		.r_generate,
-		.r_initialize
+	.reset(),
+	.decolored(),
+	.canmove(),
+	.reached_top(),
+	.reached_right(),
+	.keycode(),
+	.r_rotate(),
+	.r_down(),
+	.r_left(),
+	.r_right(),
+	.r_color,
+	.r_wsram(),
+	.r_checkcanmove(),
+	.r_decolor(),
+	.game_start,
+	.r_generate,
+	.r_initialize
+);
+
+	generate generate0(.game_start,
+			   .data_in(shape_o),
+			   .data_out(shape),
+			   
+);	
+	
+initialize initialize0(
+	            .shape,
+                    .orientation,
+                    .x0, .x1, .x2, .x3,
+                    .y0, .y1, .y2, .y3
 );
     
-	 /*register #(.width(4)) x0
+	register #(.width(5)) x0_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	.load(r_initialize),
+	.reset(Reset_h),
+	.in(x0),
+	.out(x0_o)
 );
 	 
-	 register #(.width(4)) x1
+	register #(.width(5)) x1_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(x1),
+	.out(x2_o)
 );
 
-	 register #(.width(4)) x2
+	register #(.width(5)) x2_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(x2),
+	.out(x2_o)
 );
 
-	 register #(.width(4)) x3
+	 register #(.width(4)) x3_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(x3),
+	.out(x3_o)
 );
 	 
-	 register #(.width(5)) y0
+	 register #(.width(5)) y0_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(y0),
+	.out(y0_o)
 );
 
-    register #(.width(5)) y1
+    register #(.width(5)) y1_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(y1),
+	.out(y1_o)
 );
 
-    register #(.width(5)) y2
+    register #(.width(5)) y2_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(y2),
+	.out(y2_o)
 );
 
-    register #(.width(5)) y3
+	register #(.width(5)) y3_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	 .load(r_initialize),
+	 .reset(Reset_h),
+	.in(y3),
+	.out(y3_o)
 );
 
-    register #(.width(3)) shape
+	register #(.width(3)) shape_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
+	.load(r_generate),
+	 .reset(Reset_h),
+	.in(shape),
+	.out(shape_o)
 );
 
-	 register #(.width(2)) orientation
+	register #(.width(2)) orientation_reg
 (
     .clk(Clk),
-	 .load,
-	 .reset,
-	 .in,
-	 .out
-);*/
+	.load(r_generate),
+	 .reset(Reset_h),
+	.in(orientation),
+	.out(orientation_o)
+);
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
