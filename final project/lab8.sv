@@ -249,7 +249,7 @@ initialize initialize0(
 	register #(.width(3)) shape_reg
 (
     .clk(Clk),
-	.load(r_generate),
+	.load(r_generate | game_start),
 	 .reset(Reset_h),
 	.in(shape),
 	.out(shape_o)
