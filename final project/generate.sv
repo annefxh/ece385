@@ -1,6 +1,4 @@
-module generate (input  clk,
-                        reset,
-                 input logic[2:0]  data_in,
+module generate (input logic[2:0]  data_in,
                  output logic[2:0] data_out
 );
 
