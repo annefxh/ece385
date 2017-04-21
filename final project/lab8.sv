@@ -129,8 +129,8 @@ module lab8( input               CLOCK_50,
 							 );*/
     
 	color_mapper color_instance( .pixel(color),       // Ball coordinates
-		      .x0,.x1,.x2,.x3,
-		      .y0, .y1,.y2,.y3,// Ball size (defined in ball.sv)
+				    .x0(x0_o),.x1(x1_o),.x2(x2_o),.x3(x3_o),
+				    .y0(y0_o), .y1(y1_o),.y2(y2_o),.y3(y3_o),// Ball size (defined in ball.sv)
                        
                                 .DrawX, 
 										  .DrawY,       // Coordinates of current drawing pixel
