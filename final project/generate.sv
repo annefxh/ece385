@@ -6,7 +6,7 @@ module generate ( input logic game_start,
 always_comb
 begin
   if(game_start)
-    data_out = 3'b111;
+    data_out = 3'b110;
   else
   begin
     data_out[0]=data_in[1] ^ data_in[2];
