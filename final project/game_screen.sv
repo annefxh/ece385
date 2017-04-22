@@ -2,12 +2,12 @@ module game_screen(   input clk, reset, ld_screen,
                       input logic[4:0] x,
                       input logic[5:0] y,
                       input logic[3:0] color,
-                      output logic[3:0] color             
+                      output logic[3:0] color_out             
 );
 
-[3:0] game_array [20][40];
+logic[3:0] game_array [20][40];
 
-game_array = '{'{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+game_array = {'{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 '{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 '{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 '{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},

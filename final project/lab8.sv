@@ -56,7 +56,7 @@ module lab8( input               CLOCK_50,
 	 
 	 logic[9:0] DrawX, DrawY;
 	logic [3:0] shape_o, shape;
-	logic [1:0] orietantion, orientation_o;
+	logic [1:0] orietantion_i, orientation_o;
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o;
 	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o;
 	logic r_color, r_generate, r_write, game_start;
@@ -161,7 +161,7 @@ tetris_control control
 	.r_initialize
 );
 
-	generate generate0(.game_start,
+	generation generate0(.game_start,
 			   .data_in(shape_o),
 			   .data_out(shape),
 			   
@@ -169,7 +169,7 @@ tetris_control control
 	
 initialize initialize0(
 	.shape(shape_o),
-                    .orientation,
+                    .orientation(orietantion_i),
                     .x0, .x1, .x2, .x3,
                     .y0, .y1, .y2, .y3
 );
@@ -189,7 +189,7 @@ initialize initialize0(
 	 .load(r_initialize),
 	 .reset(Reset_h),
 	.in(x1),
-	.out(x2_o)
+	.out(x1_o)
 );
 
 	register #(.width(5)) x2_reg
@@ -260,7 +260,7 @@ initialize initialize0(
     .clk(Clk),
 	.load(r_generate),
 	 .reset(Reset_h),
-	.in(orientation),
+	.in(orientation_i),
 	.out(orientation_o)
 );
 

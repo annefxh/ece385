@@ -32,7 +32,7 @@ enum int unsigned {
 	s_moveleft,
 	s_moveright,
 	s_movedown,
-	s_rorate,
+	s_rotate,
 	s_checkrow,
 	s_eliminaterow,
 	s_shiftrows,
@@ -43,7 +43,7 @@ enum int unsigned {
 } state, next_state;
 
 always_comb
-begin: state actions
+begin: state_actions
 	
  	/* default output values */
 	r_rotate=0;
@@ -52,10 +52,11 @@ begin: state actions
 	r_right=0;
 	r_color=0;
 	r_wsram=0;
-	r_wait=0;
+	//r_wait=0;
 	r_checkcanmove=0;
 	r_decolor=0;
 	r_generate=0;
+	r_initialize = 0;
 	game_start=0;
 	
 	case(state)
@@ -69,8 +70,8 @@ begin: state actions
 			r_color=1;	
 		s_wsram:
 			r_wsram=1;
-		s_wait:
-			r_wait=1;
+		s_wait:;
+			//r_wait=1;
 		s_checkcanmove:
 			r_checkcanmove=1;
 		s_decolor_1:
@@ -85,15 +86,15 @@ begin: state actions
 			r_down=1;
 		end
 		
-		s_rorate:
+		s_rotate:
 			r_rotate=1;
-		s_checkrow:
-		s_eliminaterow:
-		s_shiftrows:
-		s_decrementy:
-		s_incrementx:
-		s_readabove:
-		s_write_to_current:
+		s_checkrow: ;
+		s_eliminaterow: ;
+		s_shiftrows: ;
+		s_decrementy: ;
+		s_incrementx: ;
+		s_readabove: ;
+		s_write_to_current: ;
 	endcase
 end
 	
@@ -150,23 +151,24 @@ begin:  next_state_logic
 
 			s_decolor_2:
 			begin
+			next_state = state;
 				case(keycode)
-					DOWN:
+					8'h51:
 						next_state = s_movedown;
 
-					LEFT:
+					8'h50:
 						next_state = s_moveleft;
 
-					RIGHT:
+					8'h4F:
 						next_state = s_moveright;
 
-					UP:
-						next_state = s_moveup;
+					8'h52:
+						next_state = s_rotate;
 
-					SPACE:
+					8'h2C:;
 
 
-					ESC:
+					8'h29:;
 
 				endcase
 			end
@@ -186,7 +188,7 @@ begin:  next_state_logic
 				next_state = s_color;
 			end
 
-			s_rorate:
+			s_rotate:
 			begin
 				next_state = s_color;
 			end
@@ -229,7 +231,7 @@ begin:  next_state_logic
 
 			s_write_to_current:
 			begin
-				next_state = s_incrementy;
+				next_state = s_incrementx;
 			end
 
 		endcase

@@ -1,4 +1,4 @@
-module generate ( input logic game_start,
+module generation ( input logic game_start,
                   input logic[2:0]  data_in,
                  output logic[2:0] data_out
 );
@@ -15,4 +15,4 @@ begin
   end
 end
 
-endmodule: generate
+endmodule: generation

@@ -1,6 +1,6 @@
 module mux4(input logic [1:0] S,
-					 input logic [15:0] In0, In1, In2, In3,
-					 output logic [15:0] Out);
+					 input logic [1:0] In0, In1, In2, In3,
+					 output logic [1:0] Out);
 					 
 always_comb
 	begin
