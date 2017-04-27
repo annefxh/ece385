@@ -14,13 +14,13 @@ x_out = 0;
 y_out = 0;
 orientation_out = 0;
 
-case(shape):
-	orientation_out=2'b00;
+case(shape)
+	//orientation_out=2'b00;
 	3'b000: 
 	begin
-		if(orientation_in == 2'00)
+		if(orientation_in == 2'b00)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -49,7 +49,7 @@ case(shape):
 			end
 		else
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -86,10 +86,9 @@ case(shape):
 
 	3'b011:
 	begin
-		begin
-		if(orientation_in == 2'00)
+		if(orientation_in == 2'b00)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -119,7 +118,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b01)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -149,7 +148,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b10)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -179,7 +178,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b11)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -210,10 +209,9 @@ case(shape):
 
 	3'b010:
 	begin
-		begin
-		if(orientation_in == 2'00)
+		if(orientation_in == 2'b00)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -243,7 +241,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b01)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+2;
@@ -273,7 +271,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b10)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -303,7 +301,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b11)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -335,9 +333,9 @@ case(shape):
 
 	3'b100:
 	begin
-		if(orientation_in == 2'00)
+		if(orientation_in == 2'b00)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -366,7 +364,7 @@ case(shape):
 			end
 		else
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -397,9 +395,9 @@ case(shape):
 
 	3'b101:
 	begin
-		if(orientation_in == 2'00)
+		if(orientation_in == 2'b00)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -428,7 +426,7 @@ case(shape):
 			end
 		else
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -459,10 +457,9 @@ case(shape):
 
 	3'b110:
 	begin
-		begin
-		if(orientation_in == 2'00)
+		if(orientation_in == 2'b00)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -492,7 +489,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b01)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x+1;
@@ -522,7 +519,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b10)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -552,7 +549,7 @@ case(shape):
 			
 		else if(orientation_in == 2'b11)
 			begin
-				case(square_no):
+				case(square_no)
 					2'b00:
 					begin
 						x_out = x-1;
@@ -582,3 +579,4 @@ case(shape):
 	end
 endcase		
 end
+endmodule

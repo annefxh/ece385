@@ -11,3 +11,4 @@ begin
 	x_out = x-1;
 	y_out = y;
 end
+endmodule
