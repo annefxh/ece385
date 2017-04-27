@@ -46,16 +46,16 @@ module  color_mapper ( input logic[3:0] pixel ,       // Ball coordinates
 	 square_on =0;
 	 screen_on = 0;
         //if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
-		  if(DrawX >= 240 && DrawX <= 400 && DrawY >= 80 && DrawY <= 400)
+		  if(DrawX >= 240 & DrawX <= 400 & DrawY >= 80 & DrawY <= 400)
 			  begin
             			screen_on = 1'b1;
-				  if (DrawX >= (x0)*8 && DrawX < (x0+1)*8 && DrawY >= y0*8 && DrawY <= (y0+1)*8)
+				  if (DrawX >= (x0)*8 & DrawX < (x0+1)*8 & DrawY >= y0*8 & DrawY < (y0+1)*8)
 					  square_on = 1'b1;
-				  if (DrawX >= (x1)*8 && DrawX < (x1+1)*8 && DrawY >= y1*8 && DrawY <= (y1+1)*8)
+				  if (DrawX >= (x1)*8 & DrawX < (x1+1)*8 & DrawY >= y1*8 & DrawY < (y1+1)*8)
 					  square_on = 1'b1;
-				  if (DrawX >= (x2)*8 && DrawX < (x2+1)*8 && DrawY >= y2*8 && DrawY <= (y2+1)*8)
+				  if (DrawX >= (x2)*8 & DrawX < (x2+1)*8 & DrawY >= y2*8 & DrawY < (y2+1)*8)
 					  square_on = 1'b1;
-				  if (DrawX >= (x3)*8 && DrawX < (x3+1)*8 && DrawY >= y3*8 && DrawY <= (y3+1)*8)
+				  if (DrawX >= (x3)*8 & DrawX < (x3+1)*8 & DrawY >= y3*8 & DrawY < (y3+1)*8)
 					  square_on = 1'b1;
 			  end
         else 
