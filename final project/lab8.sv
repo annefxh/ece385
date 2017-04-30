@@ -65,8 +65,8 @@ module lab8( input               CLOCK_50,
 	logic[9:0] DrawX, DrawY;
 	logic [3:0] shape_o, shape;
 	logic [1:0] orietantion_i, orientation_o;
-	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o;
-	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o;
+	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x;
+	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y;
 	logic r_color, r_generate, r_write, game_start;
 	
 	//SRAM Interface
@@ -82,7 +82,7 @@ module lab8( input               CLOCK_50,
   	assign SRAM_WE_N = sram_we ? 0 : 1; //SRAM Write Enable
   	assign SRAM_CE_N = 0; //SRAM Chip Enable
   	assign SRAM_OE_N = 0; //SRAM Output Enable
-	assign color_in = sram_re ? SRAM_DQ : 16'h000;
+	assign color_in = sram_re ? SRAM_DQ : 16'h0000;
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
                             .Clk(Clk),
@@ -267,7 +267,7 @@ initialize initialize0(
 	.out(y3_o)
 );
 
-	register #(.width(3)) shape_reg
+	register #(.width(4)) shape_reg
 (
     .clk(Clk),
 	.load(r_generate | game_start),
