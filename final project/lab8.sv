@@ -267,7 +267,7 @@ initialize initialize0(
 	.out(y3_o)
 );
 
-	register #(.width(4)) shape_reg
+	register #(.width(3)) shape_reg
 (
     .clk(Clk),
 	.load(r_generate | game_start),
