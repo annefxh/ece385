@@ -5,6 +5,8 @@ module tetris_control ( input logic clk,
 				    canmove,
 				    reached_top,
 				    reached_right,
+		       		    start_game,
+		       
 		        input[7:0]  keycode,
 		        output logic r_rotate,
 		       		     r_down,
@@ -16,10 +18,22 @@ module tetris_control ( input logic clk,
 		       		     r_decolor,
 		       		     game_start,
 		       		     r_generate,
-		       		     r_initialize
+		       		     r_initialize,
+		       		     sram_we,
+		       		     sram_re,
+				output logic [2:0] color_w,
+		       	output logic [4:0] curr_x,
+		       	output logic [5:0] curr_y
+		       
 );
 
+	logic init_d;
+	logic [4:0] init_x;
+	logic [5:0] init_y;
+	logic [1:0] blk;
+	
 enum int unsigned {
+	s_reset,
 	s_init,
 	s_generate,
 	s_initialize,
@@ -46,22 +60,56 @@ always_comb
 begin: state_actions
 	
  	/* default output values */
-	r_rotate=0;
-	r_down=0;
-	r_left=0;
-	r_right=0;
-	r_color=0;
-	r_wsram=0;
-	//r_wait=0;
-	r_checkcanmove=0;
-	r_decolor=0;
-	r_generate=0;
+	r_rotate = 0;
+	r_down = 0;
+	r_left = 0;
+	r_right = 0;
+	r_color = 0;
+	r_wsram = 0;
+	//r_wait = 0;
+	r_checkcanmove = 0;
+	r_decolor = 0;
+	r_generate = 0;
 	r_initialize = 0;
-	game_start=0;
+	sram_we = 0;
+	sram_re = 0;
+	curr_x = 5'd0;
+	curr_y = 6'd0;
+	color_w = 3'd7; //white
 	
 	case(state)
+		s_reset:
+			begin
+				init_x = 5'd0;
+				init_y = 6'd0;
+			end
+		
 		s_init:
-			game_start=1;
+			begin
+			// init is done, game start button pressed
+				if(games_start == 1'b1 && init_y == 6'd40)
+					begin
+						init_x = 5'd0;
+						init_y = 6'd0;
+						blk = 2'd0;
+						init_d = 1'b1;
+					end
+		    //game init in progress
+				else
+					begin
+						sram_we = 1'b1;
+						if(init_x == 5'd20)
+							begin
+								init_x = 5'd0;
+								init_y += 1;
+							end
+						else
+							begin
+								init_x += 1;
+							end
+					end
+			end
+		
 		s_generate:
 			r_generate=1;
 		s_initialize:
@@ -103,9 +151,15 @@ begin:  next_state_logic
 		next_state = state;
 
 		case(state)
+			s_reset:
+				begin
+					next_state = s_init;
+				end
+			
 			s_init:
 			begin
-				next_state = s_generate;
+				if(init_d)
+					next_state = s_generate;
 			end
 
 			s_generate:
@@ -240,7 +294,10 @@ end
 /* Assignment of next state on clock edge */
 always_ff @(posedge clk)
 begin: next_state_assignment
-	state <= next_state;
+	if(reset)
+		state <= s_reset;
+	else
+		state <= next_state;
 end
 
 endmodule : tetris_control
