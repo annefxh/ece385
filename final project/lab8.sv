@@ -183,7 +183,7 @@ tetris_control control
 );
 
 generation generate0(
-	.run(r_generate),
+	.reset(game_start),
 	.data_in(shape_o),
 	.data_out(shape),			   
 );	
