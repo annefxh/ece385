@@ -6,10 +6,19 @@ module tetris_control ( input logic clk,
 				    				reached_right,
 		       		    			start_game,
 					   input logic [4:0] rotate_x,
+												x0_o,
+												x1_o,
+												x2_o,
+												x3_o,
 					   input logic [5:0] rotate_y,
-		       			input [2:0] shape
+												y0_o,
+												y1_o,
+												y2_o,
+												y3_o,
+		       			input [2:0] shape,
 		        		input [7:0] keycode,
 					    input [2:0] sram_color,
+						 input logic games_start,
 		        		output logic r_rotate,
 		       		    			 r_down,
 		       		    			 r_left,
@@ -33,6 +42,7 @@ module tetris_control ( input logic clk,
 	logic decolor; //remove shape
 	logic decolor_d; //removal done
 	logic canmove;
+	logic r_decolor;
 	logic [4:0] init_x;
 	logic [5:0] init_y;
 	logic [2:0] blk; //square count
@@ -47,8 +57,10 @@ enum int unsigned {
 	s_color,
 	s_wsram,
 	s_wait,
+	s_checkcanmove,
 	s_checkcanmove_1,
 	s_checkcanmove_2,
+	s_wait_1,
 	s_decolor_1,
 	s_decolor_2,
 	s_moveleft,
@@ -204,7 +216,7 @@ begin: state_actions
 						
 						else
 							begin
-								sdram_re = 1'b1;
+								sram_re = 1'b1;
 								case(checkmove)
 									2'd0://down
 										begin
@@ -305,14 +317,14 @@ begin: state_actions
 														//curr_y = y0_o;
 													//end	
 											//endcase
-										end
+										//end
 									
 								endcase
 							end
 					end
 				else
 					begin
-						if (checkmove == 0'b0)
+						if (checkmove == 1'b0)
 							blk = 3'd0;
 					end
 			end

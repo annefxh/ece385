@@ -40,7 +40,7 @@ module lab8( input               CLOCK_50,
                                  DRAM_CKE,     //SDRAM Clock Enable
                                  DRAM_WE_N,    //SDRAM Write Enable
                                  DRAM_CS_N,    //SDRAM Chip Select
-                                 DRAM_CLK      //SDRAM Clock
+                                 DRAM_CLK,      //SDRAM Clock
 	    
 	     inout wire [15:0] SRAM_DQ, //SRAM Data 16 Bits
 	     output [17:0] SRAM_ADDR, //SRAM Address 18 Bits
@@ -69,7 +69,7 @@ module lab8( input               CLOCK_50,
 	logic [1:0] orietantion_i, orientation_o;
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o;
 	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y, y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o;
-	logic r_color, r_generate, r_write, game_start;
+	logic r_color, r_generate, r_write, game_start, r_initialize;
 	
 	//SRAM Interface
 	logic sram_we; //1 when writing to sram
@@ -190,7 +190,15 @@ tetris_control control
 	.blkreg_sel,
 	.color_w,
 	.curr_x,
-	.curr_y
+	.curr_y,
+	.x0_o,
+	.x1_o,
+	.x2_o,
+	.x3_o,
+	.y0_o,
+	.y1_o,
+	.y2_o,
+	.y3_o,
 );
 
 //generates a random block
@@ -264,7 +272,7 @@ mux8 #(.width(5)) x3_mux
 	.Out(x3mux_o)
 );
 	
-mux8 #(.width(5)) y0_mux
+mux8 #(.width(6)) y0_mux
 (
 	.S(blk_sel),
 	.In0(y0),
@@ -278,7 +286,7 @@ mux8 #(.width(5)) y0_mux
 	.Out(y0mux_o)
 );
 	
-	mux8 #(.width(5)) y1_mux
+	mux8 #(.width(6)) y1_mux
 (
 	.S(blk_sel),
 	.In0(y1),
@@ -292,7 +300,7 @@ mux8 #(.width(5)) y0_mux
 	.Out(y1mux_o)
 );
 	
-	mux8 #(.width(5)) y2_mux
+	mux8 #(.width(6)) y2_mux
 (
 	.S(blk_sel),
 	.In0(y2),
@@ -306,7 +314,7 @@ mux8 #(.width(5)) y0_mux
 	.Out(y2mux_o)
 );
 	
-mux8 #(.width(5)) y3_mux
+mux8 #(.width(6)) y3_mux
 (
 	.S(blk_sel),
 	.In0(y3),
