@@ -45,7 +45,7 @@ module lab8( input               CLOCK_50,
 	     inout wire [15:0] SRAM_DQ, //SRAM Data 16 Bits
 	     output [17:0] SRAM_ADDR, //SRAM Address 18 Bits
   	     output SRAM_UB_N, //SRAM High Byte Data Mask
-             output SRAM_LB_N, //SRAM Low Byte Data Mask
+         output SRAM_LB_N, //SRAM Low Byte Data Mask
   	     output SRAM_WE_N, //SRAM Write Enable
   	     output SRAM_CE_N, //SRAM Chip Enable
   	     output SRAM_OE_N  //SRAM Output Enable
@@ -68,7 +68,21 @@ module lab8( input               CLOCK_50,
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o;
 	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o;
 	logic r_color, r_generate, r_write, game_start;
-    
+	
+	//SRAM Interface
+	logic sram_we; //1 when writing to sram
+	logic sram_re; //1 when reading from sram
+	logic [15:0] color_in; //color read from sram
+	logic [15:0] color_out;
+	
+    assign SRAM_DQ = sram_we? ; //SRAM Data 16 Bits
+	assign SRAM_ADDR; //SRAM Address 18 Bits
+  	assign SRAM_UB_N = 0; //SRAM High Byte Data Mask
+    assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
+  	assign SRAM_WE_N = sram_we ? 0 : 1; //SRAM Write Enable
+  	assign SRAM_CE_N = 0; //SRAM Chip Enable
+  	assign SRAM_OE_N = 0; //SRAM Output Enable
+	assign color_in = sram_re ? SRAM_DQ : 16'h000;
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
                             .Clk(Clk),
@@ -136,20 +150,19 @@ module lab8( input               CLOCK_50,
 							  .BallS
 							 );*/
     
-	color_mapper color_instance( .pixel(color),       // Ball coordinates
-				    .x0(x0_o),.x1(x1_o),.x2(x2_o),.x3(x3_o),
-				    .y0(y0_o), .y1(y1_o),.y2(y2_o),.y3(y3_o),// Ball size (defined in ball.sv)
-                       
-                                .DrawX, 
-										  .DrawY,       // Coordinates of current drawing pixel
-                                .VGA_R, 
-										  .VGA_G, 
-										  .VGA_B // VGA RGB output
-										 );
+color_mapper color_instance(.pixel(color),       // Ball coordinates
+				    		.x0(x0_o),.x1(x1_o),.x2(x2_o),.x3(x3_o),
+				    		.y0(y0_o),.y1(y1_o),.y2(y2_o),.y3(y3_o),// Ball size (defined in ball.sv)
+                    		.DrawX, 
+							.DrawY,       // Coordinates of current drawing pixel
+                    		.VGA_R, 
+							.VGA_G, 
+							.VGA_B // VGA RGB output
+);
 										 
 tetris_control control
 ( 
-		.clk(Clk),
+	.clk(Clk),
 	.reset(),
 	.decolored(),
 	.canmove(),
@@ -169,17 +182,17 @@ tetris_control control
 	.r_initialize
 );
 
-	generation generate0(.game_start,
-			   .data_in(shape_o),
-			   .data_out(shape),
-			   
+generation generate0(
+	.game_start,
+	.data_in(shape_o),
+	.data_out(shape),			   
 );	
 	
 initialize initialize0(
 	.shape(shape_o),
-                    .orientation(orietantion_i),
-                    .x0, .x1, .x2, .x3,
-                    .y0, .y1, .y2, .y3
+    .orientation(orietantion_i),
+    .x0, .x1, .x2, .x3,
+    .y0, .y1, .y2, .y3
 );
     
 	register #(.width(5)) x0_reg
