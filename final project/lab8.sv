@@ -41,6 +41,14 @@ module lab8( input               CLOCK_50,
                                  DRAM_WE_N,    //SDRAM Write Enable
                                  DRAM_CS_N,    //SDRAM Chip Select
                                  DRAM_CLK      //SDRAM Clock
+	    
+	     inout wire [15:0] SRAM_DQ, //SRAM Data 16 Bits
+	     output [17:0] SRAM_ADDR, //SRAM Address 18 Bits
+  	     output SRAM_UB_N, //SRAM High Byte Data Mask
+             output SRAM_LB_N, //SRAM Low Byte Data Mask
+  	     output SRAM_WE_N, //SRAM Write Enable
+  	     output SRAM_CE_N, //SRAM Chip Enable
+  	     output SRAM_OE_N  //SRAM Output Enable
                     );
     
     logic Reset_h, Clk, Reset_ball;
@@ -48,13 +56,13 @@ module lab8( input               CLOCK_50,
     
     assign Clk = CLOCK_50;
     assign {Reset_h} = ~(KEY[0]);  // The push buttons are active low
-	 assign {Reset_ball} = ~(KEY[2]);
+	assign {Reset_ball} = ~(KEY[2]);
     
-    logic [1:0] hpi_addr;
+	logic [1:0] hpi_addr;
     logic [15:0] hpi_data_in, hpi_data_out;
     logic hpi_r, hpi_w,hpi_cs;
 	 
-	 logic[9:0] DrawX, DrawY;
+	logic[9:0] DrawX, DrawY;
 	logic [3:0] shape_o, shape;
 	logic [1:0] orietantion_i, orientation_o;
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o;
@@ -267,10 +275,4 @@ initialize initialize0(
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
     
-    /**************************************************************************************
-        ATTENTION! Please answer the following quesiton in your lab report! Points will be allocated for the answers!
-        Hidden Question #1/2:
-        What are the advantages and/or disadvantages of using a USB interface over PS/2 interface to
-             connect to the keyboard? List any two.  Give an answer in your Post-Lab.
-    **************************************************************************************/
-endmodule
+endmodule: lab8
