@@ -1,11 +1,11 @@
-module generation ( input logic game_start,
+module generation ( input logic reset,
                   input logic[2:0]  data_in,
                  output logic[2:0] data_out
 );
   
 always_comb
 begin
-  if(game_start)
+  if(reset)
     data_out = 3'b111;
   else
   begin
