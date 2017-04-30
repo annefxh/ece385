@@ -57,16 +57,18 @@ module lab8( input               CLOCK_50,
     assign Clk = CLOCK_50;
     assign {Reset_h} = ~(KEY[0]);  // The push buttons are active low
 	assign {Reset_ball} = ~(KEY[2]);
-    
+	assign game_start = ~KEY[3];
+	
 	logic [1:0] hpi_addr;
     logic [15:0] hpi_data_in, hpi_data_out;
     logic hpi_r, hpi_w,hpi_cs;
 	 
-	logic[9:0] DrawX, DrawY;
-	logic [3:0] shape_o, shape;
+	logic [9:0] DrawX, DrawY;
+	logic [2:0] blkreg_sel;
+	logic [2:0] shape_o, shape, color_w;
 	logic [1:0] orietantion_i, orientation_o;
-	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x;
-	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y;
+	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o;
+	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y, y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o;
 	logic r_color, r_generate, r_write, game_start;
 	
 	//SRAM Interface
@@ -75,14 +77,18 @@ module lab8( input               CLOCK_50,
 	logic [15:0] color_in; //color read from sram
 	logic [15:0] color_out;
 	
-    assign SRAM_DQ = sram_we? ; //SRAM Data 16 Bits
-	assign SRAM_ADDR; //SRAM Address 18 Bits
+	assign SRAM_DQ = sram_re? 16'hzzzz : {12'd0 ,color_w} ; //SRAM Data 16 Bits
+	assign SRAM_ADDR = {curr_x, curr_y, 7'd0}; //SRAM Address 18 Bits
   	assign SRAM_UB_N = 0; //SRAM High Byte Data Mask
     assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
   	assign SRAM_WE_N = sram_we ? 0 : 1; //SRAM Write Enable
   	assign SRAM_CE_N = 0; //SRAM Chip Enable
   	assign SRAM_OE_N = 0; //SRAM Output Enable
 	assign color_in = sram_re ? SRAM_DQ : 16'h0000;
+	
+	//control variables
+	assign blkreg_ld = r_initialize;
+	
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
                             .Clk(Clk),
@@ -163,23 +169,28 @@ color_mapper color_instance(.pixel(color),       // Ball coordinates
 tetris_control control
 ( 
 	.clk(Clk),
-	.reset(),
-	.decolored(),
-	.canmove(),
+	.reset(Reset_h),
 	.reached_top(),
 	.reached_right(),
+	.start_game(game_start),
+	.rotate_x(rotatex_o),
+	.rotate_y(rotatey_o),
+	.shape(shape_o),
 	.keycode(),
+	.sram_color(color_in[2:0]),
+	
 	.r_rotate(),
 	.r_down(),
 	.r_left(),
 	.r_right(),
-	.r_color,
-	.r_wsram(),
-	.r_checkcanmove(),
-	.r_decolor(),
-	.game_start,
-	.r_generate,
-	.r_initialize
+	.r_generate(),
+	.r_initialize(),
+	.sram_we,
+	.sram_re,
+	.blkreg_sel,
+	.color_w,
+	.curr_x,
+	.curr_y
 );
 
 //generates a random block
@@ -196,74 +207,186 @@ initialize initialize0(
     .x0, .x1, .x2, .x3,
     .y0, .y1, .y2, .y3
 );
-    
+ 
+mux8 #(.width(5)) x0_mux
+(
+	.S(blk_sel),
+	.In0(x0),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(x0mux_o)
+);
+
+mux8 #(.width(5)) x1_mux
+(
+	.S(blk_sel),
+	.In0(x1),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(x1mux_o)
+);
+	
+mux8 #(.width(5)) x2_mux
+(
+	.S(blk_sel),
+	.In0(x2),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(x2mux_o)
+);
+
+mux8 #(.width(5)) x3_mux
+(
+	.S(blk_sel),
+	.In0(x3),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(x3mux_o)
+);
+	
+mux8 #(.width(5)) y0_mux
+(
+	.S(blk_sel),
+	.In0(y0),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(y0mux_o)
+);
+	
+	mux8 #(.width(5)) y1_mux
+(
+	.S(blk_sel),
+	.In0(y1),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(y1mux_o)
+);
+	
+	mux8 #(.width(5)) y2_mux
+(
+	.S(blk_sel),
+	.In0(y2),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(y2mux_o)
+);
+	
+mux8 #(.width(5)) y3_mux
+(
+	.S(blk_sel),
+	.In0(y3),
+	.In1(),
+	.In2(),
+	.In3(),
+	.In4(),
+	.In5(),
+	.In6(),
+	.In7(),
+	.Out(y3mux_o)
+);
+	
 register #(.width(5)) x0_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(x0),
+	.in(x0mux_o),
 	.out(x0_o)
 );
 	 
 register #(.width(5)) x1_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(x1),
+	.in(x1mux_o),
 	.out(x1_o)
 );
 
 register #(.width(5)) x2_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(x2),
+	.in(x2mux_o),
 	.out(x2_o)
 );
 
 register #(.width(5)) x3_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(x3),
+	.in(x3mux_o),
 	.out(x3_o)
 );
 	 
 register #(.width(6)) y0_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(y0),
+	.in(y0mux_o),
 	.out(y0_o)
 );
 
 register #(.width(6)) y1_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(y1),
+	.in(y1mux_o),
 	.out(y1_o)
 );
 
 register #(.width(6)) y2_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(y2),
+	.in(y2mux_o),
 	.out(y2_o)
 );
 
 register #(.width(6)) y3_reg
 (
     .clk(Clk),
-	.load(r_initialize),
+	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(y3),
 	.out(y3_o)
@@ -281,7 +404,7 @@ register #(.width(3)) shape_reg
 	register #(.width(2)) orientation_reg
 (
     .clk(Clk),
-	.load(r_generate),
+	.load(r_generate | r_rotate),
 	.reset(Reset_h),
 	.in(orientation_i),
 	.out(orientation_o)
