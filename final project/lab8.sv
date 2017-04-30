@@ -182,12 +182,14 @@ tetris_control control
 	.r_initialize
 );
 
+//generates a random block
 generation generate0(
 	.reset(game_start),
 	.data_in(shape_o),
 	.data_out(shape),			   
 );	
-	
+
+//initializes the block generated
 initialize initialize0(
 	.shape(shape_o),
     .orientation(orietantion_i),
@@ -195,7 +197,7 @@ initialize initialize0(
     .y0, .y1, .y2, .y3
 );
     
-	register #(.width(5)) x0_reg
+register #(.width(5)) x0_reg
 (
     .clk(Clk),
 	.load(r_initialize),
@@ -204,70 +206,70 @@ initialize initialize0(
 	.out(x0_o)
 );
 	 
-	register #(.width(5)) x1_reg
+register #(.width(5)) x1_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(x1),
 	.out(x1_o)
 );
 
-	register #(.width(5)) x2_reg
+register #(.width(5)) x2_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(x2),
 	.out(x2_o)
 );
 
-	 register #(.width(4)) x3_reg
+register #(.width(5)) x3_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(x3),
 	.out(x3_o)
 );
 	 
-	 register #(.width(5)) y0_reg
+register #(.width(6)) y0_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(y0),
 	.out(y0_o)
 );
 
-    register #(.width(5)) y1_reg
+register #(.width(6)) y1_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(y1),
 	.out(y1_o)
 );
 
-    register #(.width(5)) y2_reg
+register #(.width(6)) y2_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(y2),
 	.out(y2_o)
 );
 
-	register #(.width(5)) y3_reg
+register #(.width(6)) y3_reg
 (
     .clk(Clk),
-	 .load(r_initialize),
-	 .reset(Reset_h),
+	.load(r_initialize),
+	.reset(Reset_h),
 	.in(y3),
 	.out(y3_o)
 );
 
-	register #(.width(3)) shape_reg
+register #(.width(3)) shape_reg
 (
     .clk(Clk),
 	.load(r_generate | game_start),
@@ -280,7 +282,7 @@ initialize initialize0(
 (
     .clk(Clk),
 	.load(r_generate),
-	 .reset(Reset_h),
+	.reset(Reset_h),
 	.in(orientation_i),
 	.out(orientation_o)
 );
