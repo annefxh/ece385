@@ -14,7 +14,7 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper ( input logic[3:0] pixel ,       // Ball coordinates
+module  color_mapper ( input logic[2:0] pixel ,       // Ball coordinates
 		      input logic  [4:0] x0,x1,x2,x3,
 		      input logic [5:0] y0, y1,y2,y3,// Ball size (defined in ball.sv)
                        input logic [9:0]             DrawX, DrawY,       // Coordinates of current drawing pixel
