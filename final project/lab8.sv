@@ -45,43 +45,45 @@ module lab8( input               CLOCK_50,
 	     inout wire [15:0] SRAM_DQ, //SRAM Data 16 Bits
 	     output [17:0] SRAM_ADDR, //SRAM Address 18 Bits
   	     output SRAM_UB_N, //SRAM High Byte Data Mask
-         output SRAM_LB_N, //SRAM Low Byte Data Mask
+             output SRAM_LB_N, //SRAM Low Byte Data Mask
   	     output SRAM_WE_N, //SRAM Write Enable
   	     output SRAM_CE_N, //SRAM Chip Enable
   	     output SRAM_OE_N  //SRAM Output Enable
                     );
     
-    logic Reset_h, Clk, Reset_ball;
-    logic [15:0] keycode;
+        logic Reset_h, Clk, Reset_ball;
+        logic [15:0] keycode;
     
-    assign Clk = CLOCK_50;
-    assign {Reset_h} = ~(KEY[0]);  // The push buttons are active low
+        assign Clk = CLOCK_50;
+        assign {Reset_h} = ~(KEY[0]);  // The push buttons are active low
 	assign {Reset_ball} = ~(KEY[2]);
 	assign game_start = ~KEY[3];
 	
 	logic [1:0] hpi_addr;
-    logic [15:0] hpi_data_in, hpi_data_out;
-    logic hpi_r, hpi_w,hpi_cs;
+	logic [15:0] hpi_data_in, hpi_data_out;
+	logic hpi_r, hpi_w,hpi_cs;
 	 
 	logic [9:0] DrawX, DrawY;
 	logic [2:0] blkreg_sel;
 	logic [3:0] pixel;
 	logic [2:0] shape_o, shape, color_w;
-	logic [1:0] orietantion_i, orientation_o;
-	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o;
-	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y, y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o;
+	logic [1:0] orietantion_i, orientation_o, rotatein_sel;
+	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, 
+		    x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o, rotatexmux_o;
+	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y,
+	            y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o, rotateymux_o;
 	logic r_color, r_generate, r_write, game_start, r_initialize;
 	
 	//SRAM Interface
 	logic sram_we; //1 when writing to sram
 	logic sram_re; //1 when reading from sram
 	logic [15:0] color_in; //color read from sram
-	logic [15:0] color_out;
+	logic [15:0] color_out; //so far not used(?)
 	
 	assign SRAM_DQ = sram_re? 16'hzzzz : {12'd0 ,color_w} ; //SRAM Data 16 Bits
 	assign SRAM_ADDR = {curr_x, curr_y, 7'd0}; //SRAM Address 18 Bits
   	assign SRAM_UB_N = 0; //SRAM High Byte Data Mask
-    assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
+        assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
   	assign SRAM_WE_N = sram_we ? 0 : 1; //SRAM Write Enable
   	assign SRAM_CE_N = 0; //SRAM Chip Enable
   	assign SRAM_OE_N = 0; //SRAM Output Enable
@@ -284,7 +286,7 @@ mux8 #(.width(6)) y0_mux
 	.Out(y0mux_o)
 );
 	
-	mux8 #(.width(6)) y1_mux
+mux8 #(.width(6)) y1_mux
 (
 	.S(blk_sel),
 	.In0(y1),
@@ -298,7 +300,7 @@ mux8 #(.width(6)) y0_mux
 	.Out(y1mux_o)
 );
 	
-	mux8 #(.width(6)) y2_mux
+mux8 #(.width(6)) y2_mux
 (
 	.S(blk_sel),
 	.In0(y2),
@@ -328,7 +330,7 @@ mux8 #(.width(6)) y3_mux
 	
 register #(.width(5)) x0_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(x0mux_o),
@@ -337,7 +339,7 @@ register #(.width(5)) x0_reg
 	 
 register #(.width(5)) x1_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(x1mux_o),
@@ -346,7 +348,7 @@ register #(.width(5)) x1_reg
 
 register #(.width(5)) x2_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(x2mux_o),
@@ -355,7 +357,7 @@ register #(.width(5)) x2_reg
 
 register #(.width(5)) x3_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(x3mux_o),
@@ -364,7 +366,7 @@ register #(.width(5)) x3_reg
 	 
 register #(.width(6)) y0_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(y0mux_o),
@@ -373,7 +375,7 @@ register #(.width(6)) y0_reg
 
 register #(.width(6)) y1_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(y1mux_o),
@@ -382,7 +384,7 @@ register #(.width(6)) y1_reg
 
 register #(.width(6)) y2_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(y2mux_o),
@@ -391,7 +393,7 @@ register #(.width(6)) y2_reg
 
 register #(.width(6)) y3_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
 	.in(y3),
@@ -400,20 +402,54 @@ register #(.width(6)) y3_reg
 
 register #(.width(3)) shape_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(r_generate | game_start),
-	 .reset(Reset_h),
+	.reset(Reset_h),
 	.in(shape),
 	.out(shape_o)
 );
 
-	register #(.width(2)) orientation_reg
+register #(.width(2)) orientation_reg
 (
-    .clk(Clk),
+        .clk(Clk),
 	.load(r_generate | r_rotate),
 	.reset(Reset_h),
 	.in(orientation_i),
 	.out(orientation_o)
+);
+
+mux4 rotatexmux #(.width(5))
+(	
+	.S(rotatein_sel),
+	.In0(x0_o), 
+	.In1(x1_o), 
+	.In2(x2_o), 
+	.In3(x3_o),
+	.Out(rotatexmux_o)
+);
+
+mux4 rotateymux #(.width(6))
+(	
+	.S(rotatein_sel),
+	.In0(y0_o), 
+	.In1(y1_o), 
+	.In2(y2_o), 
+	.In3(y3_o),
+	.Out(rotateymux_o)
+);
+
+	
+rotate rotate0
+(
+	.reset(Reset_h), //run,
+	.x(rotatex_o), 
+	.y(rotatey_o), 
+	.square_no(rotatein_sel), 
+	.n(orientation_o), 
+	.shape(shape_o),
+	.x_out(rotatex_o), 
+	.y_out(rotatey_o),
+	.orientation_out(orientation_i)						
 );
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
