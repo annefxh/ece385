@@ -1,48 +1,47 @@
 
 module tetris_control ( input logic clk,
-				    				reset,
-				    				//canmove,
-				    				reached_top,
-				    				reached_right,
-		       		    			start_game,
-					   input logic [4:0] rotate_x,
-												x0_o,
-												x1_o,
-												x2_o,
-												x3_o,
-					   input logic [5:0] rotate_y,
-												y0_o,
-												y1_o,
-												y2_o,
-												y3_o,
-		       			input [2:0] shape,
-		        		input [7:0] keycode,
-					    input [2:0] sram_color,
-						 input logic games_start,
-		        		output logic r_rotate,
-		       		    			 r_down,
-		       		    			 r_left,
-		       		     			 r_right,
-		       		     			 //r_color,
-		       		     			 //r_wsram,
-		       		     			 //r_checkcanmove,
-		       		     			 //r_decolor,
-		       		     			 //game_start,
-		       		     			 r_generate,
-		       		     			 r_initialize,
-		       		     			 sram_we,
-		       		     			 sram_re,
-		       			output logic [2:0] blkreg_sel,
-						output logic [2:0] color_w,
-		       			output logic [4:0] curr_x,
-		       			output logic [5:0] curr_y
+				    reset,
+				    //canmove,
+				    reached_top,
+				    reached_right,
+		       		    start_game,
+			input logic [4:0] rotate_x,
+					  x0_o,
+					  x1_o,
+					  x2_o,
+					  x3_o,
+			input logic [5:0] rotate_y,
+					  y0_o,
+					  y1_o,
+					  y2_o,
+					  y3_o,
+		       	input [2:0] shape,
+		        input [7:0] keycode,
+		       	input [3:0] sram_color,
+		       
+		        output logic r_down,
+		       		     r_left,
+		       		     r_right,
+		       		     //r_color,
+		       		     //r_wsram,
+		       		     //r_checkcanmove,
+		       		     //r_decolor,
+		       		     //game_start,
+		       		     r_generate,
+		       		     r_initialize,
+		       		     sram_we,
+		       		     sram_re,
+		       output logic [1:0] rotatein_sel, // used to select which input for check rotate in this module
+		       output logic [2:0] blkreg_sel, //decides which value to be loaded in to x,y block registers
+		       output logic [2:0] color_w, //color to write to sram
+		       output logic [4:0] curr_x, //x-coordinate for sram ADDR
+		       output logic [5:0] curr_y //y-coordinate for sram ADDR
 );
 
 	logic init_d_in; //init done
 	logic decolor_in; //remove shape
 	logic decolor_d_in; //removal done
 	logic canmove_in;
-	logic r_decolor_in;
 	logic [4:0] init_x_in;
 	logic [5:0] init_y_in;
 	logic [2:0] blk_in; //square count
@@ -50,10 +49,9 @@ module tetris_control ( input logic clk,
 	logic [1:0] checkmove_in; //0:down, 1:left, 2:right, 3:rorate
 	
 	logic init_d; //init done
-	logic decolor; //remove shape
+	logic decolor; //request to remove shape
 	logic decolor_d; //removal done
 	logic canmove;
-	logic r_decolor;
 	logic [4:0] init_x;
 	logic [5:0] init_y;
 	logic [2:0] blk; //square count
@@ -86,7 +84,6 @@ enum int unsigned {
 	s_checkcanmove_2,
 	s_wait_1,
 	s_decolor_1,
-	s_decolor_2,
 	s_moveleft,
 	s_moveright,
 	s_movedown,
@@ -122,16 +119,15 @@ begin: state_actions
 	color_w = 3'd7; //white
 	blkreg_sel = 3'd0;
 	
-	init_d = init_d_in; //init done
-	decolor = decolor_in; //remove shape
-	decolor_d = decolor_d_in; //removal done
-	canmove = canmove_in;
-	r_decolor = r_decolor_in;
-	init_x = init_x_in;
-	init_y = init_y_in;
-	blk = blk_in; //square count
-	color_ctrl = color_ctrl_in;
-	checkmove = checkmove_in; 
+	init_d_in = init_d; //init done
+	decolor_in = decolor; //remove shape
+	decolor_d_in = decolor_d; //removal done
+	canmove_in = canmove;
+	init_x_in = init_x;
+	init_y_in = init_y;
+	blk_in = blk_in; //square count
+	color_ctrl_in = color_ctrl;
+	checkmove_in = checkmove; 
 	case(state)
 		s_reset:
 			begin
@@ -148,12 +144,12 @@ begin: state_actions
 		s_init:
 			begin
 			// init is done, game start button pressed
-				if(games_start == 1'b1 && init_y == 6'd41)
+				if(start_game == 1'b1 && init_y == 6'd41)
 					begin
-						init_x = 5'd0;
-						init_y = 6'd0;
-						blk = 3'd0;
-						init_d = 1'b1;
+						init_x_in = 5'd0;
+						init_y_in = 6'd0;
+						blk_in = 3'd0;
+						init_d_in = 1'b1;
 					end
 		    //game init in progress
 				else
@@ -164,12 +160,12 @@ begin: state_actions
 						//finished a row: reset row counter, increment column counter
 						if(init_x == 5'd20)
 							begin
-								init_x = 5'd0;
-								init_y += 1;
+								init_x_in = 5'd0;
+								init_y_in += 1;
 							end
 						else
 							begin
-								init_x += 1;
+								init_x_in += 1;
 							end
 					end
 			end
@@ -186,10 +182,11 @@ begin: state_actions
 			//drawing or removal done
 			if(blk == 3'd4)
 				begin
-					blk = 3'd0;
+					blk_in = 3'd0;
 					if(decolor)
 						begin
-							decolor_d = 1'b1;
+							decolor_d_in = 1'b1;
+							decolor = 1'b0;
 						end
 				end
 			else
@@ -200,43 +197,52 @@ begin: state_actions
 							begin
 								curr_x = x1_o;
 								curr_y = y1_o;
+								if(decolor == 0'b0)
+									color_2 = shape;
+									
 							end
 						3'd2:
 							begin
 								curr_x = x2_o;
 								curr_y = y2_o;
+								if(decolor == 0'b0)
+									color_2 = shape;
 							end
 						3'd3:
 							begin
 								curr_x = x3_o;
 								curr_y = y3_o;
+								if(decolor == 0'b0)
+									color_2 = shape;
 							end
 						default:
 							begin
 								curr_x = x0_o;
 								curr_y = y0_o;
+								if(decolor == 0'b0)
+									color_2 = shape;
 							end	
 					endcase
-					blk += 1;
+					blk_in += 1;
 				end
 		
 		s_wait:
 			begin
 			case(keycode)
 					8'h51:
-						checkmove = 0;
+						checkmove_in = 0;
 
 					8'h50:
-						checkmove = 1;
+						checkmove_in = 1;
 
 					8'h4F:
-						checkmove = 2;
+						checkmove_in = 2;
 
 					8'h52:
-						checkmove = 3;
+						checkmove_in = 3;
 				
 					default: 
-						checkmove = 0;
+						checkmove_in = 0;
 				endcase
 			end
 		
@@ -246,7 +252,7 @@ begin: state_actions
 				if(canmove)
 					begin
 						if(blk == 3'd4)
-							blk = 3'd0;
+							blk_in = 3'd0;
 						
 						else
 							begin
@@ -327,48 +333,55 @@ begin: state_actions
 													end	
 											endcase
 										end
-									//2'd3://rotate
-										//begin
-											//case(blk)
-												//3'd1: 
-													//begin
-														//curr_x = x1_o;
-														//curr_y = y1_o;
-													//end
-												//3'd2:
-													//begin
-														//curr_x = x2_o;
-														//curr_y = y2_o;
-													//end
-												//3'd3:
-													//begin
-														//curr_x = x3_o;
-														//curr_y = y3_o;
-													//end
-												//default:
-													//begin
-														//curr_x = x0_o;
-														//curr_y = y0_o;
-													//end	
-											//endcase
-										//end
+									2'd3://rotate
+										begin
+											rotatein_sel = blk;
+											case(blk)
+												3'd0
+													begin
+														curr_x = rotate_x;
+														curr_y = rotate_y;
+													end
+												3'd1: 
+													begin
+														curr_x = rotate_x;
+														curr_y = rotate_y;
+													end
+												3'd2:
+													begin
+														curr_x = rotate_x;
+														curr_y = rotate_y;
+													end
+												3'd3:
+													begin
+														curr_x = rotate_x;
+														curr_y = rotate_y;
+													end
+												default: /* do nothing */;
+														
+											endcase
+										end
 									
 								endcase
 							end
 					end
 				else
 					begin
-						if (checkmove == 1'b0)
-							blk = 3'd0;
+						if (checkmove == 1'b0) //can't move down anymore
+							blk_in = 3'd0;
 					end
 			end
 		
 		s_checkcanmove_2:
+			begin
+			blk_in += 1;
+			canmove_in = ((sram_color == 4'd7 || sram_color == {1'b0, shape}) //if color==white or itself
+				      && curr_x >= 5'd0 && curr_x <= 5'd20 && curr_y >= 6'd0 && curr_x <= 6'd40); //if within boundary
+			end
 		
 		s_decolor_1:
-			r_decolor=1;
-		
-		s_decolor_2:
+			if(decolor_d == 0'b0)
+				decolor = 1'b0;
 			
 		s_moveleft:
 			r_left=1;
@@ -463,28 +476,23 @@ begin:  next_state_logic
 
 			s_decolor_1:
 			begin
-				next_state = s_wsram;
+				if(decolor_d == 1'b0)
+					next_state = s_wsram;
+				else
+					begin
+						case(checkmove)
+							2'd0:
+								nextstate = s_movedown;
+							2'd1:
+								nextstate = s_moveleft;
+							2'd2:
+								nextstate = s_moveright;
+							2'd3:
+								nextstate = rotate;
+						endcase
+					end
 			end
 
-			s_decolor_2:
-			begin
-			
-				case(keycode)
-					8'h51:
-						next_state = s_movedown;
-
-					8'h50:
-						next_state = s_moveleft;
-
-					8'h4F:
-						next_state = s_moveright;
-
-					8'h52:
-						next_state = s_rotate;
-
-					default: next_state = s_movedown;
-				endcase
-			end
 
 			s_moveleft:
 			begin
@@ -556,19 +564,30 @@ begin: next_state_assignment
 	if(reset)
 		begin
 		state <= s_reset;
-		init_d_in <=0; //init done
-	decolor_in <=0; //remove shape
-	decolor_d_in <=0; //removal done
-	canmove_in <=0;
-	r_decolor_in <=0;
-	init_x_in <=5'd0;
-	init_y_in <=6'd0;
-	blk_in <=3'd0; //square count
-	color_ctrl_in <=3'd0;
-	checkmove_in <=2'd0; 
+		init_d <=0; //init done
+		decolor <=0; //remove shape
+		decolor_d <=0; //removal done
+		canmove <=0;
+		r_decolor <=0;
+		init_x <=5'd0;
+		init_y <=6'd0;
+		blk <=3'd0; //square count
+		color_ctrl <=3'd0;
+		checkmove <=2'd0; 
 		end
 	else
-		state <= next_state;
+		begin
+		state <= next_state; 
+		init_d <=init_d_in; //init done
+		decolor <=decolor_in; //remove shape
+		decolor_d <=decolor_d_in; //removal done
+		canmove <=canmove_in;
+		init_x <=init_x_in;
+		init_y <=init_y_in;
+		blk <=blk_in; //square count
+		color_ctrl <=color_ctrl_in;
+		checkmove <=checkmove_in; 
+		end
 end
 
 endmodule : tetris_control
