@@ -51,7 +51,7 @@ module lab8( input               CLOCK_50,
   	     output SRAM_OE_N  //SRAM Output Enable
                     );
     
-        logic Reset_h, Clk, Reset_ball;
+        logic Reset_h, Clk, Reset_ball, game_start;
         logic [15:0] keycode;
     
         assign Clk = CLOCK_50;
@@ -174,12 +174,19 @@ tetris_control control
 	.reached_right(),
 	.start_game(game_start),
 	.rotate_x(rotatex_o),
+	.x0_o,
+	.x1_o,
+	.x2_o,
+	.x3_o,
 	.rotate_y(rotatey_o),
+	.y0_o,
+	.y1_o,
+	.y2_o,
+	.y3_o,
 	.shape(shape_o),
 	.keycode(),
 	.sram_color(color_in[2:0]),
 	
-	.r_rotate(),
 	.r_down(),
 	.r_left(),
 	.r_right(),
@@ -187,18 +194,12 @@ tetris_control control
 	.r_initialize(),
 	.sram_we,
 	.sram_re,
+	.rotatein_sel,
 	.blkreg_sel,
 	.color_w,
 	.curr_x,
 	.curr_y,
-	.x0_o,
-	.x1_o,
-	.x2_o,
-	.x3_o,
-	.y0_o,
-	.y1_o,
-	.y2_o,
-	.y3_o,
+	
 );
 
 //generates a random block
