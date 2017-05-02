@@ -1,5 +1,5 @@
 module mux4 #(parameter width = 5)
-	(	input logic [width-1:0] S,
+	(	input logic [1:0] S,
  	input logic [width-1:0] In0, In1, In2, In3,
 	output logic [width-1:0] Out
 );
