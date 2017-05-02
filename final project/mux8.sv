@@ -1,7 +1,9 @@
 module mux8#(parameter width=5)
-(input logic [2:0] S,
-					 input logic [width-1:0] In0,In1,In2,In3,In4,In5,In6,In7,
-					 output logic [width-1:0] Out);
+(
+	input logic [2:0] S,
+	input logic [width-1:0] In0,In1,In2,In3,In4,In5,In6,In7,
+	output logic [width-1:0] Out
+);
 					 
 always_comb
 	begin
