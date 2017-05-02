@@ -91,11 +91,12 @@ module  color_mapper ( input logic[3:0] pixel ,       // Ball coordinates
 					end
 				3'b111:
 					begin
-						Red = 8'h00;
-						Green = 8'h00;
-						Blue = 8'h00;
+						Red = 8'hff;
+						Green = 8'hff;
+						Blue = 8'hff;
 					end
-				endcase;
+				default: ;
+				endcase
 			
 	  end 
     

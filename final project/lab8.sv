@@ -51,12 +51,12 @@ module lab8( input               CLOCK_50,
   	     output SRAM_OE_N  //SRAM Output Enable
                     );
     
-        logic Reset_h, Clk, Reset_ball, game_start;
+        logic Reset_h, Clk, game_start;
         logic [15:0] keycode;
     
         assign Clk = CLOCK_50;
         assign {Reset_h} = ~(KEY[0]);  // The push buttons are active low
-	assign {Reset_ball} = ~(KEY[2]);
+	//assign {Reset_ball} = ~(KEY[2]);
 	assign game_start = ~KEY[3];
 	
 	logic [1:0] hpi_addr;
@@ -67,24 +67,25 @@ module lab8( input               CLOCK_50,
 	logic [2:0] blkreg_sel;
 	logic [3:0] pixel;
 	logic [2:0] shape_o, shape, color_w;
-	logic [1:0] orietantion_i, orientation_o, rotatein_sel;
+	logic [1:0] orientation_i, orientation_o, rotatein_sel, rotateo_o;
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, 
 		    x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o, rotatexmux_o;
 	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y,
 	            y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o, rotateymux_o;
-	logic r_color, r_generate, r_write, game_start, r_initialize;
+	logic r_color, r_generate, r_write, r_initialize, blkreg_ld, r_rotate, blk_sel;
+	assign blk_sel=0;
 	
-	//SRAM Interface
+	//SRAM Interfaces
 	logic sram_we; //1 when writing to sram
 	logic sram_re; //1 when reading from sram
 	logic [15:0] color_in; //color read from sram
 	logic [15:0] color_out; //so far not used(?)
 	
-	assign SRAM_DQ = sram_re? 16'hzzzz : {12'd0 ,color_w} ; //SRAM Data 16 Bits
-	assign SRAM_ADDR = {curr_x, curr_y, 7'd0}; //SRAM Address 18 Bits
+	assign SRAM_DQ = sram_we? 16'hzzzz :{12'd0 ,color_w}; //SRAM Data 16 Bits
+	assign SRAM_ADDR = sram_we?{curr_x, curr_y, 7'd0}: (sram_re?{curr_x, curr_y, 7'd0}:{((DrawX-240)/8),((DrawY-80)/8),7'd0} ); //SRAM Address 18 Bits
   	assign SRAM_UB_N = 0; //SRAM High Byte Data Mask
         assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
-  	assign SRAM_WE_N = sram_we ? 0 : 1; //SRAM Write Enable
+  	assign SRAM_WE_N = sram_we? 1'b0 : 1'b1; //SRAM Write Enable
   	assign SRAM_CE_N = 0; //SRAM Chip Enable
   	assign SRAM_OE_N = 0; //SRAM Output Enable
 	assign color_in = sram_re ? SRAM_DQ : 16'h0000;
@@ -184,21 +185,22 @@ tetris_control control
 	.y2_o,
 	.y3_o,
 	.shape(shape_o),
-	.keycode(),
+	.keycode(keycode[7:0]),
 	.sram_color(color_in[2:0]),
 	
+	.r_rotate,
 	.r_down(),
 	.r_left(),
 	.r_right(),
-	.r_generate(),
-	.r_initialize(),
+	.r_generate,
+	.r_initialize,
 	.sram_we,
 	.sram_re,
 	.rotatein_sel,
 	.blkreg_sel,
 	.color_w,
 	.curr_x,
-	.curr_y,
+	.curr_y
 	
 );
 
@@ -206,13 +208,13 @@ tetris_control control
 generation generate0(
 	.reset(game_start),
 	.data_in(shape_o),
-	.data_out(shape),			   
+	.data_out(shape)			   
 );	
 
 //initializes the block generated
 initialize initialize0(
 	.shape(shape_o),
-    .orientation(orietantion_i),
+    .orientation(orientation_i),
     .x0, .x1, .x2, .x3,
     .y0, .y1, .y2, .y3
 );
@@ -397,14 +399,14 @@ register #(.width(6)) y3_reg
         .clk(Clk),
 	.load(blkreg_ld),
 	.reset(Reset_h),
-	.in(y3),
+	.in(y3mux_o),
 	.out(y3_o)
 );
 
 register #(.width(3)) shape_reg
 (
-        .clk(Clk),
-	.load(r_generate | game_start),
+    .clk(Clk),
+	.load(r_init | game_start),
 	.reset(Reset_h),
 	.in(shape),
 	.out(shape_o)
@@ -419,7 +421,7 @@ register #(.width(2)) orientation_reg
 	.out(orientation_o)
 );
 
-mux4 rotatexmux #(.width(5))
+mux4 #(.width(5))rotatexmux 
 (	
 	.S(rotatein_sel),
 	.In0(x0_o), 
@@ -429,7 +431,7 @@ mux4 rotatexmux #(.width(5))
 	.Out(rotatexmux_o)
 );
 
-mux4 rotateymux #(.width(6))
+mux4 #(.width(6))rotateymux 
 (	
 	.S(rotatein_sel),
 	.In0(y0_o), 
@@ -446,11 +448,11 @@ rotate rotate0
 	.x(rotatex_o), 
 	.y(rotatey_o), 
 	.square_no(rotatein_sel), 
-	.n(orientation_o), 
+	.orientation_in(orientation_o), 
 	.shape(shape_o),
 	.x_out(rotatex_o), 
 	.y_out(rotatey_o),
-	.orientation_out(orientation_i)						
+	.orientation_out(rotateo_o)						
 );
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);

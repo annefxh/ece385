@@ -19,7 +19,8 @@ module tetris_control ( input logic clk,
 		        input [7:0] keycode,
 		       	input [3:0] sram_color,
 		       
-		        output logic r_down,
+		        output logic r_rotate,
+							  r_down,
 		       		     r_left,
 		       		     r_right,
 		       		     //r_color,
@@ -101,10 +102,12 @@ always_comb
 begin: state_actions
 	
  	/* default output values */
-	r_rotate = 0;
+	//r_rotate = 0;
 	r_down = 0;
 	r_left = 0;
 	r_right = 0;
+	rotatein_sel =0;
+	r_rotate = 0;
 	//r_color = 0;
 	//r_wsram = 0;
 	//r_wait = 0;
@@ -125,21 +128,10 @@ begin: state_actions
 	canmove_in = canmove;
 	init_x_in = init_x;
 	init_y_in = init_y;
-	blk_in = blk_in; //square count
+	blk_in = blk; //square count
 	color_ctrl_in = color_ctrl;
 	checkmove_in = checkmove; 
 	case(state)
-		s_reset:
-			begin
-				init_x = 5'd0;
-				init_y = 6'd0;
-				init_d = 1'b0;
-				decolor = 1'b0;
-				decolor_d = 1'b0;
-				blk = 2'd0;
-				color_ctrl = 3'd7;
-				canmove = 1'b1;
-			end
 		
 		s_init:
 			begin
@@ -161,11 +153,11 @@ begin: state_actions
 						if(init_x == 5'd20)
 							begin
 								init_x_in = 5'd0;
-								init_y_in += 1;
+								init_y_in += 1'b1;
 							end
 						else
 							begin
-								init_x_in += 1;
+								init_x_in += 1'b1;
 							end
 					end
 			end
@@ -186,7 +178,6 @@ begin: state_actions
 					if(decolor)
 						begin
 							decolor_d_in = 1'b1;
-							decolor = 1'b0;
 						end
 				end
 			else
@@ -197,33 +188,33 @@ begin: state_actions
 							begin
 								curr_x = x1_o;
 								curr_y = y1_o;
-								if(decolor == 0'b0)
-									color_2 = shape;
+								if(decolor == 1'b0)
+									color_w = shape;
 									
 							end
 						3'd2:
 							begin
 								curr_x = x2_o;
 								curr_y = y2_o;
-								if(decolor == 0'b0)
-									color_2 = shape;
+								if(decolor == 1'b0)
+									color_w = shape;
 							end
 						3'd3:
 							begin
 								curr_x = x3_o;
 								curr_y = y3_o;
-								if(decolor == 0'b0)
-									color_2 = shape;
+								if(decolor == 1'b0)
+									color_w = shape;
 							end
 						default:
 							begin
 								curr_x = x0_o;
 								curr_y = y0_o;
-								if(decolor == 0'b0)
-									color_2 = shape;
+								if(decolor == 1'b0)
+									color_w = shape;
 							end	
 					endcase
-					blk_in += 1;
+					blk_in += 1'b1;
 				end
 		
 		s_wait:
@@ -264,22 +255,22 @@ begin: state_actions
 												3'd1: 
 													begin
 														curr_x = x1_o;
-														curr_y = y1_o+1;
+														curr_y = y1_o+ 1'b1;
 													end
 												3'd2:
 													begin
 														curr_x = x2_o;
-														curr_y = y2_o+1;
+														curr_y = y2_o+1'b1;
 													end
 												3'd3:
 													begin
 														curr_x = x3_o;
-														curr_y = y3_o+1;
+														curr_y = y3_o+1'b1;
 													end
 												default:
 													begin
 														curr_x = x0_o;
-														curr_y = y0_o+1;
+														curr_y = y0_o+1'b1;
 													end	
 											endcase
 										end	
@@ -288,22 +279,22 @@ begin: state_actions
 											case(blk)
 												3'd1: 
 													begin
-														curr_x = x1_o-1;
+														curr_x = x1_o-1'b1;
 														curr_y = y1_o;
 													end
 												3'd2:
 													begin
-														curr_x = x2_o-1;
+														curr_x = x2_o-1'b1;
 														curr_y = y2_o;
 													end
 												3'd3:
 													begin
-														curr_x = x3_o-1;
+														curr_x = x3_o-1'b1;
 														curr_y = y3_o;
 													end
 												default:
 													begin
-														curr_x = x0_o-1;
+														curr_x = x0_o-1'b1;
 														curr_y = y0_o;
 													end	
 											endcase
@@ -313,31 +304,31 @@ begin: state_actions
 											case(blk)
 												3'd1: 
 													begin
-														curr_x = x1_o+1;
+														curr_x = x1_o+1'b1;
 														curr_y = y1_o;
 													end
 												3'd2:
 													begin
-														curr_x = x2_o+1;
+														curr_x = x2_o+1'b1;
 														curr_y = y2_o;
 													end
 												3'd3:
 													begin
-														curr_x = x3_o+1;
+														curr_x = x3_o+1'b1;
 														curr_y = y3_o;
 													end
 												default:
 													begin
-														curr_x = x0_o+1;
+														curr_x = x0_o+1'b1;
 														curr_y = y0_o;
 													end	
 											endcase
 										end
 									2'd3://rotate
 										begin
-											rotatein_sel = blk;
+											rotatein_sel = blk[1:0];
 											case(blk)
-												3'd0
+												3'd0:
 													begin
 														curr_x = rotate_x;
 														curr_y = rotate_y;
@@ -374,14 +365,14 @@ begin: state_actions
 		
 		s_checkcanmove_2:
 			begin
-			blk_in += 1;
+			blk_in += 1'b1;
 			canmove_in = ((sram_color == 4'd7 || sram_color == {1'b0, shape}) //if color==white or itself
 				      && curr_x >= 5'd0 && curr_x <= 5'd20 && curr_y >= 6'd0 && curr_x <= 6'd40); //if within boundary
 			end
 		
 		s_decolor_1:
-			if(decolor_d == 0'b0)
-				decolor = 1'b0;
+			if(decolor_d == 1'b0)
+				decolor_in = 1'b0;
 			
 		s_moveleft:
 			r_left=1;
@@ -421,7 +412,7 @@ begin:  next_state_logic
 			
 			s_init:
 			begin
-				if(init_d)
+				if(start_game == 1'b1 && init_y == 6'd41)
 					next_state = s_generate;
 			end
 
@@ -443,7 +434,7 @@ begin:  next_state_logic
 			s_wsram:
 			begin
 				if(decolor_d)
-					next_state = s_decolor_2;
+					next_state = s_decolor_1;
 				else 
 					next_state = s_wait_1;
 			end
@@ -482,13 +473,13 @@ begin:  next_state_logic
 					begin
 						case(checkmove)
 							2'd0:
-								nextstate = s_movedown;
+								next_state = s_movedown;
 							2'd1:
-								nextstate = s_moveleft;
+								next_state = s_moveleft;
 							2'd2:
-								nextstate = s_moveright;
+								next_state = s_moveright;
 							2'd3:
-								nextstate = rotate;
+								next_state = s_rotate;
 						endcase
 					end
 			end
@@ -554,6 +545,8 @@ begin:  next_state_logic
 			begin
 				next_state = s_incrementx;
 			end
+			
+			default: ;
 
 		endcase
 end
@@ -568,7 +561,6 @@ begin: next_state_assignment
 		decolor <=0; //remove shape
 		decolor_d <=0; //removal done
 		canmove <=0;
-		r_decolor <=0;
 		init_x <=5'd0;
 		init_y <=6'd0;
 		blk <=3'd0; //square count
