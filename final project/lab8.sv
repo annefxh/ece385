@@ -65,6 +65,7 @@ module lab8( input               CLOCK_50,
 	 
 	logic [9:0] DrawX, DrawY;
 	logic [2:0] blkreg_sel;
+	logic [3:0] pixel;
 	logic [2:0] shape_o, shape, color_w;
 	logic [1:0] orietantion_i, orientation_o;
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o;
@@ -156,11 +157,8 @@ module lab8( input               CLOCK_50,
 							  .BallS
 							 );*/
     
-color_mapper color_instance(.pixel(color),       // Ball coordinates
-				    		.x0(x0_o),.x1(x1_o),.x2(x2_o),.x3(x3_o),
-				    		.y0(y0_o),.y1(y1_o),.y2(y2_o),.y3(y3_o),// Ball size (defined in ball.sv)
-                    		.DrawX, 
-							.DrawY,       // Coordinates of current drawing pixel
+color_mapper color_instance(.pixel,       // Ball coordinates
+									
                     		.VGA_R, 
 							.VGA_G, 
 							.VGA_B // VGA RGB output
@@ -420,5 +418,16 @@ register #(.width(3)) shape_reg
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
-    
+	
+always @(*)
+	begin
+		if(DrawX >= 240 & DrawX <= 400 & DrawY >= 80 & DrawY <= 400)
+			begin
+				pixel <= {1'b0, SRAM_DQ[2:0]};
+			end
+		else
+			begin
+				pixel <= 4'd8;
+			end
+    end
 endmodule: lab8
