@@ -38,6 +38,17 @@ module tetris_control ( input logic clk,
 		       			output logic [5:0] curr_y
 );
 
+	logic init_d_in; //init done
+	logic decolor_in; //remove shape
+	logic decolor_d_in; //removal done
+	logic canmove_in;
+	logic r_decolor_in;
+	logic [4:0] init_x_in;
+	logic [5:0] init_y_in;
+	logic [2:0] blk_in; //square count
+	logic [2:0] color_ctrl_in;
+	logic [1:0] checkmove_in; //0:down, 1:left, 2:right, 3:rorate
+	
 	logic init_d; //init done
 	logic decolor; //remove shape
 	logic decolor_d; //removal done
@@ -48,6 +59,19 @@ module tetris_control ( input logic clk,
 	logic [2:0] blk; //square count
 	logic [2:0] color_ctrl;
 	logic [1:0] checkmove; //0:down, 1:left, 2:right, 3:rorate
+	
+/*initial begin
+	init_d=0; //init done
+	decolor=0; //remove shape
+	decolor_d=0; //removal done
+	canmove=0;
+	r_decolor=0;
+	init_x=5'd0;
+	init_y=6'd0;
+	blk=3'd0; //square count
+	color_ctrl=3'd0;
+	checkmove=2'd0; 
+end*/
 	
 enum int unsigned {
 	s_reset,
@@ -98,6 +122,16 @@ begin: state_actions
 	color_w = 3'd7; //white
 	blkreg_sel = 3'd0;
 	
+	init_d = init_d_in; //init done
+	decolor = decolor_in; //remove shape
+	decolor_d = decolor_d_in; //removal done
+	canmove = canmove_in;
+	r_decolor = r_decolor_in;
+	init_x = init_x_in;
+	init_y = init_y_in;
+	blk = blk_in; //square count
+	color_ctrl = color_ctrl_in;
+	checkmove = checkmove_in; 
 	case(state)
 		s_reset:
 			begin
@@ -356,6 +390,9 @@ begin: state_actions
 		s_incrementx: ;
 		s_readabove: ;
 		s_write_to_current: ;
+		
+		default:
+			;
 	endcase
 end
 	
@@ -517,7 +554,19 @@ end
 always_ff @(posedge clk)
 begin: next_state_assignment
 	if(reset)
+		begin
 		state <= s_reset;
+		init_d_in <=0; //init done
+	decolor_in <=0; //remove shape
+	decolor_d_in <=0; //removal done
+	canmove_in <=0;
+	r_decolor_in <=0;
+	init_x_in <=5'd0;
+	init_y_in <=6'd0;
+	blk_in <=3'd0; //square count
+	color_ctrl_in <=3'd0;
+	checkmove_in <=2'd0; 
+		end
 	else
 		state <= next_state;
 end
