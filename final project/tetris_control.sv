@@ -149,7 +149,8 @@ begin: state_actions
 						init_y_in = 6'd0;
 						blk_in = 3'd0;
 						init_d_in = 1'b1;
-						check_x_in = 
+						check_x_in = 5'd0;
+						check_y_in = 6'd0;
 					end
 		    //game init in progress
 				else
