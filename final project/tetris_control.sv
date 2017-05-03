@@ -181,6 +181,7 @@ begin: state_actions
 		
 		s_wsram:
 			//drawing or removal done
+			begin
 			if(blk == 3'd4)
 				begin
 					blk_in = 3'd0;
@@ -225,6 +226,7 @@ begin: state_actions
 					endcase
 					blk_in += 1'b1;
 				end
+			end
 		
 		s_wait:
 			begin
