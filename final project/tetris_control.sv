@@ -249,6 +249,7 @@ begin: state_actions
 							begin
 								sram_re = 1'b1;
 								case(checkmove)
+								sram_re = 1'b1;
 									2'd0://down
 										begin
 											case(blk)
