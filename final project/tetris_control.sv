@@ -39,6 +39,8 @@ module tetris_control ( input logic clk,
 		       output logic [5:0] curr_y //y-coordinate for sram ADDR
 );
 
+	logic[4:0] check_x_in;
+	logic[5:0] check_y_in;
 	logic init_d_in; //init done
 	logic decolor_in; //remove shape
 	logic decolor_d_in; //removal done
@@ -49,6 +51,8 @@ module tetris_control ( input logic clk,
 	logic [2:0] color_ctrl_in;
 	logic [1:0] checkmove_in; //0:down, 1:left, 2:right, 3:rorate
 	
+	logic[4:0] check_x;
+	logic[5:0] check_y;
 	logic init_d; //init done
 	logic decolor; //request to remove shape
 	logic decolor_d; //removal done
@@ -131,6 +135,9 @@ begin: state_actions
 	blk_in = blk; //square count
 	color_ctrl_in = color_ctrl;
 	checkmove_in = checkmove; 
+	check_x = check_x_in;
+	check_y = check_y_in;
+	
 	case(state)
 		
 		s_init:
@@ -142,6 +149,7 @@ begin: state_actions
 						init_y_in = 6'd0;
 						blk_in = 3'd0;
 						init_d_in = 1'b1;
+						check_x_in = 
 					end
 		    //game init in progress
 				else
@@ -249,7 +257,6 @@ begin: state_actions
 							begin
 								sram_re = 1'b1;
 								case(checkmove)
-								sram_re = 1'b1;
 									2'd0://down
 										begin
 											case(blk)
@@ -257,21 +264,29 @@ begin: state_actions
 													begin
 														curr_x = x1_o;
 														curr_y = y1_o+ 1'b1;
+														check_x_in = x1_o;
+														check_y_in = y1_o+ 1'b1;
 													end
 												3'd2:
 													begin
 														curr_x = x2_o;
 														curr_y = y2_o+1'b1;
+														check_x_in = x2_o;
+														check_y_in = y2_o+1'b1;
 													end
 												3'd3:
 													begin
 														curr_x = x3_o;
 														curr_y = y3_o+1'b1;
+														check_x_in = x3_o;
+														check_y_in = y3_o+1'b1;
 													end
 												default:
 													begin
 														curr_x = x0_o;
 														curr_y = y0_o+1'b1;
+														check_x_in = x0_o;
+														check_y_in = y0_o+1'b1;
 													end	
 											endcase
 										end	
@@ -282,21 +297,29 @@ begin: state_actions
 													begin
 														curr_x = x1_o-1'b1;
 														curr_y = y1_o;
+														check_x_in =  x1_o-1'b1;
+														check_y_in = y1_o;
 													end
 												3'd2:
 													begin
 														curr_x = x2_o-1'b1;
 														curr_y = y2_o;
+														check_x_in = x2_o-1'b1;
+														check_y_in = y2_o;
 													end
 												3'd3:
 													begin
 														curr_x = x3_o-1'b1;
 														curr_y = y3_o;
+														check_x_in = x3_o-1'b1;
+														check_y_in = y3_o;
 													end
 												default:
 													begin
 														curr_x = x0_o-1'b1;
 														curr_y = y0_o;
+														check_x_in = x0_o-1'b1;
+														check_y_in = y0_o;
 													end	
 											endcase
 										end
@@ -307,21 +330,29 @@ begin: state_actions
 													begin
 														curr_x = x1_o+1'b1;
 														curr_y = y1_o;
+														check_x_in = x1_o+1'b1;
+														check_y_in = y1_o;
 													end
 												3'd2:
 													begin
 														curr_x = x2_o+1'b1;
 														curr_y = y2_o;
+														check_x_in = x2_o+1'b1;
+														check_y_in =  y2_o;
 													end
 												3'd3:
 													begin
 														curr_x = x3_o+1'b1;
 														curr_y = y3_o;
+														check_x_in = x3_o+1'b1;
+														check_y_in =  y3_o;
 													end
 												default:
 													begin
 														curr_x = x0_o+1'b1;
 														curr_y = y0_o;
+														check_x_in = x0_o+1'b1;
+														check_y_in = y0_o;
 													end	
 											endcase
 										end
@@ -333,21 +364,29 @@ begin: state_actions
 													begin
 														curr_x = rotate_x;
 														curr_y = rotate_y;
+														check_x_in = rotate_x;
+														check_y_in = rotate_y;
 													end
 												3'd1: 
 													begin
 														curr_x = rotate_x;
 														curr_y = rotate_y;
+														check_x_in = rotate_x;
+														check_y_in = rotate_y;
 													end
 												3'd2:
 													begin
 														curr_x = rotate_x;
 														curr_y = rotate_y;
+														check_x_in = rotate_x;
+														check_y_in = rotate_y;
 													end
 												3'd3:
 													begin
 														curr_x = rotate_x;
 														curr_y = rotate_y;
+														check_x_in = rotate_x;
+														check_y_in = rotate_y;
 													end
 												default: /* do nothing */;
 														
@@ -366,14 +405,17 @@ begin: state_actions
 		
 		s_checkcanmove_2:
 			begin
-			blk_in += 1'b1;
 			canmove_in = ((sram_color == 4'd7 || sram_color == {1'b0, shape}) //if color==white or itself
-				      && curr_x >= 5'd0 && curr_x <= 5'd20 && curr_y >= 6'd0 && curr_x <= 6'd40); //if within boundary
+				      && check_x >= 5'd0 && check_x <= 5'd20 && check_y >= 6'd0 && check_x <= 6'd40);
+			blk_in += 1'b1;
+			 //if within boundary
 			end
 		
 		s_decolor_1:
-			if(decolor_d == 1'b0)
+			if(decolor_d)
 				decolor_in = 1'b0;
+			else 
+				decolor_in = 1'b1;
 			
 		s_moveleft:
 			r_left=1;
@@ -567,6 +609,8 @@ begin: next_state_assignment
 		blk <=3'd0; //square count
 		color_ctrl <=3'd0;
 		checkmove <=2'd0; 
+		check_x <= 5'd0;
+		check_y <= 6'd0;
 		end
 	else
 		begin
@@ -580,6 +624,8 @@ begin: next_state_assignment
 		blk <=blk_in; //square count
 		color_ctrl <=color_ctrl_in;
 		checkmove <=checkmove_in; 
+		check_x <= check_x_in;
+		check_y <= check_y_in;
 		end
 end
 
