@@ -69,11 +69,14 @@ module lab8( input               CLOCK_50,
 	logic [2:0] shape_o, shape, color_w;
 	logic [1:0] orientation_i, orientation_o, rotatein_sel, rotateo_o;
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, 
-		    x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o, rotatexmux_o;
+		    x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o, rotatexmux_o,
+		    leftx0_o, leftx1_o, leftx2_o, leftx3_o, rightx0_o, rightx1_o, rightx2_o, rightx3_o,
+		    rotatex0_o, rotatex1_o, rotatex2_o, rotatex3_o, downx0_o, downx1_o, downx2_o downx3_o;
 	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y,
-	            y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o, rotateymux_o;
-	logic r_color, r_generate, r_write, r_initialize, blkreg_ld, r_rotate, blk_sel;
-	assign blk_sel=0;
+	            y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o, rotateymux_o,
+		    lefty0_o, lefty1_o, lefty2_o, lefty3_o, righty0_o, righty1_o, righty2_o, righty3_o,
+		    rotatey0_o, rotatey1_o, rotatey2_o, rotatey3_o, downy0_o, downy1_o, downy2_o downy3_o;
+	logic r_color, r_generate, r_write, r_initialize, blkreg_ld, r_rotate, blk_sel, r_down, r_left, r_right;
 	
 	//SRAM Interfaces
 	logic sram_we; //1 when writing to sram
@@ -91,7 +94,7 @@ module lab8( input               CLOCK_50,
 	assign color_in = sram_re ? SRAM_DQ : 16'h0000;
 	
 	//control variables
-	assign blkreg_ld = r_initialize;
+	assign blkreg_ld = r_initialize | r_down | r_left | r_right | r_rotate;
 	
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
@@ -174,12 +177,18 @@ tetris_control control
 	.reached_top(),
 	.reached_right(),
 	.start_game(game_start),
-	.rotate_x(rotatex_o),
+	.rotatex0_o,
+	.rotatex1_o,
+	.rotatex2_o,
+	.rotatex3_o,
 	.x0_o,
 	.x1_o,
 	.x2_o,
 	.x3_o,
-	.rotate_y(rotatey_o),
+	.rotatey0_o,
+	.rotatey1_o,
+	.rotatey2_o,
+	.rotatey3_o,
 	.y0_o,
 	.y1_o,
 	.y2_o,
@@ -189,9 +198,9 @@ tetris_control control
 	.sram_color(color_in[2:0]),
 	
 	.r_rotate,
-	.r_down(),
-	.r_left(),
-	.r_right(),
+	.r_down,
+	.r_left,
+	.r_right,
 	.r_generate,
 	.r_initialize,
 	.sram_we,
@@ -223,10 +232,10 @@ mux8 #(.width(5)) x0_mux
 (
 	.S(blk_sel),
 	.In0(x0),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downx0_o),
+	.In2(leftx0_o),
+	.In3(rightx0_o),
+	.In4(rotatex0_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -237,10 +246,10 @@ mux8 #(.width(5)) x1_mux
 (
 	.S(blk_sel),
 	.In0(x1),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downx1_o),
+	.In2(leftx1_o),
+	.In3(rightx1_o),
+	.In4(rotatex1_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -251,10 +260,10 @@ mux8 #(.width(5)) x2_mux
 (
 	.S(blk_sel),
 	.In0(x2),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downx2_o),
+	.In2(leftx2_o),
+	.In3(rightx2_o),
+	.In4(rotatex2_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -265,10 +274,10 @@ mux8 #(.width(5)) x3_mux
 (
 	.S(blk_sel),
 	.In0(x3),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downx3_o),
+	.In2(leftx3_o),
+	.In3(rightx3_o),
+	.In4(rotatex3_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -279,10 +288,10 @@ mux8 #(.width(6)) y0_mux
 (
 	.S(blk_sel),
 	.In0(y0),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downy0_o),
+	.In2(lefty0_o),
+	.In3(righty0_o),
+	.In4(rotatey0_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -293,10 +302,10 @@ mux8 #(.width(6)) y1_mux
 (
 	.S(blk_sel),
 	.In0(y1),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downy1_o),
+	.In2(lefty1_o),
+	.In3(righty1_o),
+	.In4(rotatey1_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -307,10 +316,10 @@ mux8 #(.width(6)) y2_mux
 (
 	.S(blk_sel),
 	.In0(y2),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downy2_o),
+	.In2(lefty2_o),
+	.In3(righty2_o),
+	.In4(rotatey2_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -321,10 +330,10 @@ mux8 #(.width(6)) y3_mux
 (
 	.S(blk_sel),
 	.In0(y3),
-	.In1(),
-	.In2(),
-	.In3(),
-	.In4(),
+	.In1(downy3_o),
+	.In2(lefty3_o),
+	.In3(righty3_o),
+	.In4(rotatey3_o),
 	.In5(),
 	.In6(),
 	.In7(),
@@ -441,18 +450,152 @@ mux4 #(.width(6))rotateymux
 	.Out(rotateymux_o)
 );
 
+down down0(.reset(Reset_ball), 
+	   .x(x0), 
+	   .y(y0), 
+	   .x_out(downx0_o), 
+	   .y_out(downy0_o)
+						
+);
+
+down down1(.reset(Reset_ball), 
+	   .x(x1), 
+	   .y(y1), 
+	   .x_out(downx1_o), 
+	   .y_out(downy1_o)
+						
+);
+
+down down2(.reset(Reset_ball), 
+	   .x(x2), 
+	   .y(y2), 
+	   .x_out(downx2_o), 
+	   .y_out(downy2_o)
+						
+);
+
+down down3(.reset(Reset_ball), 
+	   .x(x3), 
+	   .y(y3), 
+	   .x_out(downx3_o), 
+	   .y_out(downy3_o)
+						
+);
+							    
+left left0(.reset(Reset_ball), 
+	   .x(x0_o), 
+	   .y(y0_o), 
+	   .x_out(leftx0_o), 
+	   .y_out(lefty0_o)
+						
+);
+	
+left left1(.reset(Reset_ball), 
+	   .x(x1_o), 
+	   .y(y1_o), 
+	   .x_out(leftx1_o), 
+	   .y_out(lefty1_o)
+						
+);
+
+left left2(.reset(Reset_ball), 
+	   .x(x2_o), 
+	   .y(y2_o), 
+	   .x_out(leftx2_o), 
+	   .y_out(lefty2_o)
+						
+);
+
+left left3(.reset(Reset_ball), 
+	   .x(x3_o), 
+	   .y(y3_o), 
+	   .x_out(leftx3_o), 
+	   .y_out(lefty3_o)
+						
+);
+							    
+right right0(.reset(Reset_ball), 
+	     .x(x0_o), 
+	     .y(y0_o), 
+	     .x_out(rightx0_o), 
+	     .y_out(righty0_o)
+						
+);
+
+right right1(.reset(Reset_ball), 
+	     .x(x1_o), 
+	     .y(y1_o), 
+	     .x_out(rightx1_o), 
+	     .y_out(righty1_o)
+						
+);
+
+right right2(.reset(Reset_ball), 
+	     .x(x2_o), 
+	     .y(y2_o), 
+	     .x_out(rightx2_o), 
+	     .y_out(righty2_o)
+						
+);
+
+right right3(.reset(Reset_ball), 
+	     .x(x3_o), 
+	     .y(y3_o), 
+	     .x_out(rightx3_o), 
+	     .y_out(righty3_o)
+						
+);
 	
 rotate rotate0
 (
-	.reset(Reset_h), //run,
-	.x(rotatex_o), 
-	.y(rotatey_o), 
-	.square_no(rotatein_sel), 
+	.reset(Reset_ball), //run,
+	.x(x0_o), 
+	.y(y0_o), 
+	.square_no(2'b00), 
 	.orientation_in(orientation_o), 
 	.shape(shape_o),
-	.x_out(rotatex_o), 
-	.y_out(rotatey_o),
+	.x_out(rotatex0_o), 
+	.y_out(rotatey0_o),
 	.orientation_out(rotateo_o)						
+);
+	
+rotate rotate1
+(
+	.reset(Reset_ball), //run,
+	.x(x1_o), 
+	.y(y1_o), 
+	.square_no(2'b01), 
+	.orientation_in(orientation_o), 
+	.shape(shape_o),
+	.x_out(rotatex1_o), 
+	.y_out(rotatey1_o),
+	.orientation_out()	//dont fill					
+);
+
+rotate rotate2
+(
+	.reset(Reset_h), //run,
+	.x(x2_o), 
+	.y(y2_o), 
+	.square_no(2'b10), 
+	.orientation_in(orientation_o), 
+	.shape(shape_o),
+	.x_out(rotatex2_o), 
+	.y_out(rotatey2_o),
+	.orientation_out() //dont fill						
+);
+
+rotate rotate3
+(
+	.reset(Reset_h), //run,
+	.x(x3_o), 
+	.y(y3_o), 
+	.square_no(2'b11), 
+	.orientation_in(orientation_o), 
+	.shape(shape_o),
+	.x_out(rotatex3_o), 
+	.y_out(rotatey3_o),
+	.orientation_out() dont fill						
 );
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
