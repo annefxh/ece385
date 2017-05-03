@@ -82,7 +82,7 @@ module lab8( input               CLOCK_50,
 	logic [15:0] color_out; //so far not used(?)
 	
 	assign SRAM_DQ = sram_we? 16'hzzzz :{12'd0 ,color_w}; //SRAM Data 16 Bits
-	assign SRAM_ADDR = sram_we?{curr_x, curr_y, 7'd0}: (sram_re?{curr_x, curr_y, 7'd0}:{((DrawX-240)/8),((DrawY-80)/8),7'd0} ); //SRAM Address 18 Bits
+	assign SRAM_ADDR = sram_we?{curr_x, curr_y, 7'd0}: (sram_re?{curr_x, curr_y, 7'd0}:{((DrawX-240)/8),((DrawY-80)/8),7'd0}; //SRAM Address 18 Bits
   	assign SRAM_UB_N = 0; //SRAM High Byte Data Mask
         assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
   	assign SRAM_WE_N = sram_we? 1'b0 : 1'b1; //SRAM Write Enable
