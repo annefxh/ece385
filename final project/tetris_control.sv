@@ -5,12 +5,18 @@ module tetris_control ( input logic clk,
 				    reached_top,
 				    reached_right,
 		       		    start_game,
-			input logic [4:0] rotate_x,
+		       input logic [4:0] rotatex0_o,
+		       			rotatex1_o,
+		       			rotatex2_o,
+		       			rotatex3_o,
 					  x0_o,
 					  x1_o,
 					  x2_o,
 					  x3_o,
-			input logic [5:0] rotate_y,
+		       input logic [5:0] rotatey0_o,
+		       			rotatey1_o,
+		       			rotatey2_o,
+		       			rotatey3_o,
 					  y0_o,
 					  y1_o,
 					  y2_o,
@@ -365,31 +371,31 @@ begin: state_actions
 											case(blk)
 												3'd0:
 													begin
-														curr_x = rotate_x;
-														curr_y = rotate_y;
-														check_x_in = rotate_x;
-														check_y_in = rotate_y;
+														curr_x = rotatex0_o;
+														curr_y = rotatey0_o;
+														check_x_in = rotatex0_o;
+														check_y_in = rotatey0_o;
 													end
 												3'd1: 
 													begin
-														curr_x = rotate_x;
-														curr_y = rotate_y;
-														check_x_in = rotate_x;
-														check_y_in = rotate_y;
+														curr_x = rotatex1_o;
+														curr_y = rotatey1_o;
+														check_x_in = rotatex1_o;
+														check_y_in = rotatey1_o;
 													end
 												3'd2:
 													begin
-														curr_x = rotate_x;
-														curr_y = rotate_y;
-														check_x_in = rotate_x;
-														check_y_in = rotate_y;
+														curr_x = rotatex2_o;
+														curr_y = rotatey2_o;
+														check_x_in = rotatex2_o;
+														check_y_in = rotatey2_o;
 													end
 												3'd3:
 													begin
-														curr_x = rotate_x;
-														curr_y = rotate_y;
-														check_x_in = rotate_x;
-														check_y_in = rotate_y;
+														curr_x = rotatex3_o;
+														curr_y = rotatey3_o;
+														check_x_in = rotatex3_o;
+														check_y_in = rotatey3_o;
 													end
 												default: /* do nothing */;
 														
@@ -421,18 +427,40 @@ begin: state_actions
 				decolor_in = 1'b1;
 			
 		s_moveleft:
-			r_left=1;
+			begin
+			r_left=1; // load block registers in top level
+			checkmove_in = 2'd0; //reset checkmove
+			blkreg_sel = 3'd2; //chose the mux value to load the block registers with
+			check_x_in = 5'd0; //reset variable for checking
+			check_y_in = 6'd0;
+			end
 		
 		s_moveright:
+			begin
 			r_right=1;
+			checkmove_in = 2'd0;
+			blkreg_sel = 3'd3;
+			check_x_in = 5'd0; //reset variable for checking
+			check_y_in = 6'd0;
+			end
 		
 		s_movedown:
 		begin
 			r_down=1;
+			checkmove_in = 2'd0;
+			blkreg_sel = 3'd1;
+			check_x_in = 5'd0; //reset variable for checking
+			check_y_in = 6'd0;
 		end
 		
 		s_rotate:
+		begin
 			r_rotate=1;
+			checkmove_in = 2'd0;
+			blkreg_sel = 3'd4;
+			check_x_in = 5'd0; //reset variable for checking
+			check_y_in = 6'd0;
+		end
 		s_checkrow: ;
 		s_eliminaterow: ;
 		s_shiftrows: ;
