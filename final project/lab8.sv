@@ -601,7 +601,7 @@ rotate rotate3
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
 	
-always @(*)
+always_ff @ (posedge CLK_50) 
 	begin
 		if(DrawX >= 240 & DrawX <= 400 & DrawY >= 80 & DrawY <= 400)
 			begin
