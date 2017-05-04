@@ -56,6 +56,10 @@ module tetris_control ( input logic clk,
 	logic [2:0] blk_in; //square count
 	logic [2:0] color_ctrl_in;
 	logic [1:0] checkmove_in; //0:down, 1:left, 2:right, 3:rorate
+	logic [5:0] y_gone_in;
+	logic [4:0] shift_x;
+	logic [5:0] shift_y;
+	logic [2:0] shift_color;
 	
 	logic[4:0] check_x;
 	logic[5:0] check_y;
@@ -68,6 +72,10 @@ module tetris_control ( input logic clk,
 	logic [2:0] blk; //square count
 	logic [2:0] color_ctrl;
 	logic [1:0] checkmove; //0:down, 1:left, 2:right, 3:rorate
+	logic [5:0] y_gone;
+	logic [4:0] shift_x_in;
+	logic [5:0] shift_y_in;
+	logic [2:0] shift_color_in;
 	
 /*initial begin
 	init_d=0; //init done
@@ -104,7 +112,8 @@ enum int unsigned {
 	s_shiftrows,
 	s_decrementy,
 	s_incrementx,
-	s_readabove,
+	s_readabove_1,
+	s_readabove_2,
 	s_write_to_current
 } state, next_state;
 
@@ -143,6 +152,9 @@ begin: state_actions
 	checkmove_in = checkmove; 
 	check_x = check_x_in;
 	check_y = check_y_in;
+	y_gone = y_gone_in; 
+	shift_x = shift_x_in;
+	shift_y = shift_y_in;
 	
 	case(state)
 		
@@ -461,16 +473,94 @@ begin: state_actions
 			check_x_in = 5'd0; //reset variable for checking
 			check_y_in = 6'd0;
 		end
-		s_checkrow: ;
-		s_eliminaterow: ;
-		s_shiftrows: ;
-		s_decrementy: ;
-		s_incrementx: ;
-		s_readabove: ;
-		s_write_to_current: ;
 		
-		default:
-			;
+		s_checkrow: 
+			begin
+				if(blk == 3'd4)
+					blk_in = 3'd0; // finished checking the four rows that will be affected
+				else
+					begin
+						sram_re = 1'b1;
+						if (init_x == 5'd20) // when we reach end end of the row
+							begin
+								init_x_in == 5'd0;
+								if (sram_color == 4'd7) //white
+									blk_in += 1;
+								else
+									init_x_in = 5'd0; // prepare to delete row
+							end
+						else
+							begin
+								if (sram_color == 4'd7) //white: the row is not filled
+									begin
+										init_x_in = 5'd0; 
+										blk_in += 1;
+									end
+								else
+									init_x_in += 1;
+							end
+					end
+			end;
+		
+		s_eliminaterow: 
+			begin
+				if(init_x_in == 5'd20)
+					begin
+						shift_y_in = init_y;
+						y_gone_in = init_y;
+					end
+				else
+					begin
+						sram_we = 1'b1;
+						curr_x = init_x;
+						curr_y = init_y;
+						//write color is default white
+					end
+			end
+		s_shiftrows: 
+			begin
+				if(shift_y == 6'd0)
+					begin
+						init_y_in = y_gone;
+					end
+			end;
+		s_decrementy:
+			begin
+				shift_x_in = -5'd1;
+				shift_y_in -= 1;
+			end
+
+		s_incrementx: 
+			begin
+				if(shift_x == 5'd20)
+						shift_x_in = 5'd0;
+				else
+					shift_x_in += 1;
+			end
+		
+		s_readabove_1: 
+			begin
+				sram_re = 1'b1;
+				curr_x = shift_x;
+				curr_y = shift_y -1;
+			end
+		
+		s_readabove_2: 
+			begin
+				shift_color_in = sram_color;
+			end
+		
+		s_write_to_current: 
+			begin
+				sram_we = 1'b1;
+				curr_x = shift_x;
+				curr_y = shift_y;
+				color_w = shift_color;
+			end
+		
+		s_lose: /*do nothing*/;
+		
+		default: /*do nothing*/;
 	endcase
 end
 	
@@ -581,36 +671,53 @@ begin:  next_state_logic
 
 			s_checkrow:
 			begin
-				next_state = s_eliminaterow;
+				if(init_y == 6'd0)
+					next_state = s_generate;
+				else
+					begin
+					if(init_x == 5'd20)
+						begin
+						if(sram_color != 4'd7)
+							next_state = s_eliminaterow;
+						end
+					end
 			end
 
 			s_eliminaterow:
 			begin
-				next_state = s_shiftrows;
+				if (init_x == 5'd20)
+					next_state = s_shiftrows;
+				else
+					next_state = s_eliminaterow;
 			end
 
 			s_shiftrows:
 			begin
-				next_state = s_decrementy;
-			end
-
-			s_decrementy:
-			begin
-				if(reached_top)
-					next_state = s_generate;
-				else
-					next_state = s_readabove;
-			end
-
-			s_incrementx:
-			begin
-				if(reached_right)
-					next_state = s_readabove;
+				if(shift_y == 6'd0)
+					next_state = s_checkrow;
 				else
 					next_state = s_decrementy;
 			end
 
-			s_readabove:
+			s_decrementy:
+			begin
+					next_state = s_incrementx;
+			end
+
+			s_incrementx:
+			begin
+				if(shift_x == 5'd20)
+					next_state = s_readabove;
+				else
+					next_state = s_readabove;
+			end
+
+			s_readabove_1:
+			begin
+				next_state = s_readabove_2;
+			end
+			
+			s_readabove_2:
 			begin
 				next_state = s_write_to_current;
 			end
@@ -642,6 +749,7 @@ begin: next_state_assignment
 		checkmove <=2'd0; 
 		check_x <= 5'd0;
 		check_y <= 6'd0;
+		y_gone <= 6'd0;
 		end
 	else
 		begin
@@ -657,6 +765,7 @@ begin: next_state_assignment
 		checkmove <=checkmove_in; 
 		check_x <= check_x_in;
 		check_y <= check_y_in;
+		y_gone <= y_gone_in
 		end
 end
 
