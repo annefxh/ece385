@@ -149,7 +149,7 @@ begin: state_actions
 		s_init:
 			begin
 			// init is done, game start button pressed
-				if(start_game == 1'b1 && init_y == 6'd41)
+				if(init_y == 6'd41)
 					begin
 						init_x_in = 5'd0;
 						init_y_in = 6'd0;
@@ -486,7 +486,7 @@ begin:  next_state_logic
 			
 			s_init:
 			begin
-				if(start_game == 1'b1 && init_y == 6'd41)
+				if(init_y == 6'd41)
 					next_state = s_generate;
 			end
 
