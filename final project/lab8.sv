@@ -71,11 +71,11 @@ module lab8( input               CLOCK_50,
 	logic [4:0] x0, x1, x2, x3, x0_o, x1_o, x2_o, x3_o, curr_x, 
 		    x0mux_o, x1mux_o, x2mux_o, x3mux_o, rotatex_o, rotatexmux_o,
 		    leftx0_o, leftx1_o, leftx2_o, leftx3_o, rightx0_o, rightx1_o, rightx2_o, rightx3_o,
-		    rotatex0_o, rotatex1_o, rotatex2_o, rotatex3_o, downx0_o, downx1_o, downx2_o downx3_o;
+		    rotatex0_o, rotatex1_o, rotatex2_o, rotatex3_o, downx0_o, downx1_o, downx2_o, downx3_o;
 	logic [5:0] y0, y1, y2, y3, y0_o, y1_o, y2_o, y3_o, curr_y,
 	            y0mux_o, y1mux_o, y2mux_o, y3mux_o, rotatey_o, rotateymux_o,
 		    lefty0_o, lefty1_o, lefty2_o, lefty3_o, righty0_o, righty1_o, righty2_o, righty3_o,
-		    rotatey0_o, rotatey1_o, rotatey2_o, rotatey3_o, downy0_o, downy1_o, downy2_o downy3_o;
+		    rotatey0_o, rotatey1_o, rotatey2_o, rotatey3_o, downy0_o, downy1_o, downy2_o, downy3_o;
 	logic r_color, r_generate, r_write, r_initialize, blkreg_ld, r_rotate, blk_sel, r_down, r_left, r_right;
 	
 	//SRAM Interfaces
@@ -85,7 +85,7 @@ module lab8( input               CLOCK_50,
 	logic [15:0] color_out; //so far not used(?)
 	
 	assign SRAM_DQ = sram_we? 16'hzzzz :{12'd0 ,color_w}; //SRAM Data 16 Bits
-	assign SRAM_ADDR = sram_we?{curr_x, curr_y, 7'd0}: (sram_re?{curr_x, curr_y, 7'd0}:{((DrawX-240)/8),((DrawY-80)/8),7'd0}; //SRAM Address 18 Bits
+	assign SRAM_ADDR = sram_we?{curr_x, curr_y, 7'd0}: (sram_re?{curr_x, curr_y, 7'd0}:{((DrawX-240)/8),((DrawY-80)/8),7'd0}); //SRAM Address 18 Bits
   	assign SRAM_UB_N = 0; //SRAM High Byte Data Mask
         assign SRAM_LB_N = 0; //SRAM Low Byte Data Mask
   	assign SRAM_WE_N = sram_we? 1'b0 : 1'b1; //SRAM Write Enable
@@ -595,7 +595,7 @@ rotate rotate3
 	.shape(shape_o),
 	.x_out(rotatex3_o), 
 	.y_out(rotatey3_o),
-	.orientation_out() dont fill						
+	.orientation_out() 						
 );
 
     HexDriver hex_inst_0 (keycode[3:0], HEX0);

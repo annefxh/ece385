@@ -114,7 +114,9 @@ enum int unsigned {
 	s_incrementx,
 	s_readabove_1,
 	s_readabove_2,
-	s_write_to_current
+	s_write_to_current,
+	s_lose,
+	s_readabove
 } state, next_state;
 
 always_comb
@@ -150,11 +152,11 @@ begin: state_actions
 	blk_in = blk; //square count
 	color_ctrl_in = color_ctrl;
 	checkmove_in = checkmove; 
-	check_x = check_x_in;
-	check_y = check_y_in;
-	y_gone = y_gone_in; 
-	shift_x = shift_x_in;
-	shift_y = shift_y_in;
+	check_x_in = check_x;
+	check_y_in = check_y;
+	y_gone_in = y_gone; 
+	shift_x_in = shift_x;
+	shift_y_in = shift_y;
 	
 	case(state)
 		
@@ -483,7 +485,7 @@ begin: state_actions
 						sram_re = 1'b1;
 						if (init_x == 5'd20) // when we reach end end of the row
 							begin
-								init_x_in == 5'd0;
+								init_x_in = 5'd0;
 								if (sram_color == 4'd7) //white
 									blk_in += 1;
 								else
@@ -500,7 +502,7 @@ begin: state_actions
 									init_x_in += 1;
 							end
 					end
-			end;
+			end
 		
 		s_eliminaterow: 
 			begin
@@ -523,7 +525,7 @@ begin: state_actions
 					begin
 						init_y_in = y_gone;
 					end
-			end;
+			end
 		s_decrementy:
 			begin
 				shift_x_in = -5'd1;
@@ -765,7 +767,9 @@ begin: next_state_assignment
 		checkmove <=checkmove_in; 
 		check_x <= check_x_in;
 		check_y <= check_y_in;
-		y_gone <= y_gone_in
+		y_gone <= y_gone_in;
+		shift_x <= shift_x_in;
+		shift_y <= shift_y_in;
 		end
 end
 
