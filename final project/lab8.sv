@@ -230,7 +230,7 @@ initialize initialize0(
  
 mux8 #(.width(5)) x0_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(x0),
 	.In1(downx0_o),
 	.In2(leftx0_o),
@@ -244,7 +244,7 @@ mux8 #(.width(5)) x0_mux
 
 mux8 #(.width(5)) x1_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(x1),
 	.In1(downx1_o),
 	.In2(leftx1_o),
@@ -258,7 +258,7 @@ mux8 #(.width(5)) x1_mux
 	
 mux8 #(.width(5)) x2_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(x2),
 	.In1(downx2_o),
 	.In2(leftx2_o),
@@ -272,7 +272,7 @@ mux8 #(.width(5)) x2_mux
 
 mux8 #(.width(5)) x3_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(x3),
 	.In1(downx3_o),
 	.In2(leftx3_o),
@@ -286,7 +286,7 @@ mux8 #(.width(5)) x3_mux
 	
 mux8 #(.width(6)) y0_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(y0),
 	.In1(downy0_o),
 	.In2(lefty0_o),
@@ -300,7 +300,7 @@ mux8 #(.width(6)) y0_mux
 	
 mux8 #(.width(6)) y1_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(y1),
 	.In1(downy1_o),
 	.In2(lefty1_o),
@@ -314,7 +314,7 @@ mux8 #(.width(6)) y1_mux
 	
 mux8 #(.width(6)) y2_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(y2),
 	.In1(downy2_o),
 	.In2(lefty2_o),
@@ -328,7 +328,7 @@ mux8 #(.width(6)) y2_mux
 	
 mux8 #(.width(6)) y3_mux
 (
-	.S(blk_sel),
+	.S(blkreg_sel),
 	.In0(y3),
 	.In1(downy3_o),
 	.In2(lefty3_o),
