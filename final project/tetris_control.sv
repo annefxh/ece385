@@ -159,6 +159,7 @@ begin: state_actions
 	shift_y_in = shift_y;
 	
 	case(state)
+		s_reset: /*do nothing*/
 		
 		s_init:
 			begin
@@ -218,30 +219,34 @@ begin: state_actions
 							begin
 								curr_x = x1_o;
 								curr_y = y1_o;
-								if(decolor == 1'b0)
-									color_w = shape;
+								color_w = shape;
+								if(decolor)
+									color_w = 3'd7; 
 									
 							end
 						3'd2:
 							begin
 								curr_x = x2_o;
 								curr_y = y2_o;
-								if(decolor == 1'b0)
-									color_w = shape;
+								color_w = shape;
+								if(decolor)
+									color_w = 3'd7; 
 							end
 						3'd3:
 							begin
 								curr_x = x3_o;
 								curr_y = y3_o;
-								if(decolor == 1'b0)
-									color_w = shape;
+								color_w = shape;
+								if(decolor)
+									color_w = 3'd7; 
 							end
 						default:
 							begin
 								curr_x = x0_o;
 								curr_y = y0_o;
-								if(decolor == 1'b0)
-									color_w = shape;
+								color_w = shape;
+								if(decolor)
+									color_w = 3'd7; 
 							end	
 					endcase
 					blk_in += 1'b1;
